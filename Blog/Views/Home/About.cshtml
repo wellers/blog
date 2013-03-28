@@ -1,11 +1,22 @@
 ﻿@{
-    ViewBag.Title = "About me";
+	ViewBag.Title = "About me";
 }
-<div class="well">
-	<h1>About me</h1>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et 
-		dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex 
-		ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
-		nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
-		id est laborum.</p>
+<div class="well row">
+	<div class="span8">
+		<h1>About me</h1>
+	</div>
+	<div class="span5">
+		<p>My name is Paul David Welbourne. I am an Application Developer based in Widnes, Cheshire. 
+		Since graduating from the University of Liverpool in 2008, I have worked on many exciting 
+		web-based solutions with software development teams in-and-around the North-West.</p>        
+		<p>I specialise in Microsoft .NET technologies, and have specific passion for Web development.</p>
+		<p>I am a practitioner of Agile software development, Test Driven Development and the adoption 
+		of best practices and SOLID-compliance.</p>
+		<p>Apart from my contributions here, you can also find me microblogging on 
+		<a href="http://www.twitter.com/wellers">Twitter</a>.</p>
+		<p>Outside of software development, I am interested in music production, sports and keeping fit at my local gym.</p>
+	</div>
+	<div class="span3">
+		<img src="@Url.Content("~/Content/images/profilepicture.jpg")" alt="no pic!"/>
+	</div>
 </div>
