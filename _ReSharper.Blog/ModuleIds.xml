@@ -1,0 +1,7 @@
+<Modules>
+  <Module PersistentId="B01FC191-CD51-4B5E-9734-F58EDCBF09B5" ModuleId="Blog" />
+  <Module PersistentId="AFECE1E5-8F77-4193-A30E-9C6D11845C20" ModuleId="Blog.Interfaces" />
+  <Module PersistentId="E4CDE178-E0B2-4A71-8133-B886B25C81B6" ModuleId="Blog.Data.Mock" />
+  <Module PersistentId="FD7E29FB-E257-43F6-8504-AA1FF0F446D4" ModuleId="Blog.Models" />
+  <Module PersistentId="0F7986D0-4825-44F3-A7EB-138FED8887E6" ModuleId="Blog.Data" />
+</Modules>
