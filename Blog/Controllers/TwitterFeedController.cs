@@ -12,13 +12,18 @@ namespace Blog.Controllers
 	{
 		public void IndexAsync()
 		{
+			const string userName = "wellers";
+
 			AsyncManager.OutstandingOperations.Increment();
 			// TODO : Make this value configurable.
-			GetTwitterFeed("wellers");
+			GetTwitterFeed(userName);
 		}
 
 		public ActionResult IndexCompleted(List<TwitterFeedItem> tweets)
 		{
+			// TODO : Make this value configurable.
+			const int numberOfTweets = 5;
+
 			TwitterFeedViewModel model;
 			if (tweets == null || !tweets.Any())
 			{
@@ -26,8 +31,7 @@ namespace Blog.Controllers
 			}
 			else
 			{
-				// TODO : Make this value configurable.
-				model = new TwitterFeedViewModel { Tweets = tweets.Take(5) };
+				model = new TwitterFeedViewModel { Tweets = tweets.Take(numberOfTweets) };
 			}
 
 			return PartialView("TwitterFeed", model);
