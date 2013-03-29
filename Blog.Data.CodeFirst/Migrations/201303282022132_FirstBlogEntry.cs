@@ -9,7 +9,7 @@ namespace Blog.Data.CodeFirst.Migrations
         {
             Sql(@"
                 INSERT INTO BlogEntries (Title, Entry, PostedDate)
-                SELECT 'Syntactic sugar: one spoon or two?',
+                SELECT 'Syntactic sugar: one lump or two?',
                 '<div>
                     <p>This is my first blog post. Hooray! So I thought, for the contents of my first post, I would write about some of the features I like about the Dot Net framework, in particular C# syntactic sugar.</p>
                     <p>Quite simply, syntactic sugar is syntax within a programming language that is designed to make things easier to read or to express.</p>
@@ -18,7 +18,7 @@ namespace Blog.Data.CodeFirst.Migrations
                 <div>
                     <br />
                     <p><strong>LINQ (Language Integrated Query)</strong></p>
-                    <p>LINQ statements are extensions to Dot Net that add query-like capabilities. This can be extremely power when using in conjunction with collection. An small example of this is shown below.</p>
+                    <p>LINQ statements are extensions to Dot Net that add query-like capabilities. This can be extremely powerful when using in conjunction with collection. An example of this is shown below.</p>
 <pre class=""brush: csharp"">
     var items = new List&ltItem&gt();
 
@@ -35,7 +35,7 @@ namespace Blog.Data.CodeFirst.Migrations
                 <div>
                     <br />
                     <p><strong>Object and Collection initialisers</strong></p>
-                    <p>Object initialisers are a great way of instansiating objects, with members set, without the tediousness of writing out member assignments. An example is shown below.</p>
+                    <p>Object initialisers are a great way of instaniating objects, with members set, without the tediousness of writing out member assignments. An example is shown below.</p>
 <pre class=""brush: csharp"">
     // with the following class
     public class Person
