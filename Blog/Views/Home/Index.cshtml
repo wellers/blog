@@ -4,24 +4,22 @@
 }
 
 <div class="well">
-	<h1>Welcome...</h1>
-	<p>I started this blog as a place to write my insights and meanderings around the world of software development 
-	and, on occasion, other topics that spark my interest. I have been a software developer for around 
-	@(DateTime.Now.Year - 2008) years and continue to try to improve myself and those I work with.</p>
+	<h1>Welcome!</h1>
+	<p>...to the whimsical meanderings of a North-West UK based Dot Net technologist.</p>
 	<p>
 		@Html.ActionLink(HttpUtility.HtmlDecode("Learn more ..."), "About", "Home",
-							new {area = "", controller = "Home"}, new { @class = "btn btn-primary btn-large" })
+							new {area = "", controller = "Home"}, new { @class = "btn btn-info btn-large" })
 	</p>
 </div>
 @foreach (var b in Model.BlogEntries)
 {
-	<div class="container blogEntry">
+	<div class="blogEntry">
 		<div class="row">
-			<div class="span6">
+			<div class="span5">
 				<h4>@b.Title</h4>
 			</div>
 			<div class="span3">
-				<h4>@b.PostedDate</h4>
+				<h5>@b.PostedDate</h5>
 			</div>
 		</div>
 		<div class="row">
