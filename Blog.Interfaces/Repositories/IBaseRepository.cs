@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using Blog.Interfaces.Models;
-using System.Linq;
 
 namespace Blog.Interfaces.Repositories
 {

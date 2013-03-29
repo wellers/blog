@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Web.Mvc;
 using System.Linq;
-using System.Xml.Linq;
+using System.Web.Mvc;
 using Blog.Interfaces.Repositories;
 using Blog.Models;
-using Blog.Interfaces.Models;
 
 namespace Blog.Controllers
 {

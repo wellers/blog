@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Blog.Data.CodeFirst.Persistence;
 using Blog.Interfaces.Models;
 using Blog.Interfaces.Repositories;
