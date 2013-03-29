@@ -5,8 +5,8 @@ namespace Blog.Models
 {
 	public class BlogEntryModel : BaseModel, IBlogEntryModel
 	{
-		new public string KeyName { get { return "Key"; } }
-		new public string TableName { get { return "[BlogEntry]"; } }
+		new public string KeyName { get { return "Id"; } }
+        new public string TableName { get { return "[BlogEntries]"; } }
 
 		public string Title { get; set; }
 		public string Entry { get; set; }

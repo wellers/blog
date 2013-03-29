@@ -22,7 +22,7 @@ namespace Blog.Data
 			}).SingleOrDefault();
 		}
 
-		public IEnumerable<IBlogEntryModel> All()
+		public IQueryable<IBlogEntryModel> All()
 		{
 			return _context.BlogEntries.Select(b => new BlogEntryModel
 			{
@@ -30,7 +30,7 @@ namespace Blog.Data
 				Title = b.Title,
 				Entry = b.Entry,
 				PostedDate = b.PostedDate
-			}).ToList();
+			});
 		}
 	}
 }

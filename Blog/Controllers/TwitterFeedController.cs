@@ -33,7 +33,6 @@ namespace Blog.Controllers
 			return PartialView("TwitterFeed", model);
 		}
 
-
 		private void GetTwitterFeed(string screenName)
 		{
 			if (string.IsNullOrEmpty(screenName))
@@ -45,8 +44,8 @@ namespace Blog.Controllers
 			{
 				if (e.Error != null)
 					return;
-				XElement xmlTweets = XElement.Parse(e.Result);
 
+				XElement xmlTweets = XElement.Parse(e.Result);
 				var tweets = xmlTweets.Descendants("status").Select(tweet => new TwitterFeedItem
 				{
 					ImageSource = tweet.Element("user").Element("profile_image_url").Value,

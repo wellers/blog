@@ -51,9 +51,9 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 			return _blogEntries[id];
 		}
 		
-		public IEnumerable<IBlogEntryModel> All()
+		public IQueryable<IBlogEntryModel> All()
 		{
-			return _blogEntries.Values;
+			return _blogEntries.Values.AsQueryable();
 		}
 	}
 }

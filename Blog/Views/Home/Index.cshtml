@@ -5,9 +5,10 @@
 
 <div class="well">
 	<h1>Welcome!</h1>
-	<p>...to the whimsical meanderings of a North-West UK based Dot Net technologist.</p>
+	<p>...to the whimsical meanderings of a North-West UK based Dot Net developer.</p>
+	<p>At the moment this site is acting as both a blog space and a web test-bed for myself.</p>
 	<p>
-		@Html.ActionLink(HttpUtility.HtmlDecode("Learn more ..."), "About", "Home",
+		@Html.ActionLink(HttpUtility.HtmlDecode("Learn more..."), "About", "Home",
 							new {area = "", controller = "Home"}, new { @class = "btn btn-info btn-large" })
 	</p>
 </div>
@@ -19,9 +20,10 @@
 				<h4>@b.Title</h4>
 			</div>
 			<div class="span3">
-				<h5>@b.PostedDate</h5>
-			</div>
-		</div>
+				<h5>Posted: @b.PostedDate</h5>
+			</div>            
+		</div>    
+		<hr />    
 		<div class="row">
 			<div class="span8">@Html.Raw(HttpUtility.HtmlDecode(b.Entry))</div>
 		</div>
