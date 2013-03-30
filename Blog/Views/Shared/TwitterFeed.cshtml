@@ -4,14 +4,9 @@
 @foreach (var t in Model.Tweets)
 {
 	<div class="row tweetsRow">
-			@*
-            <div> TODO: Fix issue with inline pic
-				<img src="@Url.Content(@t.ImageSource)" alt="no pic!" width="54" height="54"/>
-			</div>
-            *@
-			<div>
-				<a href="https://twitter.com/@(t.UserName)">@("@")@t.UserName</a>&nbsp;
-				<p style="display:inline;"><small>@t.Message</small></p>
-			</div>
+		<div>
+			<a href="https://twitter.com/@(t.UserName)">@("@")@t.UserName</a>&nbsp;
+			<p style="display:inline;"><small>@t.Message</small></p>
+		</div>
 	</div>
 }
