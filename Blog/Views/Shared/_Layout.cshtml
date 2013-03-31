@@ -64,10 +64,10 @@
 					<div class="well sidebar-nav">
 						<ul class="nav nav-list">
 							<li class="nav-header">Posts by month</li>
-							<li>@Html.ActionLink("March", "Index", new { area = "", controller = "Home", Month = 3, Year = 2013 }, new { })</li>
+							<li>@Html.ActionLink("March (2013)", "Index", new { area = "", controller = "Home", Month = 3, Year = 2013 }, new { })</li>
 						</ul>
 					</div>
-					<div class="sidebar" style="margin-left: 20px;">@{ Html.RenderAction("Index", "TwitterFeed", new { area = "", controller = "TwitterFeed" }); }</div>
+					<div class="sidebar">@{ Html.RenderAction("Index", "TwitterFeed", new { area = "", controller = "TwitterFeed" }); }</div>
 				</div>	
 			</div>
 		</div>
