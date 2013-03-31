@@ -4,5 +4,6 @@
 .blogEntry .row { margin-left: 5px; }
 .blogEntry hr { margin: 5px 0px; }
 .tweetsRow { background: white; padding: 5px; }
+.tweetDate { color: gray; display: block; float: right; }
 .contactImg { width: 30px; padding-bottom: 5px; }
 .contactText { width: 80px; }
