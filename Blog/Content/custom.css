@@ -1,4 +1,5 @@
 ﻿body { background: #FAFAFB; font-family: "Segoe UI", Calibri, Verdana, Tahoma, "Arial Black", Arial; }
+.brand { margin-top: -2px; }
 .blogEntry { background: white; border: 1px solid #ddd; padding: 5px; margin-bottom: 10px; 
              -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px;}
 .blogEntry .row { margin-left: 5px; }
