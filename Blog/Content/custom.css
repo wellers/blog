@@ -1,5 +1,6 @@
 ﻿body { background: #FAFAFB; }
-.blogEntry { background: white; border: 1px solid #F0F0F0; padding: 5px; margin-bottom: 10px; }
+.blogEntry { background: white; border: 1px solid #ddd; padding: 5px; margin-bottom: 10px; 
+             -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px;}
 .blogEntry .row { margin-left: 5px; }
 .blogEntry hr { margin: 5px 0px; }
-.tweetsRow { background: white; border: 1px solid #F0F0F0; padding: 5px; }
+.tweetsRow { background: white; padding: 5px; }
