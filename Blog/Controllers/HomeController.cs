@@ -26,13 +26,16 @@ namespace Blog.Controllers
 				yearFilter = (int)year;
 
 			var entries = _repository.All().Where(b => b.PostedDate.Month == monthFilter 
-														&& b.PostedDate.Year == yearFilter).ToList();
+														&& b.PostedDate.Year == yearFilter)
+                                            .OrderByDescending(c => c.PostedDate).ToList();
 
 			if (entries.Count == 0)
 			{
-				DateTime mostRecentPost = _repository.All().OrderByDescending(b => b.PostedDate).Take(1).Single().PostedDate;
+				DateTime mostRecentPost = _repository.All().OrderByDescending(b => b.PostedDate)
+                                            .Take(1).Single().PostedDate;
 				entries = _repository.All().Where(b => b.PostedDate.Month == mostRecentPost.Month
-														&& b.PostedDate.Year == mostRecentPost.Year).ToList();
+														&& b.PostedDate.Year == mostRecentPost.Year)
+                                            .OrderByDescending(c => c.PostedDate).ToList();
 			}
 
 			return View(new HomeViewModel { BlogEntries = entries });
