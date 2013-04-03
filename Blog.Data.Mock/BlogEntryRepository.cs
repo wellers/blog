@@ -100,7 +100,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 		{
 			var blogEntryIDs = _blogEntryTags[tag];
 			return _blogEntries.Where(x => blogEntryIDs.Contains(x.Key))
-				.Select(y => y.Value).AsQueryable();
+                .Select(y => y.Value).AsQueryable();
 		}
 	}
 }

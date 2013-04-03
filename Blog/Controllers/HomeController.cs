@@ -48,7 +48,8 @@ namespace Blog.Controllers
 
         public ActionResult IndexByTag(string tag)
         {
-            var entries = _blogEntryRepository.GetBlogEntriesByTag(tag);
+            var entries = _blogEntryRepository.GetBlogEntriesByTag(tag)
+                            .OrderByDescending(x => x.PostedDate).ToList();
             return View("Index", new HomeViewModel { BlogEntries = entries });
         }
 
