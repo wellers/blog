@@ -1,0 +1,14 @@
+﻿@using Blog.Interfaces.Models;
+@model List<IBlogEntryModel>
+
+<div class="well sidebar-nav">
+	<ul class="nav nav-list">
+		<li class="nav-header">My Recent posts</li>
+		@foreach (var b in Model)
+		{ 
+			<li>
+				@Html.ActionLink(b.Title, "IndexByID", new { controller = "Home", id = b.Key })
+			</li>
+		}
+	</ul>
+</div>

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
-using Blog.Controllers;
 
 namespace Blog
 {
@@ -22,10 +17,16 @@ namespace Blog
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+			routes.MapRoute( "IndexByMonth", "Home/Index/{month}/{year}",
+				new { controller = "Home", action="Index", month = UrlParameter.Optional, year = UrlParameter.Optional });
+
+			routes.MapRoute("IndexByID", "Home/IndexByID/{id}",
+				new { controller = "Home", action = "IndexByID", id = UrlParameter.Optional });
+
 			routes.MapRoute(
-				"Default", // Route name
-				"{controller}/{action}/{id}", // URL with parameters
-				new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+				"Default",
+				"{controller}/{action}/{id}",
+				new { controller = "Home", action = "Index", id = UrlParameter.Optional }
 			);
 
 		}

@@ -22,8 +22,8 @@ sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div><div
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
 irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p></div>
 <div><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>"), 
-					   Title = "This is an amazing title #1", 
-					   PostedDate = DateTime.Now.AddDays(-2)
+					   Title = "This is a title.", 
+					   PostedDate = DateTime.Now
 				   }
 			},
 			{
@@ -36,8 +36,36 @@ sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mi
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div><div><p>Duis aute 
 irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>"), 
-					   Title = "This is an amazing title #2", 
+					   Title = "This is an another amazing title that is also really long.", 
 					   PostedDate = DateTime.Now.AddDays(-1)
+				   }
+			},
+            {
+				3,
+				new BlogEntryModel
+				   {
+					   Key = 3, 
+					   Entry = HttpUtility.HtmlEncode(@"<div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>"), 
+					   Title = "Here is a really long and drawn-out title setup by me.", 
+					   PostedDate = DateTime.Now.AddMonths(-1)
+				   }
+			},
+            {
+				4,
+				new BlogEntryModel
+				   {
+					   Key = 4, 
+					   Entry = HttpUtility.HtmlEncode(@"<div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div><div><p>Ut enim ad minim veniam, 
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>"), 
+					   Title = "This is an amazing title!", 
+					   PostedDate = DateTime.Now.AddMonths(-1).AddDays(-1)
 				   }
 			}
 		};
@@ -54,6 +82,11 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 		public IQueryable<IBlogEntryModel> All()
 		{
 			return _blogEntries.Values.AsQueryable();
+		}
+
+		public IQueryable<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year)
+		{
+			return _blogEntries.Values.Where(b => b.PostedDate.Month == month && b.PostedDate.Year == year).AsQueryable();
 		}
 	}
 }
