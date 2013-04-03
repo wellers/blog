@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="BlogEntryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TagRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blog.Data.CodeFirst\Blog.Data.CodeFirst.csproj">

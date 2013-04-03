@@ -44,5 +44,18 @@ namespace Blog.Data
 				PostedDate = b.PostedDate
 			});
 		}
+
+        public IQueryable<IBlogEntryModel> GetBlogEntriesByTag(string tag)
+        {
+            var tagID = _context.Tags.Where(x => x.LookupID == tag).Select(y => y.Id).Single();
+            return _context.BlogEntryTags.Where(b => b.TagId == tagID).Select(c => c.BlogEntry)
+                    .Select(b => new BlogEntryModel
+            {
+                Key = b.Id,
+                Title = b.Title,
+                Entry = b.Entry,
+                PostedDate = b.PostedDate
+            });
+        }
 	}
 }

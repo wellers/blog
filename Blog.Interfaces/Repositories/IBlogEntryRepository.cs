@@ -6,5 +6,6 @@ namespace Blog.Interfaces.Repositories
 	public interface IBlogEntryRepository : IBaseRepository<IBlogEntryModel>
 	{
 		IQueryable<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year);
+        IQueryable<IBlogEntryModel> GetBlogEntriesByTag(string tag);
 	}
 }

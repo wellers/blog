@@ -57,6 +57,7 @@ namespace Blog.App_Start
         private static void RegisterServices(IKernel kernel)
         {
 	        kernel.Bind<IBlogEntryRepository>().To<BlogEntryRepository>();
+            kernel.Bind<ITagRepository>().To<TagRepository>();
         }        
     }
 }

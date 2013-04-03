@@ -69,8 +69,9 @@
 							<li>@Html.ActionLink("March (2013)", "Index", new { area = "", controller = "Home", Month = 3, Year = 2013 }, new { })</li>
 						</ul>
 					</div>
-					@{ Html.RenderAction("RecentPosts", new { area = "", controller = "Home" }); }
-					@{ Html.RenderAction("Index", "TwitterFeed", new { area = "", controller = "TwitterFeed" }); }
+					@{ Html.RenderAction("Tags", new { area = "", controller = "Home" }); }
+                    @{ Html.RenderAction("RecentPosts", new { area = "", controller = "Home" }); }
+                    @{ Html.RenderAction("Index", "TwitterFeed", new { area = "", controller = "TwitterFeed" }); }
 				</div>	
 			</div>
 		</div>

@@ -53,9 +53,19 @@
     <Compile Include="Migrations\201303282022132_FirstBlogEntry.Designer.cs">
       <DependentUpon>201303282022132_FirstBlogEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201304032005588_AddTagsTables.cs" />
+    <Compile Include="Migrations\201304032005588_AddTagsTables.Designer.cs">
+      <DependentUpon>201304032005588_AddTagsTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304032012326_UpdateExistingBlogEntriesForTags.cs" />
+    <Compile Include="Migrations\201304032012326_UpdateExistingBlogEntriesForTags.Designer.cs">
+      <DependentUpon>201304032012326_UpdateExistingBlogEntriesForTags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BlogEntry.cs" />
+    <Compile Include="Models\BlogEntryTag.cs" />
     <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Persistence\Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,6 +79,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201303282022132_FirstBlogEntry.resx">
       <DependentUpon>201303282022132_FirstBlogEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304032005588_AddTagsTables.resx">
+      <DependentUpon>201304032005588_AddTagsTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304032012326_UpdateExistingBlogEntriesForTags.resx">
+      <DependentUpon>201304032012326_UpdateExistingBlogEntriesForTags.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

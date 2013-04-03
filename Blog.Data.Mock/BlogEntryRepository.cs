@@ -10,25 +10,19 @@ namespace Blog.Data.Mock
 {
 	public class BlogEntryRepository : IBlogEntryRepository
 	{
-		private readonly Dictionary<int, IBlogEntryModel> _blogEntries = new Dictionary<int, IBlogEntryModel>
-		{
-			{
-				1,
-				new BlogEntryModel
+		public static IBlogEntryModel entry1 = new BlogEntryModel
 				   {
-					   Key = 1, 
+					   Key = 1,
 					   Entry = HttpUtility.HtmlEncode(@"<div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div><div><p>Ut enim ad minim veniam, 
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
 irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p></div>
-<div><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>"), 
-					   Title = "This is a title.", 
+<div><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>"),
+					   Title = "This is a title.",
 					   PostedDate = DateTime.Now
-				   }
-			},
-			{
-				2,
-				new BlogEntryModel
+				   };
+
+		public static IBlogEntryModel entry2 = new BlogEntryModel
 				   {
 					   Key = 2, 
 					   Entry = HttpUtility.HtmlEncode(@"<div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
@@ -38,11 +32,9 @@ irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nul
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>"), 
 					   Title = "This is an another amazing title that is also really long.", 
 					   PostedDate = DateTime.Now.AddDays(-1)
-				   }
-			},
-            {
-				3,
-				new BlogEntryModel
+				   };
+
+		public static IBlogEntryModel entry3 = new BlogEntryModel
 				   {
 					   Key = 3, 
 					   Entry = HttpUtility.HtmlEncode(@"<div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
@@ -52,11 +44,9 @@ irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nul
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>"), 
 					   Title = "Here is a really long and drawn-out title setup by me.", 
 					   PostedDate = DateTime.Now.AddMonths(-1)
-				   }
-			},
-            {
-				4,
-				new BlogEntryModel
+				   };
+
+		public static IBlogEntryModel entry4 = new BlogEntryModel
 				   {
 					   Key = 4, 
 					   Entry = HttpUtility.HtmlEncode(@"<div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
@@ -66,11 +56,28 @@ irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nul
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>"), 
 					   Title = "This is an amazing title!", 
 					   PostedDate = DateTime.Now.AddMonths(-1).AddDays(-1)
-				   }
-			}
+				   };        
+
+		private readonly Dictionary<int, IBlogEntryModel> _blogEntries = new Dictionary<int, IBlogEntryModel>
+		{
+			{ entry1.Key, entry1 },
+			{ entry2.Key, entry2 },
+			{ entry3.Key, entry3 }, 
+			{ entry4.Key, entry4 }
 		};
 
-		
+		private TagRepository _tagRepository;
+		private Dictionary<string, List<int>> _blogEntryTags;
+
+		public BlogEntryRepository()
+		{
+			_tagRepository = new TagRepository();
+			_blogEntryTags = new Dictionary<string, List<int>>();
+			_blogEntryTags.Add(_tagRepository.Tags[0].LookupID, new List<int> { entry1.Key, entry2.Key });
+			_blogEntryTags.Add(_tagRepository.Tags[1].LookupID, new List<int> { entry1.Key, entry3.Key });
+			_blogEntryTags.Add(_tagRepository.Tags[2].LookupID, new List<int> { entry4.Key, entry2.Key });
+		}
+
 		public IBlogEntryModel Get(int id)
 		{
 			if (!_blogEntries.ContainsKey(id))
@@ -87,6 +94,13 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 		public IQueryable<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year)
 		{
 			return _blogEntries.Values.Where(b => b.PostedDate.Month == month && b.PostedDate.Year == year).AsQueryable();
+		}
+
+		public IQueryable<IBlogEntryModel> GetBlogEntriesByTag(string tag)
+		{
+			var blogEntryIDs = _blogEntryTags[tag];
+			return _blogEntries.Where(x => blogEntryIDs.Contains(x.Key))
+				.Select(y => y.Value).AsQueryable();
 		}
 	}
 }

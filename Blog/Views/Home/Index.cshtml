@@ -14,11 +14,11 @@
 {
 	<div class="blogEntry">
 		<div class="row">
-			<div class="span5">
+			<div class="span9" style="margin-bottom: -10px;">
 				<h4>@Html.Raw(HttpUtility.HtmlDecode(b.Title))</h4>
 			</div>
-			<div class="span3">
-				<h5>Posted: @b.PostedDate.ToString(new System.Globalization.CultureInfo("en-GB"))</h5>
+			<div class="span9">
+				<small class="offset6">Posted: @b.PostedDate.ToString(new System.Globalization.CultureInfo("en-GB"))</small>
 			</div>            
 		</div>    
 		<hr />    

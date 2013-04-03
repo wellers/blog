@@ -23,6 +23,9 @@ namespace Blog
 			routes.MapRoute("IndexByID", "Home/IndexByID/{id}",
 				new { controller = "Home", action = "IndexByID", id = UrlParameter.Optional });
 
+            routes.MapRoute("IndexByTag", "Home/IndexByTag/{tag}",
+                new { controller = "Home", action = "IndexByTag", tag = UrlParameter.Optional });
+
 			routes.MapRoute(
 				"Default",
 				"{controller}/{action}/{id}",

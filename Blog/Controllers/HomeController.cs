@@ -10,11 +10,13 @@ namespace Blog.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly IBlogEntryRepository _repository;
+		private readonly IBlogEntryRepository _blogEntryRepository;
+		private readonly ITagRepository _tagRepository;
 
-		public HomeController(IBlogEntryRepository repository)
+		public HomeController(IBlogEntryRepository blogEntryRepository, ITagRepository tagRepository)
 		{
-			_repository = repository;
+			_blogEntryRepository = blogEntryRepository;
+			_tagRepository = tagRepository;
 		}        
 
 		public ActionResult Index(int? month = null, int? year = null)
@@ -22,16 +24,16 @@ namespace Blog.Controllers
 			var monthFilter = month ?? DateTime.Now.Month;
 			var yearFilter = year ?? DateTime.Now.Year;
 
-			var entries = _repository.GetBlogEntriesByMonthAndYear(monthFilter, yearFilter)
+			var entries = _blogEntryRepository.GetBlogEntriesByMonthAndYear(monthFilter, yearFilter)
 											.OrderByDescending(c => c.PostedDate).ToList();
 
 			if (entries.Count == 0)
 			{
-				DateTime mostRecentPost = _repository.All()
+				DateTime mostRecentPost = _blogEntryRepository.All()
 											.OrderByDescending(b => b.PostedDate)
 											.Take(1).Single().PostedDate;
 
-				entries = _repository.GetBlogEntriesByMonthAndYear(mostRecentPost.Month, mostRecentPost.Year)
+				entries = _blogEntryRepository.GetBlogEntriesByMonthAndYear(mostRecentPost.Month, mostRecentPost.Year)
 											.OrderByDescending(c => c.PostedDate).ToList();
 			}
 
@@ -40,9 +42,15 @@ namespace Blog.Controllers
 
 		public ActionResult IndexByID(int id)
 		{
-			var entry = _repository.Get(id);
+			var entry = _blogEntryRepository.Get(id);
 			return View("Index", new HomeViewModel { BlogEntries = new List<IBlogEntryModel> { entry } });
 		}
+
+        public ActionResult IndexByTag(string tag)
+        {
+            var entries = _blogEntryRepository.GetBlogEntriesByTag(tag);
+            return View("Index", new HomeViewModel { BlogEntries = entries });
+        }
 
 		public ActionResult About()
 		{
@@ -57,10 +65,15 @@ namespace Blog.Controllers
 		public ActionResult RecentPosts()
 		{
 			const int top = 5;
-			var recentBlogEntries = _repository.All()
+			var recentBlogEntries = _blogEntryRepository.All()
 									.OrderByDescending(b => b.PostedDate)
 									.Take(top).ToList();
 			return PartialView("RecentPosts", recentBlogEntries);
+		}
+
+		public ActionResult Tags()
+		{
+            return PartialView("Tags", new TagsViewModel { Tags = _tagRepository.All().ToList() });
 		}
 	}
 }

@@ -44,9 +44,11 @@
     <Compile Include="IHaveTableName.cs" />
     <Compile Include="Models\IBaseModel.cs" />
     <Compile Include="Models\IBlogEntryModel.cs" />
+    <Compile Include="Models\ITagModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IBaseRepository.cs" />
     <Compile Include="Repositories\IBlogEntryRepository.cs" />
+    <Compile Include="Repositories\ITagRepository.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

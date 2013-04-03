@@ -3,11 +3,11 @@
 
 <div class="well sidebar-nav">
 	<ul class="nav nav-list">
-		<li class="nav-header">My Recent posts</li>
+		<li class="nav-header">Recent posts</li>
 		@foreach (var b in Model)
 		{ 
-			<li>
-				@Html.ActionLink(b.Title, "IndexByID", new { controller = "Home", id = b.Key })
+			<li style="margin-bottom: 10px;">
+				<small>@Html.ActionLink(HttpUtility.HtmlDecode(b.Title), "IndexByID", new { controller = "Home", id = b.Key })</small>
 			</li>
 		}
 	</ul>
