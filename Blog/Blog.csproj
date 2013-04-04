@@ -227,6 +227,7 @@
     <Content Include="Scripts\SyntaxHighlighter\shBrushXml.js" />
     <Content Include="Scripts\SyntaxHighlighter\shCore.js" />
     <Content Include="Scripts\SyntaxHighlighter\shLegacy.js" />
+    <Content Include="sitemap.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
