@@ -19,13 +19,13 @@ namespace Blog.Data
 				Title = b.Title,
 				Entry = b.Entry,
 				PostedDate = b.PostedDate,
-				Tags = _context.Tags.Where(x => b.BlogEntryTags.Select(y => y.TagId).Contains(b.Id))
-							.Select(z => new TagModel
-							{
-								Key = z.Id,
-								LookupID = z.LookupID,
-								Name = z.Name
-							})
+				Tags = _context.BlogEntryTags.Where(x => x.BlogEntryId == b.Id).Select(y => y.Tag)
+						.Select(z => new TagModel 
+						{
+							Key = z.Id,
+							LookupID = z.LookupID,
+							Name = z.Name
+						})
 			});
 		}
 
@@ -52,13 +52,13 @@ namespace Blog.Data
 						Title = b.Title,
 						Entry = b.Entry,
 						PostedDate = b.PostedDate,
-						Tags = _context.Tags.Where(x => b.BlogEntryTags.Select(y => y.TagId).Contains(b.Id))
-							.Select(z => new TagModel
-							{
-								Key = z.Id,
-								LookupID = z.LookupID,
-								Name = z.Name
-							})
+						Tags = _context.BlogEntryTags.Where(x => x.BlogEntryId == b.Id).Select(y => y.Tag)
+								.Select(z => new TagModel
+								{
+									Key = z.Id,
+									LookupID = z.LookupID,
+									Name = z.Name
+								})
 					});
 		}
 
