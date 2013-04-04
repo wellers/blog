@@ -5,6 +5,7 @@
              margin-bottom: 15px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px;}
 .blogEntry .row { margin-left: 10px; }
 .blogEntry hr { margin: 5px 0px; }
+.blogEntry .footer { margin-bottom: 5px; }
 .tweetsRow { background: white; padding: 5px; }
 .tweetDate { color: gray; display: block; float: right; }
 .contactImg { width: 30px; padding-bottom: 5px; }

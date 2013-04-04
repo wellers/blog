@@ -22,13 +22,16 @@
 				<h4>@Html.Raw(HttpUtility.HtmlDecode(b.Title))</h4>
 			</div>       
 		</div>    
-		<hr />    
+		<hr />
 		<div class="row">
 			<div class="span8">@Html.Raw(HttpUtility.HtmlDecode(b.Entry))</div>
-			<div class="span8">
+        </div>
+        <hr />
+        <div class="row">
+			<div class="span8 footer">
 				@if (b.Tags != null)
 				{
-					<span class="span5">
+					<span class="span6" style="margin-left: 0px;">
 						<small><strong>Tags:&nbsp;</strong></small>
 						@foreach (var x in b.Tags)
 						{
