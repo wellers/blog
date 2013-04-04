@@ -10,7 +10,6 @@ namespace Blog.Controllers
 {
 	public class HomeController : Controller
 	{
-		// TODO : Add Google Webmaster Tools verification meta tag to _Layout.
 		// TODO : Only show short summarys of posts and click a read more to see the full post.
 		// TODO : About Me and Contact Me might benefit from having a white background.
 

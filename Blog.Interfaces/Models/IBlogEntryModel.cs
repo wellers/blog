@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Blog.Interfaces.Models
 {
@@ -7,5 +9,6 @@ namespace Blog.Interfaces.Models
 		string Title { get; set; }
 		string Entry { get; set; }
 		DateTime PostedDate { get; set; }
+        IQueryable<ITagModel> Tags { get; set; }
 	}
 }

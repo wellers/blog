@@ -4,26 +4,42 @@
 }
 
 <div class="well">
-	<h1>Hello, world!</h1>
-	<p>Welcome to the whimsical meanderings of a North-West UK based Dot Net developer. Major areas of focus include: C#, 
-    ASP.NET MVC, Razor, JavaScript, JQuery, and many more.</p>
-	@Html.ActionLink("Learn more...", "About", "Home",
-						new {area = "", controller = "Home"}, new { @class = "btn btn-info btn-large" })
+	<div class="row">
+		<div class="title span8">
+			<h1>Hello, world!</h1>
+			<p>Welcome to the whimsical meanderings of a North-West UK based Dot Net developer. Major areas of focus include: C#, 
+			ASP.NET MVC, Razor, JavaScript, JQuery, and many more.</p>
+			@Html.ActionLink("Learn more...", "About", "Home", 
+							new {area = "", controller = "Home"}, new { @class = "btn btn-info btn-large" })
+		</div>
+	</div>
 </div>
 @foreach (var b in Model.BlogEntries)
 {
 	<div class="blogEntry">
 		<div class="row">
-			<div class="span9" style="margin-bottom: -10px;">
+			<div class="span8">
 				<h4>@Html.Raw(HttpUtility.HtmlDecode(b.Title))</h4>
-			</div>
-			<div class="span9">
-				<small class="offset6">Posted: @b.PostedDate.ToString(new System.Globalization.CultureInfo("en-GB"))</small>
-			</div>            
+			</div>       
 		</div>    
 		<hr />    
 		<div class="row">
 			<div class="span8">@Html.Raw(HttpUtility.HtmlDecode(b.Entry))</div>
+			<div class="span8">
+				@if (b.Tags != null)
+				{
+					<span class="span5">
+						<small><strong>Tags:&nbsp;</strong></small>
+						@foreach (var x in b.Tags)
+						{
+							<span class="badge badge-info">@(x.Name)</span><text>&nbsp;</text>
+						}
+					</span>			
+				}
+				<span>
+					<small><strong>Posted:&nbsp;</strong>@b.PostedDate.ToString(new System.Globalization.CultureInfo("en-GB"))</small>
+				</span>
+			</div>
 		</div>
 	</div>
 }

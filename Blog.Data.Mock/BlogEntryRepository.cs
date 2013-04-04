@@ -19,7 +19,7 @@ quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa
 irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p></div>
 <div><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>"),
 					   Title = "This is a title.",
-					   PostedDate = DateTime.Now
+					   PostedDate = DateTime.Now,
 				   };
 
 		public static IBlogEntryModel Entry2 = new BlogEntryModel
@@ -56,6 +56,7 @@ irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nul
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>"), 
 					   Title = "This is an amazing title!", 
 					   PostedDate = DateTime.Now.AddMonths(-1).AddDays(-1)
+
 				   };        
 
 		private readonly Dictionary<int, IBlogEntryModel> _blogEntries = new Dictionary<int, IBlogEntryModel>
@@ -78,14 +79,18 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 					                 {_tagRepository.Tags[1].LookupID, new List<int> {Entry1.Key, Entry3.Key}},
 					                 {_tagRepository.Tags[2].LookupID, new List<int> {Entry4.Key, Entry2.Key}}
 				                 };
+            Entry1.Tags = new List<ITagModel> { _tagRepository.Tags[0], _tagRepository.Tags[1] }.AsQueryable();
+            Entry2.Tags = new List<ITagModel> { _tagRepository.Tags[0], _tagRepository.Tags[2] }.AsQueryable();
+            Entry3.Tags = new List<ITagModel> { _tagRepository.Tags[1] }.AsQueryable();
+            Entry4.Tags = new List<ITagModel> { _tagRepository.Tags[2] }.AsQueryable();
 		}
 
 		public IBlogEntryModel Get(int id)
 		{
 			if (!_blogEntries.ContainsKey(id))
 				throw new KeyNotFoundException();
-			
-			return _blogEntries[id];
+
+            return _blogEntries[id];
 		}
 		
 		public IQueryable<IBlogEntryModel> All()

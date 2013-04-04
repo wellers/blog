@@ -1,8 +1,9 @@
 ﻿body { background: #FAFAFB; font-family: "Segoe UI", Calibri, Verdana, Tahoma, "Arial Black", Arial; }
 .brand { margin-top: -2px; }
-.blogEntry { background: white; border: 1px solid #ddd; padding: 5px; margin-bottom: 15px; 
-             -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px;}
-.blogEntry .row { margin-left: 5px; }
+.title { margin-left: 30px; }
+.blogEntry { background: white; border: 1px solid #ddd; padding-top: 5px; padding-bottom: 5px; 
+             margin-bottom: 15px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px;}
+.blogEntry .row { margin-left: 10px; }
 .blogEntry hr { margin: 5px 0px; }
 .tweetsRow { background: white; padding: 5px; }
 .tweetDate { color: gray; display: block; float: right; }
