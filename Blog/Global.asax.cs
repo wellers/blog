@@ -10,21 +10,24 @@ namespace Blog
 	{
 		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
 		{
-			filters.Add(new HandleErrorAttribute());
+			//filters.Add(new HandleErrorAttribute());
 		}
 
 		public static void RegisterRoutes(RouteCollection routes)
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-			routes.MapRoute( "IndexByMonth", "Home/Index/{month}/{year}",
-				new { controller = "Home", action="Index", month = UrlParameter.Optional, year = UrlParameter.Optional });
+			routes.MapRoute("Error - 404", "NotFound", new {controller = "Error", action = "NotFound"});
+			routes.MapRoute("Error - 500", "ServerError", new { controller = "Error", action = "ServerError" });
 
-			routes.MapRoute("IndexByID", "Home/IndexByID/{id}",
-				new { controller = "Home", action = "IndexByID", id = UrlParameter.Optional });
+			routes.MapRoute("Archive", "Home/Archive/{year}/{month}", 
+				new { controller = "Home", action = "Archive", year = UrlParameter.Optional, month = UrlParameter.Optional });
+			
+			routes.MapRoute("Post", "Home/BlogEntry/ID/{id}",
+				new { controller = "Home", action = "BlogEntry", id = UrlParameter.Optional });
 
-            routes.MapRoute("IndexByTag", "Home/IndexByTag/{tag}",
-                new { controller = "Home", action = "IndexByTag", tag = UrlParameter.Optional });
+			routes.MapRoute("Tag", "Home/Tag/{tag}",
+				new { controller = "Home", action = "Tag", tag = UrlParameter.Optional });
 
 			routes.MapRoute(
 				"Default",

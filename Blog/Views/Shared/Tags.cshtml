@@ -7,7 +7,7 @@
 		@foreach (var t in Model.Tags)
 		{ 
 			<li style="margin-bottom: 10px;">
-				<small>@Html.ActionLink(t.Name, "IndexByTag", new { controller = "Home", tag = t.LookupID })</small>
+				<small>@Html.ActionLink(t.Name, "Tag", new { controller = "Home", tag = t.LookupID })</small>
 			</li>
 		}
 	</ul>

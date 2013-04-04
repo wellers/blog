@@ -10,7 +10,7 @@ namespace Blog.Data.Mock
 {
 	public class BlogEntryRepository : IBlogEntryRepository
 	{
-		public static IBlogEntryModel entry1 = new BlogEntryModel
+		public static IBlogEntryModel Entry1 = new BlogEntryModel
 				   {
 					   Key = 1,
 					   Entry = HttpUtility.HtmlEncode(@"<div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
@@ -22,7 +22,7 @@ irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nul
 					   PostedDate = DateTime.Now
 				   };
 
-		public static IBlogEntryModel entry2 = new BlogEntryModel
+		public static IBlogEntryModel Entry2 = new BlogEntryModel
 				   {
 					   Key = 2, 
 					   Entry = HttpUtility.HtmlEncode(@"<div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
@@ -34,7 +34,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 					   PostedDate = DateTime.Now.AddDays(-1)
 				   };
 
-		public static IBlogEntryModel entry3 = new BlogEntryModel
+		public static IBlogEntryModel Entry3 = new BlogEntryModel
 				   {
 					   Key = 3, 
 					   Entry = HttpUtility.HtmlEncode(@"<div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
@@ -46,7 +46,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 					   PostedDate = DateTime.Now.AddMonths(-1)
 				   };
 
-		public static IBlogEntryModel entry4 = new BlogEntryModel
+		public static IBlogEntryModel Entry4 = new BlogEntryModel
 				   {
 					   Key = 4, 
 					   Entry = HttpUtility.HtmlEncode(@"<div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
@@ -60,22 +60,24 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
 		private readonly Dictionary<int, IBlogEntryModel> _blogEntries = new Dictionary<int, IBlogEntryModel>
 		{
-			{ entry1.Key, entry1 },
-			{ entry2.Key, entry2 },
-			{ entry3.Key, entry3 }, 
-			{ entry4.Key, entry4 }
+			{ Entry1.Key, Entry1 },
+			{ Entry2.Key, Entry2 },
+			{ Entry3.Key, Entry3 }, 
+			{ Entry4.Key, Entry4 }
 		};
 
-		private TagRepository _tagRepository;
-		private Dictionary<string, List<int>> _blogEntryTags;
+		private readonly TagRepository _tagRepository;
+		private readonly Dictionary<string, List<int>> _blogEntryTags;
 
 		public BlogEntryRepository()
 		{
 			_tagRepository = new TagRepository();
-			_blogEntryTags = new Dictionary<string, List<int>>();
-			_blogEntryTags.Add(_tagRepository.Tags[0].LookupID, new List<int> { entry1.Key, entry2.Key });
-			_blogEntryTags.Add(_tagRepository.Tags[1].LookupID, new List<int> { entry1.Key, entry3.Key });
-			_blogEntryTags.Add(_tagRepository.Tags[2].LookupID, new List<int> { entry4.Key, entry2.Key });
+			_blogEntryTags = new Dictionary<string, List<int>>
+				                 {
+					                 {_tagRepository.Tags[0].LookupID, new List<int> {Entry1.Key, Entry2.Key}},
+					                 {_tagRepository.Tags[1].LookupID, new List<int> {Entry1.Key, Entry3.Key}},
+					                 {_tagRepository.Tags[2].LookupID, new List<int> {Entry4.Key, Entry2.Key}}
+				                 };
 		}
 
 		public IBlogEntryModel Get(int id)
@@ -97,10 +99,18 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 		}
 
 		public IQueryable<IBlogEntryModel> GetBlogEntriesByTag(string tag)
-		{
+		{			
+			if (string.IsNullOrEmpty(tag))
+				throw new ArgumentException("Cannot be null or empty", "tag");
+
 			var blogEntryIDs = _blogEntryTags[tag];
 			return _blogEntries.Where(x => blogEntryIDs.Contains(x.Key))
                 .Select(y => y.Value).AsQueryable();
+		}
+
+		public IBlogEntryModel GetMostRecentBlogEntry()
+		{
+			return _blogEntries.Values.OrderByDescending(x => x.PostedDate).Take(1).Single();
 		}
 	}
 }

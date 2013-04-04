@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Blog.Data.CodeFirst.Persistence;
 using Blog.Interfaces.Models;
 using Blog.Interfaces.Repositories;
@@ -35,7 +36,7 @@ namespace Blog.Data
 		public IQueryable<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year)
 		{
 			return _context.BlogEntries.Where(b => b.PostedDate.Month == month
-			                                       && b.PostedDate.Year == year)
+												   && b.PostedDate.Year == year)
 										.Select(b => new BlogEntryModel
 			{
 				Key = b.Id,
@@ -45,17 +46,25 @@ namespace Blog.Data
 			});
 		}
 
-        public IQueryable<IBlogEntryModel> GetBlogEntriesByTag(string tag)
-        {
-            var tagID = _context.Tags.Where(x => x.LookupID == tag).Select(y => y.Id).Single();
-            return _context.BlogEntryTags.Where(b => b.TagId == tagID).Select(c => c.BlogEntry)
-                    .Select(b => new BlogEntryModel
-                    {
-                        Key = b.Id,
-                        Title = b.Title,
-                        Entry = b.Entry,
-                        PostedDate = b.PostedDate
-                    });
-        }
+		public IQueryable<IBlogEntryModel> GetBlogEntriesByTag(string tag)
+		{
+			if (string.IsNullOrEmpty(tag))
+				throw new ArgumentException("Cannot be null or empty", "tag");
+
+			var tagID = _context.Tags.Where(x => x.LookupID == tag).Select(y => y.Id).Single();
+			return _context.BlogEntryTags.Where(b => b.TagId == tagID).Select(c => c.BlogEntry)
+					.Select(b => new BlogEntryModel
+					{
+						Key = b.Id,
+						Title = b.Title,
+						Entry = b.Entry,
+						PostedDate = b.PostedDate
+					});
+		}
+
+		public IBlogEntryModel GetMostRecentBlogEntry()
+		{
+			return All().OrderByDescending(b => b.PostedDate).Take(1).Single();
+		}
 	}
 }

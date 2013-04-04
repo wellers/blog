@@ -10,6 +10,10 @@ namespace Blog.Controllers
 {
 	public class HomeController : Controller
 	{
+		// TODO : Add Google Webmaster Tools verification meta tag to _Layout.
+		// TODO : Only show short summarys of posts and click a read more to see the full post.
+		// TODO : About Me and Contact Me might benefit from having a white background.
+
 		private readonly IBlogEntryRepository _blogEntryRepository;
 		private readonly ITagRepository _tagRepository;
 
@@ -19,39 +23,42 @@ namespace Blog.Controllers
 			_tagRepository = tagRepository;
 		}        
 
-		public ActionResult Index(int? month = null, int? year = null)
+		public ActionResult Index()
 		{
-			var monthFilter = month ?? DateTime.Now.Month;
-			var yearFilter = year ?? DateTime.Now.Year;
+			DateTime mostRecentPostDate = _blogEntryRepository.GetMostRecentBlogEntry().PostedDate;
 
-			var entries = _blogEntryRepository.GetBlogEntriesByMonthAndYear(monthFilter, yearFilter)
-											.OrderByDescending(c => c.PostedDate).ToList();
-
-			if (entries.Count == 0)
-			{
-				DateTime mostRecentPost = _blogEntryRepository.All()
-											.OrderByDescending(b => b.PostedDate)
-											.Take(1).Single().PostedDate;
-
-				entries = _blogEntryRepository.GetBlogEntriesByMonthAndYear(mostRecentPost.Month, mostRecentPost.Year)
-											.OrderByDescending(c => c.PostedDate).ToList();
-			}
+			var entries = _blogEntryRepository.GetBlogEntriesByMonthAndYear(mostRecentPostDate.Month, mostRecentPostDate.Year)
+										.OrderByDescending(c => c.PostedDate).ToList();
 
 			return View(new HomeViewModel { BlogEntries = entries });
 		}
 
-		public ActionResult IndexByID(int id)
+		public ActionResult Archive(int year, int month)
+		{
+			var entries = _blogEntryRepository.GetBlogEntriesByMonthAndYear(month, year)
+											.OrderByDescending(c => c.PostedDate).ToList();
+			if (entries.Count == 0)
+			{
+				DateTime mostRecentPostDate = _blogEntryRepository.GetMostRecentBlogEntry().PostedDate;
+
+				entries = _blogEntryRepository.GetBlogEntriesByMonthAndYear(mostRecentPostDate.Month, mostRecentPostDate.Year)
+											.OrderByDescending(c => c.PostedDate).ToList();
+			}
+			return View("Index", new HomeViewModel { BlogEntries = entries });
+		}
+
+		public ActionResult BlogEntry(int id)
 		{
 			var entry = _blogEntryRepository.Get(id);
 			return View("Index", new HomeViewModel { BlogEntries = new List<IBlogEntryModel> { entry } });
 		}
 
-        public ActionResult IndexByTag(string tag)
-        {
-            var entries = _blogEntryRepository.GetBlogEntriesByTag(tag)
-                            .OrderByDescending(x => x.PostedDate).ToList();
-            return View("Index", new HomeViewModel { BlogEntries = entries });
-        }
+		public ActionResult Tag(string tag)
+		{
+			var entries = _blogEntryRepository.GetBlogEntriesByTag(tag)
+							.OrderByDescending(x => x.PostedDate).ToList();
+			return View("Index", new HomeViewModel { BlogEntries = entries });
+		}
 
 		public ActionResult About()
 		{
@@ -74,7 +81,8 @@ namespace Blog.Controllers
 
 		public ActionResult Tags()
 		{
-            return PartialView("Tags", new TagsViewModel { Tags = _tagRepository.All().ToList() });
+			var allTags = _tagRepository.All().ToList();
+			return PartialView("Tags", new TagsViewModel { Tags = allTags });
 		}
 	}
 }

@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
+		<meta name="google-site-verification" content="-t3MR8WrwLcdCOcsoFpscJwugK2WHCRfreO7BubgrdM" />
 		<title>@ViewBag.Title</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="shortcut icon" href="@Url.Content("~/Content/Images/favicon.ico")" type="image/ico" />
@@ -65,13 +66,13 @@
 					<div class="well sidebar-nav">
 						<ul class="nav nav-list">
 							<li class="nav-header">Posts by month</li>
-							<li>@Html.ActionLink("April (2013)", "Index", new { area = "", controller = "Home", Month = 4, Year = 2013 }, new { })</li>
-							<li>@Html.ActionLink("March (2013)", "Index", new { area = "", controller = "Home", Month = 3, Year = 2013 }, new { })</li>
+							<li>@Html.ActionLink("April (2013)", "Archive", new { controller = "Home", Year = 2013, Month = 4 })</li>
+							<li>@Html.ActionLink("March (2013)", "Archive", new { controller = "Home", Year = 2013, Month = 3 })</li>
 						</ul>
 					</div>
 					@{ Html.RenderAction("Tags", new { area = "", controller = "Home" }); }
-                    @{ Html.RenderAction("RecentPosts", new { area = "", controller = "Home" }); }
-                    @{ Html.RenderAction("Index", "TwitterFeed", new { area = "", controller = "TwitterFeed" }); }
+					@{ Html.RenderAction("RecentPosts", new { area = "", controller = "Home" }); }
+					@{ Html.RenderAction("Index", "TwitterFeed", new { area = "", controller = "TwitterFeed" }); }
 				</div>	
 			</div>
 		</div>
