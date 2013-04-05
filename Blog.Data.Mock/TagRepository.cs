@@ -19,17 +19,34 @@ namespace Blog.Data.Mock
             },
             new TagModel
             {
-                Key = 1,
+                Key = 2,
                 LookupID = "CSHARP",
                 Name = "C#"
             },
             new TagModel
             {
-                Key = 1,
+                Key = 3,
                 LookupID = "WCF",
                 Name = "WCF"
+            },
+            new TagModel
+            {
+                Key = 4,
+                LookupID = "MISC",
+                Name = "Misc"
+            },
+            new TagModel
+            {
+                Key = 5,
+                LookupID = "BDD",
+                Name = "BDD"
+            },
+            new TagModel
+            {
+                Key = 6,
+                LookupID = "TDD",
+                Name = "TDD"
             }
-            
         };
 
         public ITagModel Get(int id)

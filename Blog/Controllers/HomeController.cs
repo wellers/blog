@@ -22,11 +22,9 @@ namespace Blog.Controllers
 		}        
 
 		public ActionResult Index()
-		{
-			DateTime mostRecentPostDate = _blogEntryRepository.GetMostRecentBlogEntry().PostedDate;
-
-			var entries = _blogEntryRepository.GetBlogEntriesByMonthAndYear(mostRecentPostDate.Month, mostRecentPostDate.Year)
-										.OrderByDescending(c => c.PostedDate).ToList();
+		{           
+			const int numberOfEntries = 4;
+			var entries = _blogEntryRepository.GetTopMostRecentBlogEntries(numberOfEntries).ToList();
 
 			return View(new HomeViewModel { BlogEntries = entries });
 		}
@@ -70,11 +68,10 @@ namespace Blog.Controllers
 
 		public ActionResult RecentPosts()
 		{
-			const int top = 5;
-			var recentBlogEntries = _blogEntryRepository.All()
-									.OrderByDescending(b => b.PostedDate)
-									.Take(top).ToList();
-			return PartialView("RecentPosts", recentBlogEntries);
+			const int numberOfEntries = 5;
+			var entries = _blogEntryRepository.GetTopMostRecentBlogEntries(numberOfEntries).ToList();
+
+			return PartialView("RecentPosts", entries);
 		}
 
 		public ActionResult Tags()

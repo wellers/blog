@@ -20,5 +20,5 @@
 .contactImg { width: 30px; padding-bottom: 5px; }
 .contactText { width: 80px; }
 
-.tags { height: 50px; }
+.tags { height: 50px; min-height: 80px; }
 .tag { width: 35px; margin-bottom: 10px; float: left; }

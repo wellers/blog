@@ -64,7 +64,14 @@ namespace Blog.Data
 
 		public IBlogEntryModel GetMostRecentBlogEntry()
 		{
-			return All().OrderByDescending(b => b.PostedDate).Take(1).Single();
+			const int numberOfEntries = 1;
+			return GetTopMostRecentBlogEntries(numberOfEntries).Single();
+		}
+
+
+		public IQueryable<IBlogEntryModel> GetTopMostRecentBlogEntries(int numberOfEntries)
+		{
+			return All().OrderByDescending(b => b.PostedDate).Take(numberOfEntries);
 		}
 	}
 }
