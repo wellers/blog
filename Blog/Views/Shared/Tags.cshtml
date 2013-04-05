@@ -1,12 +1,12 @@
 ﻿@using Blog.Models;
 @model TagsViewModel
 
-<div class="well sidebar-nav">
+<div class="well sidebar-nav tags">
 	<ul class="nav nav-list">
 		<li class="nav-header">Tags</li>
 		@foreach (var t in Model.Tags)
 		{ 
-			<li style="margin-bottom: 10px;">
+			<li class="tag">
 				<small>@Html.ActionLink(t.Name, "Tag", new { controller = "Home", tag = t.LookupID })</small>
 			</li>
 		}

@@ -1,17 +1,24 @@
 ﻿body { background: #FAFAFB; font-family: "Segoe UI", Calibri, Verdana, Tahoma, "Arial Black", Arial; }
+
 .navbar { -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
           box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); }
 #footer { height: 60px; background-color: #efefef; }
 .container .credit { margin: 20px 0; }
 .brand { margin-top: -2px; }
 .title { margin-left: 30px; }
+
 .blogEntry { background: white; border: 1px solid #ddd; padding-top: 5px; padding-bottom: 5px; 
              margin-bottom: 15px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px;}
 .blogEntry .entry { height: 125px; overflow: hidden; }
 .blogEntry .row { margin-left: 10px; }
 .blogEntry hr { margin: 5px 0px; }
 .blogEntry .footer { margin-bottom: 5px; }
+
 .tweetsRow { background: white; padding: 5px; }
 .tweetDate { color: gray; display: block; float: right; }
+
 .contactImg { width: 30px; padding-bottom: 5px; }
 .contactText { width: 80px; }
+
+.tags { height: 50px; }
+.tag { width: 35px; margin-bottom: 10px; float: left; }
