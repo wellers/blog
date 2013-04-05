@@ -1,0 +1,34 @@
+﻿@using Blog.Interfaces.Models;
+@model IBlogEntryModel
+<div class="blogEntry">
+	<div class="row">
+		<div class="span8">
+			<h4>@Html.Raw(HttpUtility.HtmlDecode(Model.Title))</h4>
+		</div>       
+	</div>    
+	<hr />
+	<div class="row">
+		<div class="span8 entry">@Html.Raw(HttpUtility.HtmlDecode(Model.Entry))</div>
+	</div>
+	<div class="row">
+		@Html.ActionLink("Read more ...", "BlogEntry", new { controller = "Home", id = Model.Key }, new { @class = "offset7" })
+	</div>
+	<hr />
+	<div class="row">
+		<div class="span8 footer">
+			@if (Model.Tags != null)
+			{
+				<span class="span6" style="margin-left: 0px;">
+					<small><strong>Tags:&nbsp;</strong></small>
+					@foreach (var x in Model.Tags)
+					{
+						<span class="badge badge-info">@(x.Name)</span><text>&nbsp;</text>
+					}
+				</span>			
+			}
+			<span>
+				<small><strong>Posted:&nbsp;</strong>@Model.PostedDate.ToString(new System.Globalization.CultureInfo("en-GB"))</small>
+			</span>
+		</div>
+	</div>
+</div>

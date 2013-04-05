@@ -1,9 +1,16 @@
 ﻿<!DOCTYPE html>
 <html>
 	<head>
+		<title>@(ViewBag.Title) - Paul David Welbourne</title>
 		<meta charset="utf-8" />
 		<meta name="google-site-verification" content="-t3MR8WrwLcdCOcsoFpscJwugK2WHCRfreO7BubgrdM" />
-		<title>@ViewBag.Title</title>
+
+		<meta name="title" content="Prompt" />
+		<meta name="description" 
+			  content="Welcome to the whimsical meanderings of a North-West UK based Dot Net developer. 
+			  Major areas of focus include: C#, ASP.NET MVC, Razor, JavaScript, JQuery, and many more..." />
+		<meta name="keywords" content="C#, ASP.NET MVC, Razor, JavaScript, JQuery" />
+		<meta name="author" content="Paul David Welbourne" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="shortcut icon" href="@Url.Content("~/Content/Images/favicon.ico")" type="image/ico" />
 
@@ -39,11 +46,6 @@
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">
-					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
 					@* TODO: centralise the branding. *@
 					@Html.ActionLink("prompt.", "Index", "Home", new { area = "", controller = "Home" }, new { @class = "brand" })
 					<div class="nav-collapse collapse">
@@ -57,7 +59,7 @@
 			</div>
 		</div>
 
-		<div class="container">
+		<div class="wrap container">
 			<div class="row">
 				<div class="span9">
 					@RenderBody()
@@ -74,6 +76,11 @@
 					@{ Html.RenderAction("RecentPosts", new { area = "", controller = "Home" }); }
 					@{ Html.RenderAction("Index", "TwitterFeed", new { area = "", controller = "TwitterFeed" }); }
 				</div>	
+			</div>
+		</div>
+		<div id="footer">
+			<div class="container">
+				<p class="muted credit">Developed by Paul David Welbourne. Powered by <a href="http://twitter.github.com/bootstrap/" target="_blank">Bootstrap</a>.</p>
 			</div>
 		</div>
 		<script type="text/javascript">

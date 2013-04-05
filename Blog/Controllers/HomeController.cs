@@ -10,7 +10,6 @@ namespace Blog.Controllers
 {
 	public class HomeController : Controller
 	{
-		// TODO : Only show short summarys of posts and click a read more to see the full post.
 		// TODO : About Me and Contact Me might benefit from having a white background.
 
 		private readonly IBlogEntryRepository _blogEntryRepository;
@@ -49,7 +48,7 @@ namespace Blog.Controllers
 		public ActionResult BlogEntry(int id)
 		{
 			var entry = _blogEntryRepository.Get(id);
-			return View("Index", new HomeViewModel { BlogEntries = new List<IBlogEntryModel> { entry } });
+			return View("BlogEntry", entry);
 		}
 
 		public ActionResult Tag(string tag)
