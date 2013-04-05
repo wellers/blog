@@ -19,6 +19,18 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
+  <loc>http://prompt.apphb.com/Home/BlogEntry/ID/3</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://prompt.apphb.com/Home/BlogEntry/ID/2</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://prompt.apphb.com/Home/BlogEntry/ID/1</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
   <loc>http://prompt.apphb.com/Home/Archive/2013/4</loc>
   <changefreq>weekly</changefreq>
 </url>
@@ -36,18 +48,6 @@
 </url>
 <url>
   <loc>http://prompt.apphb.com/Home/Tag/WCF</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://prompt.apphb.com/Home/BlogEntry/ID/3</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://prompt.apphb.com/Home/BlogEntry/ID/2</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://prompt.apphb.com/Home/BlogEntry/ID/1</loc>
   <changefreq>weekly</changefreq>
 </url>
 </urlset>
