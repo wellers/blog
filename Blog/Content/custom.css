@@ -1,8 +1,8 @@
-﻿body { background: #FAFAFA; font-family: "Segoe UI", Calibri, Verdana, Tahoma, "Arial Black", Arial; }
+﻿body { background: #eee; font-family: "Segoe UI", Calibri, Verdana, Tahoma, "Arial Black", Arial; }
 
 .navbar { -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
           box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); }
-#footer { height: 60px; background-color: #efefef; }
+#footer { height: 60px; background-color: #ddd; }
 .container .credit { margin: 20px 0; }
 .brand { margin-top: -2px; }
 .title { margin-left: 30px; }
