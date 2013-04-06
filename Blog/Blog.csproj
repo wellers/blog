@@ -113,6 +113,9 @@
     <Content Include="Content\images\MCP_logo.png" />
     <Content Include="Content\images\MCTS_logo.png" />
     <Content Include="Content\images\profilepicture.jpg" />
+    <Content Include="Content\images\transparent_hex_colors.png" />
+    <Content Include="Content\images\transparent_hex_colors_.png" />
+    <Content Include="Content\images\transparent_hex_colors__.png" />
     <Content Include="Content\SyntaxHighlighter\shCore.css" />
     <Content Include="Content\SyntaxHighlighter\shCoreDefault.css" />
     <Content Include="Content\SyntaxHighlighter\shCoreDjango.css" />

@@ -10,7 +10,7 @@ namespace Blog.Controllers
 {
 	public class HomeController : Controller
 	{
-		// TODO : About Me and Contact Me might benefit from having a white background.
+        // TODO : Left sidebar for related posts that follows the scroll.
 
 		private readonly IBlogEntryRepository _blogEntryRepository;
 		private readonly ITagRepository _tagRepository;
