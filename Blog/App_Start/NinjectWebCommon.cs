@@ -56,8 +56,13 @@ namespace Blog.App_Start
 		/// <param name="kernel">The kernel.</param>
 		private static void RegisterServices(IKernel kernel)
 		{
-			kernel.Bind<IBlogEntryRepository>().To<BlogEntryRepository>();
+#if DEBUG
+            kernel.Bind<IBlogEntryRepository>().To<Blog.Data.Mock.BlogEntryRepository>();
+            kernel.Bind<ITagRepository>().To<Blog.Data.Mock.TagRepository>();
+#else
+            kernel.Bind<IBlogEntryRepository>().To<BlogEntryRepository>();
 			kernel.Bind<ITagRepository>().To<TagRepository>();
-		}        
+#endif
+        }        
 	}
 }

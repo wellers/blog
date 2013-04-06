@@ -10,11 +10,16 @@
 .hexagons { position: absolute; z-index: -1; width: 350px; height: auto; opacity: 0.85; filter: alpha(opacity=85); }
 
 .blogEntry { background: white; border: 1px solid #ddd; padding-top: 5px; padding-bottom: 5px; 
-             margin-bottom: 15px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px;}
+             margin-bottom: 15px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px; }
 .blogEntry .entry { height: 125px; overflow: hidden; }
 .blogEntry .row { margin-left: 10px; }
 .blogEntry hr { margin: 5px 0px; }
 .blogEntry .footer { margin-bottom: 5px; }
+
+.comments { background: white; border: 1px solid #ddd; padding-top: 5px; padding-bottom: 5px; 
+             margin-bottom: 15px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px; }
+.comments #disqus_thread { margin: 20px; }
+.comments iframe { width: 660px !important; }
 
 .tweetsRow { background: white; padding: 5px; }
 .tweetDate { color: gray; display: block; float: right; }
