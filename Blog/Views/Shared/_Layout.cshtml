@@ -46,8 +46,9 @@
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">
-					@* TODO: centralise the branding. *@
-					@Html.ActionLink("prompt.", "Index", "Home", new { area = "", controller = "Home" }, new { @class = "brand" })
+                    <span class="brand" style="padding-bottom: 0px;">
+                        <a href="/"><img src="../../Content/images/Command-Prompt-icon.png" alt="no pic!" alt="prompt." /></a>
+                    </span>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li>@Html.ActionLink("Home", "Index", new { area = "", controller = "Home" }, new { })</li>

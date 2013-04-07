@@ -5,9 +5,8 @@
 #footer { height: 60px; background-color: #ddd; }
 .container .credit { margin: 20px 0; }
 .brand { margin-top: -2px; }
+.brand img { width: 28px; margin-top: -2px; }
 .title { margin-left: 30px; }
-
-.hexagons { position: absolute; z-index: -1; width: 350px; height: auto; opacity: 0.85; filter: alpha(opacity=85); }
 
 .blogEntry { background: white; border: 1px solid #ddd; padding-top: 5px; padding-bottom: 5px; 
              margin-bottom: 15px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px; }
