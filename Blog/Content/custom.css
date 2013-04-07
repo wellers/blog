@@ -2,6 +2,7 @@
 
 .navbar { -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
           box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); }
+.navbar-inverse .navbar-inner { background-image: linear-gradient(to bottom, #333333, #111111); }
 #footer { height: 60px; background-color: #ddd; }
 .container .credit { margin: 20px 0; }
 .brand { margin-top: -2px; }

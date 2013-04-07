@@ -50,7 +50,7 @@
                         <a href="/"><img src="@Url.Content("~/Content/images/Command-Prompt-icon.png")" alt="prompt." /></a>
                     </span>
 					<div class="nav-collapse collapse">
-						<ul class="nav">
+						<ul id="navMenu" class="nav">
 							<li>@Html.ActionLink("Home", "Index", new { area = "", controller = "Home" }, new { })</li>
 							<li>@Html.ActionLink("About me", "About", new { area = "", controller = "Home" }, new { })</li>
 							<li>@Html.ActionLink("Contact me", "Contact", new { area = "", controller = "Home" }, new { })</li>
@@ -85,6 +85,14 @@
 			</div>
 		</div>
 		<script type="text/javascript">
+            // Select the correct navMenu item and set it to active.
+		    var $nav = $("#navMenu a[href='" + window.location.pathname + "']");
+		    if ($nav.length > 0) {
+		        $nav.parent().addClass('active');
+		    } else {
+		        $("#navMenu a[href='/']").parent().addClass('active');
+            }
+
 		    SyntaxHighlighter.all();
 
 		    var disqus_shortname = 'promptwellers';
