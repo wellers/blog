@@ -81,11 +81,11 @@ namespace Blog.Controllers
 			return PartialView("Tags", new TagsViewModel { Tags = allTags });
 		}
 
-		public ActionResult SetTheme(SetThemeViewModel model, string returnUrl)
+		public ActionResult SetTheme(SetThemeViewModel model)
 		{
 			var cookie = new HttpCookie("PromptTheme", model.SelectedTheme);
 			Response.Cookies.Add(cookie);
-			return new RedirectResult(returnUrl);
+			return new RedirectResult("Index");
 		}
 	}
 }
