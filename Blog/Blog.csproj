@@ -94,6 +94,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeViewModel.cs" />
+    <Compile Include="Models\SetThemeViewModel.cs" />
     <Compile Include="Models\TagsViewModel.cs" />
     <Compile Include="Models\TwitterFeedItem.cs" />
     <Compile Include="Models\TwitterFeedViewModel.cs" />
@@ -102,6 +103,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\Bootstrap-Select\bootstrap-select.css" />
+    <Content Include="Content\Bootstrap-Select\bootstrap-select.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\Command-Prompt-icon.png" />
@@ -185,11 +188,14 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\Dark\dark.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="README.jQuery.vsdoc.txt" />
+    <Content Include="Scripts\Bootstrap-Select\bootstrap-select.js" />
+    <Content Include="Scripts\Bootstrap-Select\bootstrap-select.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\html5shiv.min.js" />
     <Content Include="Scripts\jquery-1.8.3.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
@@ -259,6 +265,8 @@
     <Content Include="Views\Home\Partials\HiddenBlogEntry.cshtml" />
     <Content Include="Views\Home\BlogEntry.cshtml" />
     <Content Include="Views\Home\Partials\BlogEntryFooter.cshtml" />
+    <Content Include="Views\Shared\SetTheme.cshtml" />
+    <None Include="Scripts\Bootstrap-Select\package.json" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

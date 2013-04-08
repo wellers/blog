@@ -1,0 +1,12 @@
+﻿@model Blog.Models.SetThemeViewModel
+@using (Html.BeginForm("SetTheme", "Home", new { returnUrl = Request.Url.AbsoluteUri }, FormMethod.Post, new { @class = "navbar-form pull-right" }))
+{
+	@Html.Label("ChangeTheme", "Change your theme?")
+	@Html.DropDownListFor(x => x.SelectedTheme, new SelectList(Model.Themes, Model.SelectedTheme), new { @class = "selectpicker span2", onchange = "this.form.submit();" })
+}
+<script type="text/javascript">
+	$('#SelectedTheme').selectpicker();
+
+	var theme = '@(ViewBag.Theme)';
+	SetTheme.setSelectedTheme(theme);
+</script>

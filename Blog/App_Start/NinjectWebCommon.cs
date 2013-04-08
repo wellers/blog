@@ -12,7 +12,6 @@ namespace Blog.App_Start
 
 	using Ninject;
 	using Ninject.Web.Common;
-	using Blog.Data;
 
 	public static class NinjectWebCommon 
 	{
@@ -57,8 +56,8 @@ namespace Blog.App_Start
 		private static void RegisterServices(IKernel kernel)
 		{
 #if DEBUG
-            kernel.Bind<IBlogEntryRepository>().To<Blog.Data.Mock.BlogEntryRepository>();
-            kernel.Bind<ITagRepository>().To<Blog.Data.Mock.TagRepository>();
+            kernel.Bind<IBlogEntryRepository>().To<Data.Mock.BlogEntryRepository>();
+            kernel.Bind<ITagRepository>().To<Data.Mock.TagRepository>();
 #else
             kernel.Bind<IBlogEntryRepository>().To<BlogEntryRepository>();
 			kernel.Bind<ITagRepository>().To<TagRepository>();

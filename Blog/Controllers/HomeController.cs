@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using Blog.Interfaces.Repositories;
 using Blog.Models;
@@ -78,6 +79,13 @@ namespace Blog.Controllers
 		{
 			var allTags = _tagRepository.All().ToList();
 			return PartialView("Tags", new TagsViewModel { Tags = allTags });
+		}
+
+		public ActionResult SetTheme(SetThemeViewModel model, string returnUrl)
+		{
+			var cookie = new HttpCookie("PromptTheme", model.SelectedTheme);
+			Response.Cookies.Add(cookie);
+			return new RedirectResult(returnUrl);
 		}
 	}
 }

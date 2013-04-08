@@ -1,15 +1,25 @@
-﻿body { background: #eee; font-family: "Segoe UI", Calibri, Verdana, Tahoma, "Arial Black", Arial; }
+﻿body { background: #eee; font-family: "Segoe UI", Calibri, Verdana, Tahoma, "Arial Black", Arial;  }
 
-.navbar { -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+.navbar { -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); 
+          -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
           box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); }
-.navbar-inverse .navbar-inner { background-image: linear-gradient(to bottom, #333333, #111111); }
-#footer { height: 60px; background-color: #ddd; }
-.container .credit { margin: 20px 0; }
-.brand { margin-top: -2px; }
-.brand img { width: 28px; margin-top: -2px; }
-.title { margin-left: 30px; }
+          
+.navbar label { color: #ddd; display: inline; margin-right: 10px;cursor: default; }
 
-.blogEntry { background: white; border: 1px solid #ddd; padding-top: 5px; padding-bottom: 5px; 
+.navbar-inverse .navbar-inner { background-image: linear-gradient(to bottom, #333333, #111111); }
+
+#footer { background-color: #ddd; height: 60px; }
+.container .credit { margin: 20px 0; }
+
+a.disabled-link,
+a.disabled-link:visited ,
+a.disabled-link:active,
+a.disabled-link:hover { background-color:#d9d9d9 !important; color:#aaa !important; }
+
+.brand { margin-top: -2px; }
+.brand img { width: 28px; margin-top: -5px; }
+    
+.blogEntry {background: #fff; border: 1px solid #ddd; padding-top: 5px; padding-bottom: 5px; 
              margin-bottom: 15px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px; }
 .blogEntry .entry { height: 125px; overflow: hidden; }
 .blogEntry .row { margin-left: 10px; }
@@ -21,7 +31,7 @@
 .comments #disqus_thread { margin: 20px; }
 .comments iframe { width: 660px !important; }
 
-.tweetsRow { background: white; padding: 5px; }
+.tweetsRow { background: #f5f5f5; padding: 5px; }
 .tweetDate { color: gray; display: block; float: right; }
 
 .contactImg { width: 30px; padding-bottom: 5px; }
