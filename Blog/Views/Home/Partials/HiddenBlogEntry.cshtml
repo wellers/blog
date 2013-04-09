@@ -10,8 +10,8 @@
 	<div class="row">
 		<div class="span8 entry">@Html.Raw(HttpUtility.HtmlDecode(Model.Entry))</div>
 	</div>
-	<div class="row">
-		@Html.ActionLink("Read more ...", "BlogEntry", new { controller = "Home", id = Model.Key }, new { @class = "offset7" })
+	<div class="row" style="margin-top: 8px;">
+		@Html.ActionLink("Read more ...", "BlogEntry", new { controller = "Home", id = Model.Key }, new { @class = "span2 offset6" })
 	</div>
 	<hr />
 	<div class="row">

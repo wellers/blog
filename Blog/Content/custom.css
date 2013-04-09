@@ -9,7 +9,7 @@
 .navbar-inverse .navbar-inner { background-image: linear-gradient(to bottom, #333333, #111111); }
 
 #footer { background-color: #ddd; height: 60px; }
-.container .credit { margin: 20px 0; }
+.container .credit { margin: 20px 20px; }
 
 a.disabled-link,
 a.disabled-link:visited ,
@@ -19,7 +19,7 @@ a.disabled-link:hover { background-color:#d9d9d9 !important; color:#aaa !importa
 .brand { margin-top: -2px; }
 .brand img { width: 28px; margin-top: -5px; }
     
-.blogEntry {background: #fff; border: 1px solid #ddd; padding-top: 5px; padding-bottom: 5px; 
+.blogEntry {background-color: #fff; border: 1px solid #ddd; padding-top: 5px; padding-bottom: 5px; 
              margin-bottom: 15px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px; }
 .blogEntry .entry { height: 125px; overflow: hidden; }
 .blogEntry .row { margin-left: 10px; }
@@ -37,5 +37,5 @@ a.disabled-link:hover { background-color:#d9d9d9 !important; color:#aaa !importa
 .contactImg { width: 30px; padding-bottom: 5px; }
 .contactText { width: 80px; }
 
-.tags { height: 50px; min-height: 80px; }
+.tags { height: 50px; min-height: 110px; }
 .tag { width: 35px; margin-bottom: 10px; float: left; }

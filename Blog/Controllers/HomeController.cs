@@ -85,6 +85,10 @@ namespace Blog.Controllers
 		{
 			var cookie = new HttpCookie("PromptTheme", model.SelectedTheme);
 			Response.Cookies.Add(cookie);
+			if (Request.UrlReferrer != null)
+			{
+				return new RedirectResult(Request.UrlReferrer.ToString());
+			}
 			return new RedirectResult("Index");
 		}
 	}

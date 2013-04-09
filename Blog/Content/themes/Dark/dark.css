@@ -5,7 +5,7 @@
 .wrapper { background: #444; padding: 20px;}
 #footer { background-color: #555; border-top: 1px solid #333; }
 
-.title { background-color: #333; background-position-y: 85%;  
+.title { background-color: #333; background-position-y: 85%; 
          -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;
          border: 2px solid #333; background-size: 100%;  }
 .title h2 {display: none; color: White; margin-top: -5px; }

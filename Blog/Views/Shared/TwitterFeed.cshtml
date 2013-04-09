@@ -1,26 +1,9 @@
-﻿@model Blog.Models.TwitterFeedViewModel
+﻿<script type="text/javascript">
+	$(document).ready(function () {
+		TwitterFeed.loadLatestTweet('wellers', 5);
+	});
+</script>
+
 <div class="sidebar">
-    <table class="table table-bordered">
-        <thead>
-            <tr class="tweetsRow">
-                <th>
-                    <h4 style="margin-left: 25px;">My Recent Tweets</h4>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach (var t in Model.Tweets)
-        {
-	        <tr class="tweetsRow">
-                <td>
-		            <a style="display: inline;" href="https://twitter.com/@(t.UserName)" target="_blank">
-                        @("@")@t.UserName
-                    </a>&nbsp;
-		            <p style="display: inline;"><small>@t.Message</small></p>
-                    <p class="tweetDate"><small>@t.PostedDate.Day&nbsp;@t.PostedDate.ToString("MMMM")</small></p>
-                </td>
-	        </tr>
-        }
-        </tbody>
-    </table>
+	<div id="TwitterFeed"></div>
 </div>
