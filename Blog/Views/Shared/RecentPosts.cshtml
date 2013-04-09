@@ -7,7 +7,7 @@
 		@foreach (var b in Model)
 		{ 
 			<li style="margin-bottom: 10px;">
-				<small>@Html.ActionLink(HttpUtility.HtmlDecode(b.Title), "BlogEntry", new { controller = "Home", id = b.Key })</small>
+				<small>@Html.ActionLink(b.Title, "BlogEntry", new { controller = "Home", id = b.Key })</small>
 			</li>
 		}
 	</ul>

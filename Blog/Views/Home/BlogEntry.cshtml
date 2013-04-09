@@ -6,12 +6,12 @@
 <div class="blogEntry">
 	<div class="row">
 		<div class="span8">
-			<h4>@Html.Raw(HttpUtility.HtmlDecode(Model.Title))</h4>
+			<h4>@Model.Title</h4>
 		</div>       
 	</div>    
 	<hr />
 	<div class="row">
-		<div class="span8">@Html.Raw(HttpUtility.HtmlDecode(Model.Entry))</div>
+		<div class="span8">@Html.Raw(Model.Entry)</div>
 	</div>
 	<hr />
 	<div class="row">
