@@ -7,56 +7,63 @@ using Blog.Models;
 
 namespace Blog.Data.Mock
 {
-    public class TagRepository : ITagRepository
-    {
-        public List<ITagModel> Tags = new List<ITagModel>
-        {
-            new TagModel
-            {
-                Key = 1,
-                LookupID = "DOTNET",
-                Name = ".NET"
-            },
-            new TagModel
-            {
-                Key = 2,
-                LookupID = "CSHARP",
-                Name = "C#"
-            },
-            new TagModel
-            {
-                Key = 3,
-                LookupID = "WCF",
-                Name = "WCF"
-            },
-            new TagModel
-            {
-                Key = 4,
-                LookupID = "MISC",
-                Name = "Misc"
-            },
-            new TagModel
-            {
-                Key = 5,
-                LookupID = "BDD",
-                Name = "BDD"
-            },
-            new TagModel
-            {
-                Key = 6,
-                LookupID = "TDD",
-                Name = "TDD"
-            }
-        };
+	public class TagRepository : ITagRepository
+	{
+		public static ITagModel Tag1 = new TagModel
+		{
+			Key = 1,
+			LookupID = "DOTNET",
+			Name = ".NET"
+		};
 
-        public ITagModel Get(int id)
-        {
-            throw new NotImplementedException();
-        }
+		public static ITagModel Tag2 = new TagModel
+		{
+			Key = 2,
+			LookupID = "CSHARP",
+			Name = "C#"
+		};
 
-        public IQueryable<ITagModel> All()
-        {
-            return Tags.AsQueryable();
-        }
-    }
+		public static ITagModel Tag3 = new TagModel
+		{
+			Key = 3,
+			LookupID = "WCF",
+			Name = "WCF"
+		};
+
+		public static ITagModel Tag4 = new TagModel
+		{
+			Key = 4,
+			LookupID = "MISC",
+			Name = "Misc"
+		};
+
+		public static ITagModel Tag5 = new TagModel
+		{
+			Key = 5,
+			LookupID = "BDD",
+			Name = "BDD"
+		};
+
+		public static ITagModel Tag6 = new TagModel
+		{
+			Key = 6,
+			LookupID = "TDD",
+			Name = "TDD"
+		};
+
+		public List<ITagModel> Tags = new List<ITagModel>
+		{
+			Tag1, Tag2, Tag3, Tag4, Tag5, Tag6
+		};
+
+		public ITagModel Get(int id)
+		{
+			throw new NotImplementedException();
+		}
+
+		public IQueryable<ITagModel> All()
+		{
+			return Tags.AsQueryable();
+		}
+	}
 }

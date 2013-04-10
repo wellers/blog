@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using Blog.Interfaces.Models;
 using System.Linq;
+using Blog.Interfaces.Models;
 
 namespace Blog.Models
 {

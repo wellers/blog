@@ -5,13 +5,15 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FD7E29FB-E257-43F6-8504-AA1FF0F446D4}</ProjectGuid>
+    <ProjectGuid>{FC87CBA0-34BC-480D-925D-92B518CCA4DA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Blog.Models</RootNamespace>
-    <AssemblyName>Blog.Models</AssemblyName>
+    <RootNamespace>Blog.Data.Dao</RootNamespace>
+    <AssemblyName>Blog.Data.Dao</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,8 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,19 +47,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseModel.cs" />
-    <Compile Include="BlogEntryModel.cs" />
-    <Compile Include="BlogEntryTagModel.cs" />
+    <Compile Include="BlogEntryDao.cs" />
+    <Compile Include="BlogEntryTagDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TagModel.cs" />
+    <Compile Include="TagDao.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Blog.Data.CodeFirst\Blog.Data.CodeFirst.csproj">
+      <Project>{DF32F651-4D79-47CA-BBF8-02D2E4507405}</Project>
+      <Name>Blog.Data.CodeFirst</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blog.Interfaces\Blog.Interfaces.csproj">
       <Project>{AFECE1E5-8F77-4193-A30E-9C6D11845C20}</Project>
       <Name>Blog.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Blog.Models\Blog.Models.csproj">
+      <Project>{FD7E29FB-E257-43F6-8504-AA1FF0F446D4}</Project>
+      <Name>Blog.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

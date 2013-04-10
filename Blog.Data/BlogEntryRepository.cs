@@ -1,37 +1,40 @@
 ﻿using System;
 using System.Linq;
-using Blog.Data.CodeFirst.Persistence;
+using Blog.Data.Dao;
+using Blog.Interfaces;
 using Blog.Interfaces.Models;
 using Blog.Interfaces.Repositories;
-using Blog.Models;
 
 namespace Blog.Data
 {
 	public class BlogEntryRepository : IBlogEntryRepository
 	{
-		private readonly Context _context = new Context();
+        private IDao<IBlogEntryModel> _blogEntryDao;
+		private IDao<ITagModel> _tagDao;
+		private IDao<IBlogEntryTagModel> _blogEntryTagDao;
+
+        public BlogEntryRepository()
+        {
+            _blogEntryDao = new BlogEntryDao();
+            _tagDao = new TagDao();
+            _blogEntryTagDao = new BlogEntryTagDao();
+        }
+
+        public BlogEntryRepository(IDao<IBlogEntryModel> blogEntryDao, IDao<ITagModel> tagDao, IDao<IBlogEntryTagModel> blogEntryTagDao)
+        {
+            _blogEntryDao = blogEntryDao;
+            _tagDao = tagDao;
+            _blogEntryTagDao = blogEntryTagDao;
+        }
 
 		public IQueryable<IBlogEntryModel> All()
 		{
-			return _context.BlogEntries.Select(b => new BlogEntryModel
-			{
-				Key = b.Id,
-				Title = b.Title,
-				Entry = b.Entry,
-				PostedDate = b.PostedDate,
-				Tags = _context.BlogEntryTags.Where(x => x.BlogEntryId == b.Id).Select(y => y.Tag)
-						.Select(z => new TagModel 
-						{
-							Key = z.Id,
-							LookupID = z.LookupID,
-							Name = z.Name
-						})
-			});
+			return _blogEntryDao.Get();
 		}
 
 		public IBlogEntryModel Get(int id)
 		{
-			return All().Where(b => b.Key == id).SingleOrDefault();
+			return All().SingleOrDefault(b => b.Key == id);
 		}
 
 		public IQueryable<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year)
@@ -44,22 +47,9 @@ namespace Blog.Data
 			if (string.IsNullOrEmpty(tag))
 				throw new ArgumentException("Cannot be null or empty", "tag");
 
-			var tagID = _context.Tags.Where(x => x.LookupID == tag).Select(y => y.Id).Single();
-			return _context.BlogEntryTags.Where(b => b.TagId == tagID).Select(c => c.BlogEntry)
-					.Select(b => new BlogEntryModel
-					{
-						Key = b.Id,
-						Title = b.Title,
-						Entry = b.Entry,
-						PostedDate = b.PostedDate,
-						Tags = _context.BlogEntryTags.Where(x => x.BlogEntryId == b.Id).Select(y => y.Tag)
-								.Select(z => new TagModel
-								{
-									Key = z.Id,
-									LookupID = z.LookupID,
-									Name = z.Name
-								})
-					});
+			var tagID = _tagDao.Get().Where(x => x.LookupID == tag).Select(y => y.Key).Single();
+			var blogEntryKeys = _blogEntryTagDao.Get().Where(b => b.TagKey == tagID).Select(c => c.BlogEntryKey).ToList();
+			return All().Where(x => blogEntryKeys.Contains(x.Key));
 		}
 
 		public IBlogEntryModel GetMostRecentBlogEntry()
@@ -72,6 +62,6 @@ namespace Blog.Data
 		public IQueryable<IBlogEntryModel> GetTopMostRecentBlogEntries(int numberOfEntries)
 		{
 			return All().OrderByDescending(b => b.PostedDate).Take(numberOfEntries);
-		}
+		}	
 	}
 }
