@@ -8,6 +8,7 @@ using It = Machine.Specifications.It;
 
 namespace Blog.Specs.Controllers
 {
+    [Subject("ErrorController")]
 	public class ErrorControllerSpecs 
 	{
 		protected static ActionResult Result;

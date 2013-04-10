@@ -10,6 +10,7 @@ using Moq;
 
 namespace Blog.Specs.Controllers
 {
+    [Subject("HomeController")]
 	public class HomeControllerSpecs
 	{
 		protected static ActionResult Result;
