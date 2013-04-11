@@ -8,4 +8,5 @@
 	.contactImg img { display: none; }
 	#TwitterFeed { display: none; }
 	.tags { display: none; }
+	#footer { height: auto; }
 }
