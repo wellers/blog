@@ -1,17 +1,17 @@
 ﻿@using Blog.Interfaces.Models;
 @model IBlogEntryModel
-<div class="span8 footer">
+<div class="span9 footer">
     @if (Model.Tags != null && Model.Tags.Count() > 0)
     {
-	    <div class="span9" style="margin-left: 0px;">
+	    <span class="span7" style="margin-left: 0px;">
 		    <small><strong>Tags:&nbsp;</strong></small>
 		    @foreach (var x in Model.Tags)
             {
 			    <span class="badge badge-info">@(x.Name)</span><text>&nbsp;</text>
             }
-	    </div>			
+	    </span>			
     }
-    <div class="span9" style="margin-left: 0px;">
+    <span class="span2" style="margin-left: 0px;">
 	    <small><strong>Posted:&nbsp;</strong>@Model.PostedDate.ToString("dd MMMM yyyy @ H:mm", new System.Globalization.CultureInfo("en-GB"))</small>
-    </div>
+    </span>
 </div>
