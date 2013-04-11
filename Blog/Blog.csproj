@@ -106,6 +106,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-responsive-mod.min.css" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\Bootstrap-Select\bootstrap-select.css" />
