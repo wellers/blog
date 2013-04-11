@@ -1,0 +1,5 @@
+﻿@media (max-width: 767px) 
+{
+	.contactImg img { display: none; }
+	.tags { min-height: 150px; }
+}

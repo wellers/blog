@@ -41,11 +41,4 @@ a.disabled-link:hover { background-color:#d9d9d9 !important; color:#aaa !importa
 .aboutMe { margin-left: 30px; }
 .contactMe { margin-left: 30px; }
 
-
 .microsoftImg { display: inline; width: 95px; }
-
-@media (max-width: 767px) 
-{
-	.contactImg img { display: none; }
-	.tags { min-height: 150px; }
-}
