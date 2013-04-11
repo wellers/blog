@@ -2,4 +2,6 @@
 {
 	.contactImg img { display: none; }
 	.tags { min-height: 150px; }
+	#TwitterFeed { display:none; }
+	.tags { display:none; }
 }
