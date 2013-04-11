@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201304032012326_UpdateExistingBlogEntriesForTags.Designer.cs">
       <DependentUpon>201304032012326_UpdateExistingBlogEntriesForTags.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201304111823546_IncreaseLengthOfEntry.cs" />
+    <Compile Include="Migrations\201304111823546_IncreaseLengthOfEntry.Designer.cs">
+      <DependentUpon>201304111823546_IncreaseLengthOfEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BlogEntry.cs" />
     <Compile Include="Models\BlogEntryTag.cs" />
@@ -87,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201304032012326_UpdateExistingBlogEntriesForTags.resx">
       <DependentUpon>201304032012326_UpdateExistingBlogEntriesForTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304111823546_IncreaseLengthOfEntry.resx">
+      <DependentUpon>201304111823546_IncreaseLengthOfEntry.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
