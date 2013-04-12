@@ -1,4 +1,5 @@
 ﻿body { background: #eee; font-family: "Segoe UI", Calibri, Verdana, Tahoma, "Arial Black", Arial;  }
+p { text-align: justify; }
 
 .navbar { -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5); 
           -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
