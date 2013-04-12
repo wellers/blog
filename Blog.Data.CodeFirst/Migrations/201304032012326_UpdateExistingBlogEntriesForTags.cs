@@ -9,9 +9,9 @@ namespace Blog.Data.CodeFirst.Migrations
         {
             Sql(@"
                 INSERT INTO Tags (LookupId, Name)
-                SELECT 'CSHARP', 'C#' UNION ALL
-                SELECT 'DOTNET', '.NET' UNION ALL
-                SELECT 'WCF', 'WCF'");
+                SELECT 'csharp', 'C#' UNION ALL
+                SELECT 'dotnet', '.NET' UNION ALL
+                SELECT 'wcf', 'WCF'");
         }
         
         public override void Down()
