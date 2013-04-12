@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Specs", "Blog.Specs\Bl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Data.Dao", "Blog.Data.Dao\Blog.Data.Dao.csproj", "{FC87CBA0-34BC-480D-925D-92B518CCA4DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Core", "Blog.Core\Blog.Core.csproj", "{9E18EF51-163E-4061-AF45-F659C9559367}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +116,16 @@ Global
 		{FC87CBA0-34BC-480D-925D-92B518CCA4DA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{FC87CBA0-34BC-480D-925D-92B518CCA4DA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{FC87CBA0-34BC-480D-925D-92B518CCA4DA}.Release|x86.ActiveCfg = Release|Any CPU
+		{9E18EF51-163E-4061-AF45-F659C9559367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E18EF51-163E-4061-AF45-F659C9559367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E18EF51-163E-4061-AF45-F659C9559367}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9E18EF51-163E-4061-AF45-F659C9559367}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9E18EF51-163E-4061-AF45-F659C9559367}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9E18EF51-163E-4061-AF45-F659C9559367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E18EF51-163E-4061-AF45-F659C9559367}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E18EF51-163E-4061-AF45-F659C9559367}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9E18EF51-163E-4061-AF45-F659C9559367}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9E18EF51-163E-4061-AF45-F659C9559367}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

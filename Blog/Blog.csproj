@@ -305,6 +305,10 @@
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Blog.Core\Blog.Core.csproj">
+      <Project>{9E18EF51-163E-4061-AF45-F659C9559367}</Project>
+      <Name>Blog.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blog.Data.Mock\Blog.Data.Mock.csproj">
       <Project>{E4CDE178-E0B2-4A71-8133-B886B25C81B6}</Project>
       <Name>Blog.Data.Mock</Name>

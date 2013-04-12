@@ -1,13 +1,17 @@
-﻿@using Blog.Interfaces.Models;
+﻿@using Blog.Core.Extensions;
+@using Blog.Interfaces.Models;
 @model List<IBlogEntryModel>
-
 <div class="well sidebar-nav">
 	<ul class="nav nav-list">
 		<li class="nav-header">Recent posts</li>
 		@foreach (var b in Model)
 		{ 
 			<li style="margin-bottom: 10px;">
-				<small>@Html.ActionLink(b.Title, "BlogEntry", new { controller = "Home", id = b.Key })</small>
+				<small>@Html.ActionLink(b.Title, "BlogEntry", new { 
+                controller = "Home", 
+                id = b.Key, 
+                title = b.Title.RemoveSpecialCharacters().ToLower().Replace(" ","-") 
+            })</small>
 			</li>
 		}
 	</ul>

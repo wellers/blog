@@ -1,4 +1,5 @@
-﻿@using Blog.Interfaces.Models;
+﻿@using Blog.Core.Extensions;
+@using Blog.Interfaces.Models;
 @model IBlogEntryModel
 <div class="blogEntry">
 	<div class="row">
@@ -11,7 +12,13 @@
 		<div class="span8 entry">@Html.Raw(HttpUtility.HtmlDecode(Model.Entry))</div>
 	</div>
 	<div class="row" style="margin-top: 8px;">
-		@Html.ActionLink("Read more ...", "BlogEntry", new { controller = "Home", id = Model.Key }, new { @class = "span2 offset7" })
+		@Html.ActionLink("Read more ...", "BlogEntry", 
+            new { 
+                controller = "Home", 
+                id = Model.Key, 
+                title = Model.Title.RemoveSpecialCharacters().ToLower().Replace(" ","-") 
+            }, 
+            new { @class = "span2 offset7" })
 	</div>
 	<hr />
 	<div class="row">
