@@ -81,7 +81,7 @@ namespace Blog.Controllers
 
 		public ActionResult SetTheme(SetThemeViewModel model)
 		{
-			var cookie = new HttpCookie("PromptTheme", model.SelectedTheme);
+            var cookie = new HttpCookie("PromptTheme", model.SelectedTheme) { Expires = DateTime.Now.AddYears(1) };
 			Response.Cookies.Add(cookie);
 			if (Request.UrlReferrer != null)
 			{
