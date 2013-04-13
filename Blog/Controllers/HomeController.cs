@@ -11,8 +11,6 @@ namespace Blog.Controllers
 {
 	public class HomeController : Controller
 	{
-        // TODO : Left sidebar for related posts that follows the scroll.
-
 		private readonly IBlogEntryRepository _blogEntryRepository;
 		private readonly ITagRepository _tagRepository;
 

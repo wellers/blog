@@ -33,7 +33,11 @@
 			{
 				<link href="@Url.Content("~/Content/Themes/Dark/dark.css")" rel="stylesheet" type="text/css" />
 			}
-			ViewBag.Theme = theme;
+            if (theme == "Blue")
+			{
+				<link href="@Url.Content("~/Content/Themes/Blue/blue.css")" rel="stylesheet" type="text/css" />
+            }
+            ViewBag.Theme = theme;
 		}
         
 		<link href="@Url.Content("~/Content/bootstrap-responsive-mod.min.css")" rel="stylesheet" type="text/css" />
@@ -76,7 +80,7 @@
 							<li>@Html.ActionLink("About me", "About", new { area = "", controller = "Home" }, new { })</li>
 							<li>@Html.ActionLink("Contact me", "Contact", new { area = "", controller = "Home" }, new { })</li>							
 						</ul>
-						@{ Html.RenderPartial("SetTheme", new Blog.Models.SetThemeViewModel { Themes = new List<string> { "Dark", "Light" } }); }
+						@{ Html.RenderPartial("SetTheme", new Blog.Models.SetThemeViewModel { Themes = new List<string> { "Dark", "Light", "Blue" } }); }
 					</div>
 				</div>
 			</div>

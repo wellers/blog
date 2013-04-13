@@ -1,0 +1,16 @@
+﻿body { background-color: #eef; }
+
+.navbar-inverse .btn-navbar { background-image: linear-gradient(to bottom, #007799, #000044); background-color: #000044; }
+.navbar-inverse .btn-navbar:hover { background-color: #000044; }
+.navbar-inverse .navbar-inner { background-image: linear-gradient(to bottom, #007799, #000044); }
+.navbar-inverse .nav .active>a, .navbar-inverse .nav .active>a:hover, .navbar-inverse .nav .active>a:focus { color: #fff; background-color: #000044; }
+.navbar-inverse .nav>li>a { color: #fff; }
+
+#footer { background-color: #ddf; }
+
+.well { background-color: #f5f5ff; border: 1px solid #e3e3ff; }
+
+.blogEntry { border: 1px solid #e3e3ff; } 
+.blogEntry hr { border: 1px solid #e3e3ff; } 
+
+.tweetsRow { background: #f5f5ff; border: 1px solid #e3e3ff; }
