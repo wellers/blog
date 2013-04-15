@@ -42,6 +42,11 @@ namespace Blog.Data
 			return All().Where(b => b.PostedDate.Month == month && b.PostedDate.Year == year);
 		}
 
+        public IQueryable<IBlogEntryModel> GetBlogEntriesByYear(int year)
+        {
+            return All().Where(b => b.PostedDate.Year == year);
+        }
+
 		public IQueryable<IBlogEntryModel> GetBlogEntriesByTag(string tag)
 		{
 			if (string.IsNullOrEmpty(tag))

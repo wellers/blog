@@ -20,8 +20,11 @@ namespace Blog
 			routes.MapRoute("Error - 404", "NotFound", new {controller = "Error", action = "NotFound"});
 			routes.MapRoute("Error - 500", "ServerError", new { controller = "Error", action = "ServerError" });
 
-			routes.MapRoute("Archive", "archive/{year}/{month}", 
+			routes.MapRoute("ArchiveByYearAndMonth", "archive/{year}/{month}", 
 				new { controller = "Home", action = "Archive", year = UrlParameter.Optional, month = UrlParameter.Optional });
+
+            routes.MapRoute("ArchiveByYear", "archive/{year}",
+                new { controller = "Home", action = "Archive", year = UrlParameter.Optional });
 			
 			routes.MapRoute("Post", "entry/{id}/{title}",
                 new { controller = "Home", action = "BlogEntry", id = UrlParameter.Optional, title = UrlParameter.Optional });

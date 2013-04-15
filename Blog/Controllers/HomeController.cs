@@ -28,10 +28,20 @@ namespace Blog.Controllers
 			return View(new HomeViewModel { BlogEntries = entries });
 		}
 
-		public ActionResult Archive(int year, int month)
+		public ActionResult Archive(int year, int? month)
 		{
-			var entries = _blogEntryRepository.GetBlogEntriesByMonthAndYear(month, year)
-											.OrderByDescending(c => c.PostedDate).ToList();
+            List<IBlogEntryModel> entries;
+            if (month.HasValue)
+            {
+                entries = _blogEntryRepository.GetBlogEntriesByMonthAndYear((int)month, year)
+                                                .OrderByDescending(c => c.PostedDate).ToList();
+            }
+            else
+            {
+                entries = _blogEntryRepository.GetBlogEntriesByYear(year)
+                                                .OrderByDescending(c => c.PostedDate).ToList();
+            }
+
 			if (entries.Count == 0)
 			{
 				DateTime mostRecentPostDate = _blogEntryRepository.GetMostRecentBlogEntry().PostedDate;

@@ -196,6 +196,11 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 			return _blogEntries.Values.Where(b => b.PostedDate.Month == month && b.PostedDate.Year == year).AsQueryable();
 		}
 
+        public IQueryable<IBlogEntryModel> GetBlogEntriesByYear(int year)
+        {
+            return _blogEntries.Values.Where(b => b.PostedDate.Year == year).AsQueryable();
+        }
+
 		public IQueryable<IBlogEntryModel> GetBlogEntriesByTag(string tag)
 		{			
 			if (string.IsNullOrEmpty(tag))
