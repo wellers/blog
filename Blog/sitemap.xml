@@ -11,43 +11,91 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/Home/About</loc>
+  <loc>http://prompt.apphb.com/about</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/Home/Contact</loc>
+  <loc>http://prompt.apphb.com/contact</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/Home/BlogEntry/ID/3</loc>
+  <loc>http://prompt.apphb.com/entry/8/windows-8-virtual-machine-with-visual-studio-express-2012</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/Home/BlogEntry/ID/2</loc>
+  <loc>http://prompt.apphb.com/entry/7/appharbor-mspec-integration</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/Home/BlogEntry/ID/1</loc>
+  <loc>http://prompt.apphb.com/entry/6/appharbor-canoe-plus-yocto</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/Home/Archive/2013/4</loc>
+  <loc>http://prompt.apphb.com/entry/5/using-windows-powershell-to-perform-startup-tasks</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/Home/Archive/2013/3</loc>
+  <loc>http://prompt.apphb.com/archive/2013/4</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/Home/Tag/CSHARP</loc>
+  <loc>http://prompt.apphb.com/archive/2013/3</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/Home/Tag/DOTNET</loc>
+  <loc>http://prompt.apphb.com/tags/dotnet</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/Home/Tag/WCF</loc>
+  <loc>http://prompt.apphb.com/tags/appharbor</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://prompt.apphb.com/tags/bdd</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://prompt.apphb.com/tags/csharp</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://prompt.apphb.com/tags/misc</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://prompt.apphb.com/tags/mspec</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://prompt.apphb.com/tags/paas</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://prompt.apphb.com/tags/powershell</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://prompt.apphb.com/tags/visualstudio2012</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://prompt.apphb.com/tags/wcf</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://prompt.apphb.com/tags/win8</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://prompt.apphb.com/entry/3/wcf-callbacks--part-2-the-client</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://prompt.apphb.com/entry/2/wcf-callbacks--simple-clientserver</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://prompt.apphb.com/entry/1/syntactic-sugar-one-lump-or-two</loc>
   <changefreq>weekly</changefreq>
 </url>
 </urlset>
