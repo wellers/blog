@@ -36,8 +36,8 @@ a.disabled-link:hover { background-color:#d9d9d9 !important; color:#aaa !importa
 .contactImg  { width: 20px !important; padding-bottom: 10px; }
 .contactImg img { float: right; }
 
-.tags { height: 50px; min-height: 140px; }
-.tag { width: 40px; margin-bottom: 10px; float: left; }
+.tags { overflow: auto; }
+.tag { width: 50px; margin-bottom: 10px; float: left; display: inline-block; }
 
 .aboutMe { margin-left: 30px; }
 .contactMe { margin-left: 30px; }
