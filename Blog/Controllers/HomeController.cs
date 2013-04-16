@@ -85,7 +85,7 @@ namespace Blog.Controllers
 
 		public ActionResult Tags()
 		{
-			var allTags = _tagRepository.All().ToList();
+			var allTags = _tagRepository.All().OrderBy(t => t.Name).ToList();
 			return PartialView("Tags", new TagsViewModel { Tags = allTags });
 		}
 
