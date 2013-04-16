@@ -1,4 +1,4 @@
-﻿body { background: #222; padding-top: 40px;}
+﻿body { background: #222; padding-top: 40px; }
 
 .well { border: 1px solid #ddd; }
 
@@ -15,3 +15,8 @@
 .blogEntry hr { border: 1px solid #ddd; } 
 
 pre { background-color: #fff; }
+
+@media (max-width: 979px)
+{
+    body { padding-top: 0px; }
+}
