@@ -1,11 +1,14 @@
-﻿@media (max-width: 979px) {
+﻿@media (max-width: 979px) 
+{
     .tags { min-height: 150px; }
 	.bootstrap-select ul { margin-left: 0px !important; }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767px) 
+{
 	.contactImg img { display: none; }
 	#TwitterFeed { display: none; }
 	.tags { display: none; }
 	#footer { height: auto; }
+	.blogEntry img { height: auto !important; }
 }
