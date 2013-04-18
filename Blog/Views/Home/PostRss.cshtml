@@ -28,7 +28,7 @@
                                             title = b.Title.RemoveSpecialCharacters().ToLower().Replace(" ","-")
                                         })</guid>
         <pubDate>@b.PostedDate.ToUniversalTime().ToString("r")</pubDate>
-        <description>@Html.Raw(b.Entry)</description>
+        <description>@Html.Encode(b.Entry)</description>
         </item>
     }
 </channel>
