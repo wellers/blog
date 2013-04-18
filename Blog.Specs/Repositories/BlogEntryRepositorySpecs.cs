@@ -9,6 +9,7 @@ using Blog.Models;
 using Machine.Specifications;
 using Moq;
 using It = Machine.Specifications.It;
+using Blog.Data.Dao.Mock;
 
 namespace Blog.Specs.Repositories
 {
@@ -27,10 +28,10 @@ namespace Blog.Specs.Repositories
 			#region BlogEntryDao Setup
 			AllEntries = new List<IBlogEntryModel>
 						{
-							Data.Mock.BlogEntryRepository.Entry1,
-							Data.Mock.BlogEntryRepository.Entry2,
-							Data.Mock.BlogEntryRepository.Entry3,
-							Data.Mock.BlogEntryRepository.Entry4
+							MockBlogEntryDao.Entry1,
+							MockBlogEntryDao.Entry2,
+							MockBlogEntryDao.Entry3,
+							MockBlogEntryDao.Entry4
 						}.AsQueryable();
 
 			BlogEntryDao = new Mock<IDao<IBlogEntryModel>>();
@@ -40,12 +41,12 @@ namespace Blog.Specs.Repositories
 			#region TagDao Setup
 			var tags = new List<ITagModel>
 						{
-							Data.Mock.TagRepository.Tag1,
-							Data.Mock.TagRepository.Tag2,
-							Data.Mock.TagRepository.Tag3,
-							Data.Mock.TagRepository.Tag4,
-							Data.Mock.TagRepository.Tag5,
-							Data.Mock.TagRepository.Tag6
+							MockTagDao.Tag1,
+							MockTagDao.Tag2,
+							MockTagDao.Tag3,
+							MockTagDao.Tag4,
+							MockTagDao.Tag5,
+							MockTagDao.Tag6
 						}.AsQueryable();
 
 			TagDao = new Mock<IDao<ITagModel>>();

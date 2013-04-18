@@ -12,14 +12,7 @@ namespace Blog.Data
         private IDao<IBlogEntryModel> _blogEntryDao;
 		private IDao<ITagModel> _tagDao;
 		private IDao<IBlogEntryTagModel> _blogEntryTagDao;
-
-        public BlogEntryRepository()
-        {
-            _blogEntryDao = new BlogEntryDao();
-            _tagDao = new TagDao();
-            _blogEntryTagDao = new BlogEntryTagDao();
-        }
-
+        
         public BlogEntryRepository(IDao<IBlogEntryModel> blogEntryDao, IDao<ITagModel> tagDao, IDao<IBlogEntryTagModel> blogEntryTagDao)
         {
             _blogEntryDao = blogEntryDao;

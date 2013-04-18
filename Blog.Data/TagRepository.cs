@@ -10,12 +10,12 @@ namespace Blog.Data
     public class TagRepository : ITagRepository
     {
         private IDao<ITagModel> _tagDao;
-
+        /*
         public TagRepository()
         {
             _tagDao = new TagDao();
         }
-
+        */
         public TagRepository(IDao<ITagModel> tagDao)
         {
             _tagDao = tagDao;

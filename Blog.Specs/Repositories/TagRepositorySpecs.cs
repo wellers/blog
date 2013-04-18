@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Machine.Specifications;
-using Blog.Interfaces.Models;
-using Blog.Interfaces;
-using Moq;
-using Blog.Interfaces.Repositories;
 using Blog.Data;
+using Blog.Data.Dao.Mock;
+using Blog.Interfaces;
+using Blog.Interfaces.Models;
+using Blog.Interfaces.Repositories;
+using Machine.Specifications;
+using Moq;
 
 namespace Blog.Specs.Repositories
 {
@@ -22,12 +21,12 @@ namespace Blog.Specs.Repositories
         {
             AllTags = new List<ITagModel>
 						{
-							Data.Mock.TagRepository.Tag1,
-							Data.Mock.TagRepository.Tag2,
-							Data.Mock.TagRepository.Tag3,
-							Data.Mock.TagRepository.Tag4,
-							Data.Mock.TagRepository.Tag5,
-							Data.Mock.TagRepository.Tag6
+							MockTagDao.Tag1,
+							MockTagDao.Tag2,
+							MockTagDao.Tag3,
+							MockTagDao.Tag4,
+							MockTagDao.Tag5,
+							MockTagDao.Tag6
 						}.AsQueryable();
 
             TagDao = new Mock<IDao<ITagModel>>();

@@ -50,8 +50,8 @@ namespace Blog.Data.Mock
 			LookupID = "TDD",
 			Name = "TDD"
 		};
-
-		public List<ITagModel> Tags = new List<ITagModel>
+        
+		private List<ITagModel> Tags = new List<ITagModel>
 		{
 			Tag1, Tag2, Tag3, Tag4, Tag5, Tag6
 		};

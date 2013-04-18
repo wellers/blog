@@ -310,9 +310,13 @@
       <Project>{9E18EF51-163E-4061-AF45-F659C9559367}</Project>
       <Name>Blog.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Blog.Data.Mock\Blog.Data.Mock.csproj">
-      <Project>{E4CDE178-E0B2-4A71-8133-B886B25C81B6}</Project>
-      <Name>Blog.Data.Mock</Name>
+    <ProjectReference Include="..\Blog.Data.Dao.Mock\Blog.Data.Dao.Mock.csproj">
+      <Project>{3F74A061-CD0F-4A26-99B2-31806C1BB089}</Project>
+      <Name>Blog.Data.Dao.Mock</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blog.Data.Dao\Blog.Data.Dao.csproj">
+      <Project>{FC87CBA0-34BC-480D-925D-92B518CCA4DA}</Project>
+      <Name>Blog.Data.Dao</Name>
     </ProjectReference>
     <ProjectReference Include="..\Blog.Data\Blog.Data.csproj">
       <Project>{0F7986D0-4825-44F3-A7EB-138FED8887E6}</Project>

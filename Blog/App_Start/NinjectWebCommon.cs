@@ -13,6 +13,10 @@ namespace Blog.App_Start
 	using Ninject;
 	using Ninject.Web.Common;
     using Blog.Data;
+    using Blog.Interfaces;
+    using Blog.Interfaces.Models;
+    using Blog.Data.Dao;
+    using Blog.Data.Dao.Mock;
 
 	public static class NinjectWebCommon 
 	{
@@ -57,12 +61,16 @@ namespace Blog.App_Start
 		private static void RegisterServices(IKernel kernel)
 		{
 #if DEBUG
-            kernel.Bind<IBlogEntryRepository>().To<Data.Mock.BlogEntryRepository>();
-            kernel.Bind<ITagRepository>().To<Data.Mock.TagRepository>();
+            kernel.Bind<IDao<IBlogEntryModel>>().To<MockBlogEntryDao>();
+            kernel.Bind<IDao<ITagModel>>().To<MockTagDao>();
+            kernel.Bind<IDao<IBlogEntryTagModel>>().To<MockBlogEntryTagDao>();
 #else
-            kernel.Bind<IBlogEntryRepository>().To<BlogEntryRepository>();
-			kernel.Bind<ITagRepository>().To<TagRepository>();
+            kernel.Bind<IDao<IBlogEntryModel>>().To<BlogEntryDao>();
+            kernel.Bind<IDao<ITagModel>>().To<TagDao>();
+            kernel.Bind<IDao<IBlogEntryTagModel>>().To<BlogEntryTagDao>();
 #endif
+            kernel.Bind<IBlogEntryRepository>().To<BlogEntryRepository>();
+            kernel.Bind<ITagRepository>().To<TagRepository>();
         }        
 	}
 }

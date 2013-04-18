@@ -7,6 +7,7 @@ using Blog.Interfaces.Repositories;
 using Blog.Models;
 using Machine.Specifications;
 using Moq;
+using Blog.Data.Dao.Mock;
 
 namespace Blog.Specs.Controllers
 {
@@ -36,10 +37,10 @@ namespace Blog.Specs.Controllers
 		{
 			var entries = new List<IBlogEntryModel>
 					    {
-						    Data.Mock.BlogEntryRepository.Entry1,
-						    Data.Mock.BlogEntryRepository.Entry2,
-						    Data.Mock.BlogEntryRepository.Entry3,
-						    Data.Mock.BlogEntryRepository.Entry4
+						    MockBlogEntryDao.Entry1,
+						    MockBlogEntryDao.Entry2,
+						    MockBlogEntryDao.Entry3,
+						    MockBlogEntryDao.Entry4
 					    }.AsQueryable();
 			_expected = entries.ToList();
 
@@ -77,8 +78,8 @@ namespace Blog.Specs.Controllers
 		{
 			var entries = new List<IBlogEntryModel>
 					    {
-						    Data.Mock.BlogEntryRepository.Entry1, //mocked entries that are always set to this year
-						    Data.Mock.BlogEntryRepository.Entry2
+						    MockBlogEntryDao.Entry1, //mocked entries that are always set to this year
+						    MockBlogEntryDao.Entry2
 					    }.AsQueryable();
 			_expected = entries.ToList();
 
@@ -114,12 +115,12 @@ namespace Blog.Specs.Controllers
 		{
 			var entries = new List<IBlogEntryModel>
 					    {
-						    Data.Mock.BlogEntryRepository.Entry1, //mocked entries that are always set to this year
-						    Data.Mock.BlogEntryRepository.Entry2
+						    MockBlogEntryDao.Entry1, //mocked entries that are always set to this year
+						    MockBlogEntryDao.Entry2
 					    }.AsQueryable();
 			_expected = entries.ToList();
 
-			BlogEntryRepository.Setup(x => x.GetMostRecentBlogEntry()).Returns(Data.Mock.BlogEntryRepository.Entry1);
+			BlogEntryRepository.Setup(x => x.GetMostRecentBlogEntry()).Returns(MockBlogEntryDao.Entry1);
 
 			IQueryable<IBlogEntryModel> response = new List<IBlogEntryModel>().AsQueryable();
 			BlogEntryRepository.Setup(x => x.GetBlogEntriesByMonthAndYear(Moq.It.IsAny<int>(), Moq.It.IsAny<int>()))
@@ -156,7 +157,7 @@ namespace Blog.Specs.Controllers
 
 		Establish context = () =>
 		{
-			_expected = Data.Mock.BlogEntryRepository.Entry1;
+            _expected = MockBlogEntryDao.Entry1;
 			BlogEntryRepository.Setup(x => x.Get(Moq.It.IsAny<int>())).Returns(_expected);
 		};
 
@@ -220,7 +221,7 @@ namespace Blog.Specs.Controllers
 
 		Establish context = () =>
 		{
-			var entries = new List<IBlogEntryModel> { Data.Mock.BlogEntryRepository.Entry1 }.AsQueryable();
+            var entries = new List<IBlogEntryModel> { MockBlogEntryDao.Entry1 }.AsQueryable();
 			_expected = entries.ToList();
 			BlogEntryRepository.Setup(x => x.GetBlogEntriesByTag(Moq.It.IsAny<string>())).Returns(entries);
 		};
@@ -312,13 +313,13 @@ namespace Blog.Specs.Controllers
 		{
 			var tags = new List<ITagModel> 
 						{
-							Data.Mock.TagRepository.Tag1,
-							Data.Mock.TagRepository.Tag2,
-							Data.Mock.TagRepository.Tag3,
-							Data.Mock.TagRepository.Tag4,
-							Data.Mock.TagRepository.Tag5,
-							Data.Mock.TagRepository.Tag6 
-						}.AsQueryable();
+							MockTagDao.Tag1,
+							MockTagDao.Tag2,
+							MockTagDao.Tag3,
+							MockTagDao.Tag4,
+							MockTagDao.Tag5,
+							MockTagDao.Tag6 
+						}.AsQueryable().OrderBy(x => x.Name);
 			_expected = tags.ToList();
 			TagRepository.Setup(x => x.All()).Returns(tags);
 		};
