@@ -31,7 +31,7 @@
         @{
 			// TODO : Shift this logic to a HtmlHelper
 			var cookie = Request.Cookies["PromptTheme"];
-			var theme = cookie == null ? "Light" : cookie.Value;
+			var theme = cookie == null ? "Dark" : cookie.Value;
 			if (theme == "Dark")
 			{
 				<link href="@Url.Content("~/Content/Themes/Dark/dark.css")" rel="stylesheet" type="text/css" />

@@ -33,71 +33,71 @@ var SetTheme = (function () {
 
 // TwitterFeed javascript functions
 var TwitterFeed = (function () {
-	var monthNames = ["January", "February", "March", "April", "May", "June",
+    var monthNames = ["January", "February", "March", "April", "May", "June",
 		"July", "August", "September", "October", "November", "December"];
 
-	var loadLatestTweet = function (username, feedItemCount) {
-		var url = 'https://api.twitter.com/1/statuses/user_timeline/'
+    var loadLatestTweet = function (username, feedItemCount, twitterIconPath) {
+        var url = 'https://api.twitter.com/1/statuses/user_timeline/'
 			+ username + '.json?callback=?&count=' + feedItemCount;
-		$.getJSON(url, function (data) {
-			var output = "";
-			for (var i = 0; i < feedItemCount; i++) {
-				output += formatTweet(data[i], username);
-			}
+        $.getJSON(url, function (data) {
+            var output = "";
+            for (var i = 0; i < feedItemCount; i++) {
+                output += formatTweet(data[i], username);
+            }
 
-			var contents = '<table class="table table-bordered">' +
+            var contents = '<table class="table table-bordered">' +
 								'<thead><tr class="tweetsRow">' +
-										'<th><a href="https://twitter.com/wellers" target="_blank">'+
-                                        '<img style="width: 35px;" src="Content/images/twitter-bird-light-bgs.png" alt="twitter" />' +
+										'<th><a href="https://twitter.com/wellers" target="_blank">' +
+                                        '<img style="width: 35px;" src="' + twitterIconPath + '" alt="twitter" />' +
                                         '<h4 style="display: inline; vertical-align: middle;">My Recent Tweets</h4></a></th>' +
 								'</tr></thead>';
-			contents += '<tbody>' + output + '</tbody></table>';
-			$("#TwitterFeed").html(contents);
-		});
-	};
+            contents += '<tbody>' + output + '</tbody></table>';
+            $("#TwitterFeed").html(contents);
+        });
+    };
 
-	var formatTweet = function (tweet) {
-		var created = parseDate(tweet.created_at);
-		var createdDate = created.getDate() + ' ' + (monthNames[created.getMonth()]) + ' ' + created.getFullYear();
-		var tweetRow = '<tr class="tweetsRow">' +
+    var formatTweet = function (tweet) {
+        var created = parseDate(tweet.created_at);
+        var createdDate = created.getDate() + ' ' + (monthNames[created.getMonth()]) + ' ' + created.getFullYear();
+        var tweetRow = '<tr class="tweetsRow">' +
 							'<td><p style="display: inline;"><small>' +
 							tweet.text.parseURL().parseUsername().parseHashtag() + '</small></p>' +
 							'<p class="tweetDate"><small>' + createdDate + '</small></p></td></tr>';
-		return tweetRow;
-	};
+        return tweetRow;
+    };
 
-	// Creates an anchor tag with a target of "_blank"
-	String.prototype.blankLink = function(url, text) {
-		return "<a target='_blank' href='" + url + "'>" + text + "</a>";
-	};
+    // Creates an anchor tag with a target of "_blank"
+    String.prototype.blankLink = function (url, text) {
+        return "<a target='_blank' href='" + url + "'>" + text + "</a>";
+    };
 
-	/* Twitter Parsers */	
-	String.prototype.parseURL = function () {
-		return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g, function (url) {
-			return url.blankLink(url, url);
-		});
-	};
-	
-	String.prototype.parseUsername = function () {
-		return this.replace(/[@]+[A-Za-z0-9-_]+/g, function (u) {
-			var username = u.replace("@", "");
-			return u.blankLink("http://twitter.com/" + username, u);
-		});
-	};
-	
-	String.prototype.parseHashtag = function () {
-		return this.replace(/[#]+[A-Za-z0-9-_]+/g, function (t) {
-			var tag = t.replace("#", "%23");
-			return t.blankLink("http://twitter.com/search?q=" + tag, t);
-		});
-	};
-	
-	function parseDate(str) {
-		var v = str.split(' ');
-		return new Date(Date.parse(v[1] + " " + v[2] + ", " + v[5] + " " + v[3] + " UTC"));
-	}
+    /* Twitter Parsers */
+    String.prototype.parseURL = function () {
+        return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g, function (url) {
+            return url.blankLink(url, url);
+        });
+    };
 
-	return {
-		loadLatestTweet: loadLatestTweet
-	};
+    String.prototype.parseUsername = function () {
+        return this.replace(/[@]+[A-Za-z0-9-_]+/g, function (u) {
+            var username = u.replace("@", "");
+            return u.blankLink("http://twitter.com/" + username, u);
+        });
+    };
+
+    String.prototype.parseHashtag = function () {
+        return this.replace(/[#]+[A-Za-z0-9-_]+/g, function (t) {
+            var tag = t.replace("#", "%23");
+            return t.blankLink("http://twitter.com/search?q=" + tag, t);
+        });
+    };
+
+    function parseDate(str) {
+        var v = str.split(' ');
+        return new Date(Date.parse(v[1] + " " + v[2] + ", " + v[5] + " " + v[3] + " UTC"));
+    }
+
+    return {
+        loadLatestTweet: loadLatestTweet
+    };
 })();
