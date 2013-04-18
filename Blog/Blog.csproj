@@ -119,6 +119,8 @@
     <Content Include="Content\images\email.gif" />
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\favicon.png" />
+    <Content Include="Content\images\feed-icon-14x14.png" />
+    <Content Include="Content\images\feed-icon-28x28.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\custom.css" />
@@ -127,6 +129,7 @@
     <Content Include="Content\images\MCTS_logo.png" />
     <Content Include="Content\images\profilepicture.jpg" />
     <Content Include="Content\images\transparency-30.png" />
+    <Content Include="Content\images\twitter-bird-light-bgs.png" />
     <Content Include="Content\SyntaxHighlighter\shCore.css" />
     <Content Include="Content\SyntaxHighlighter\shCoreDefault.css" />
     <Content Include="Content\SyntaxHighlighter\shCoreDjango.css" />

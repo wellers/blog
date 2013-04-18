@@ -47,7 +47,9 @@ var TwitterFeed = (function () {
 
 			var contents = '<table class="table table-bordered">' +
 								'<thead><tr class="tweetsRow">' +
-										'<th><h4 style="margin-left: 25px;">My Recent Tweets</h4></th>' +
+										'<th><a href="https://twitter.com/wellers" target="_blank">'+
+                                        '<img style="width: 35px;" src="Content/images/twitter-bird-light-bgs.png" alt="twitter" />' +
+                                        '<h4 style="display: inline; vertical-align: middle;">My Recent Tweets</h4></a></th>' +
 								'</tr></thead>';
 			contents += '<tbody>' + output + '</tbody></table>';
 			$("#TwitterFeed").html(contents);
