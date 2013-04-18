@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Blog.Interfaces;
 using Blog.Interfaces.Models;
 using Blog.Models;
 
 namespace Blog.Data.Dao.Mock
 {
-    public class MockBlogEntryDao
+    public class MockBlogEntryDao : IDao<IBlogEntryModel>
     {
         #region Mock Blog Entries
         public static IBlogEntryModel Entry1 = new BlogEntryModel
