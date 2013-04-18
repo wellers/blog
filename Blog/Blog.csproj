@@ -121,9 +121,11 @@
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\custom.css" />
+    <Content Include="Content\images\grid.jpg" />
     <Content Include="Content\images\MCP_logo.png" />
     <Content Include="Content\images\MCTS_logo.png" />
     <Content Include="Content\images\profilepicture.jpg" />
+    <Content Include="Content\images\transparency-30.png" />
     <Content Include="Content\SyntaxHighlighter\shCore.css" />
     <Content Include="Content\SyntaxHighlighter\shCoreDefault.css" />
     <Content Include="Content\SyntaxHighlighter\shCoreDjango.css" />
