@@ -1,0 +1,34 @@
+﻿@using Blog.Core.Extensions;
+@using Blog.Models;
+@model PostRssViewModel
+@{
+    Layout = "~/Views/Shared/_RssLayout.cshtml";
+    Response.ContentType = "application/rss+xml";    
+}
+<channel>
+    <title>Prompt - Paul David Welbourne</title>
+    <link>http://@Request.Url.Host</link>
+    <description>Blog RSS feed for prompt.apphb.com</description>
+    <lastBuildDate>@Model.BlogEntries.First().PostedDate.ToUniversalTime().ToString("r") %></lastBuildDate>
+    <language>en-us</language>
+    @foreach (var b in Model.BlogEntries) 
+    { 
+        <item>
+        <title>@Html.Encode(b.Title)</title>
+        <link>http://@(Request.Url.Host)@Url.Action("BlogEntry", new
+                                        {
+                                            controller = "Home",
+                                            id = b.Key,
+                                            title = b.Title.RemoveSpecialCharacters().ToLower().Replace(" ", "-")
+                                        })</link>
+        <guid>http://@(Request.Url.Host)@Url.Action("BlogEntry", new 
+                                        { 
+                                            controller = "Home", 
+                                            id = b.Key, 
+                                            title = b.Title.RemoveSpecialCharacters().ToLower().Replace(" ","-")
+                                        })</guid>
+        <pubDate>@b.PostedDate.ToUniversalTime().ToString("r")</pubDate>
+        <description>@Html.Encode(b.Entry)</description>
+        </item>
+    }
+</channel>

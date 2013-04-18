@@ -99,5 +99,18 @@ namespace Blog.Controllers
 			}
 			return new RedirectResult("Index");
 		}
+
+        public ActionResult PostFeed(string type)
+        {
+            if (type.ToLower().Equals("rss"))
+            {
+                const int numberOfEntries = 5;
+                return View("PostRss", new PostRssViewModel { BlogEntries = _blogEntryRepository.GetTopMostRecentBlogEntries(numberOfEntries) });
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
 	}
 }

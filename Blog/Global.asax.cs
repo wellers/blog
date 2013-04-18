@@ -35,6 +35,8 @@ namespace Blog
             routes.MapRoute("About", "about", new { controller = "Home", action = "About" });
             routes.MapRoute("Contact", "contact", new { controller = "Home", action = "Contact" });
 
+            routes.MapRoute("PostFeed", "Feed/{type}", new { controller = "Home", action = "PostFeed", type = "rss" });
+
 			routes.MapRoute(
 				"Default",
 				"{controller}/{action}/{id}",
