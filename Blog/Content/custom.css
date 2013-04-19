@@ -46,3 +46,11 @@ a.disabled-link:hover { background-color:#d9d9d9 !important; color:#aaa !importa
 
 pre, pre.prettyprint { tab-size: 4; padding: 5px; margin: 18px 0 30px; border: 1px dashed #ccc; font-family: "Consolas",monospace;
                        overflow-x: scroll; word-break: normal; word-wrap: normal; background-color: #f3f3f3; display: block; white-space: pre; }
+.com { color: #008000; }
+.str, pre .tag { color: #A31515; }
+.kwd, .atv { color: #0000FF; }
+.typ { color: #2B91AF; }
+.lit { color: #000000; }
+.atn { color: #FF0000; }
+.pun, .pln { color: #000000; }
+.dec { color: purple; }
