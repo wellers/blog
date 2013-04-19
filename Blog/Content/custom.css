@@ -43,3 +43,6 @@ a.disabled-link:hover { background-color:#d9d9d9 !important; color:#aaa !importa
 .contactMe { margin-left: 30px; }
 
 .microsoftImg { display: inline; width: 95px; }
+
+pre, pre.prettyprint { tab-size: 4; padding: 5px; margin: 18px 0 30px; border: 1px dashed #ccc; font-family: "Consolas",monospace;
+                       overflow-x: scroll; word-break: normal; word-wrap: normal; background-color: #f3f3f3; display: block; white-space: pre; }

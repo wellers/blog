@@ -15,7 +15,7 @@
 .blogEntry { background-color: #f5f5f5; }
 .blogEntry hr { border: 1px solid #ddd; } 
 
-pre { background-color: #fff; }
+pre, pre.prettyprint { background-color: #fff; }
 
 @media (max-width: 979px)
 {
