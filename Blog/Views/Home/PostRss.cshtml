@@ -15,7 +15,7 @@
     @foreach (var b in Model.BlogEntries) 
     { 
         <item>
-        <title>@Html.Encode(b.Title)</title>
+        <title>@b.Title</title>
         <link>http://@(Request.Url.Host)@Url.Action("BlogEntry", new
                                         {
                                             controller = "Home",
@@ -29,7 +29,7 @@
                                             title = b.Title.RemoveSpecialCharacters().ToLower().Replace(" ","-")
                                         })</guid>
         <pubDate>@b.PostedDate.ToUniversalTime().ToString("r")</pubDate>
-        <description>@Html.Encode(b.Entry)</description>
+        <description>@b.Entry</description>
         </item>
     }
 </channel>
