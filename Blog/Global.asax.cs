@@ -26,7 +26,7 @@ namespace Blog
             routes.MapRoute("ArchiveByYear", "archive/{year}",
                 new { controller = "Home", action = "Archive", year = UrlParameter.Optional });
 			
-			routes.MapRoute("Post", "entry/{id}/{title}",
+			routes.MapRoute("Post", "posts/{id}/{title}",
                 new { controller = "Home", action = "BlogEntry", id = UrlParameter.Optional, title = UrlParameter.Optional });
 
 			routes.MapRoute("Tag", "tags/{tag}",
