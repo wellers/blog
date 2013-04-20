@@ -73,7 +73,7 @@
 							<li>@Html.ActionLink("About me", "About", new { area = "", controller = "Home" }, new { })</li>
 							<li>@Html.ActionLink("Contact me", "Contact", new { area = "", controller = "Home" }, new { })</li>							
 						</ul>
-						@{ Html.RenderPartial("SetTheme", new Blog.Models.SetThemeViewModel { Themes = new List<string> { "Dark", "Light", "Blue" } }); }
+						@{ Html.RenderPartial("SetTheme", new Blog.Models.SetThemeViewModel { Themes = new List<string> { "Dark", "Light" } }); }
 					</div>
 				</div>
 			</div>
