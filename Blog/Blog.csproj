@@ -186,7 +186,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\Dark\dark.css" />
-    <Content Include="Content\themes\Blue\blue.css" />
     <Content Include="Global.asax" />
     <Content Include="README.jQuery.vsdoc.txt" />
     <Content Include="Scripts\Bootstrap-Select\bootstrap-select.js" />
