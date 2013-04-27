@@ -105,6 +105,15 @@
 						</div>
 						@{ Html.RenderAction("Tags", new { area = "", controller = "Home" }); }
 						@{ Html.RenderAction("RecentPosts", new { area = "", controller = "Home" }); }
+                        <div id="StackOverflowProfile" class="well sidebar-nav">
+                            <p class="nav-header">Stack Overflow profile</p>
+                            <a href="http://stackoverflow.com/users/2099977/wellers">
+                                <img src="http://stackoverflow.com/users/flair/2099977.png" 
+                                    style="width: 200px;"
+                                    alt="no pic!" 
+                                    title="Profile for wellers at Stack Overflow, Q&amp;A for professional and enthusiast programmers" />
+                            </a>
+                        </div>
 						@{ Html.RenderPartial("TwitterFeed"); }
 					</div>
 				</div>
