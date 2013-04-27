@@ -2,11 +2,14 @@
 {
     .tags { min-height: 150px; }
 	.bootstrap-select ul { margin-left: 0px !important; }
+	.blogEntryFooterDate { display: block; float: none; width: 100%; }
+	
 }
 
 @media (max-width: 767px) 
 {
 	#footer { height: auto; }
+	#StackOverflowProfile { display: none; }
 	#TwitterFeed { display: none; }
 	.tags { display: none; }
 	.blogEntry img { height: auto !important; }

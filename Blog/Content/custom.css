@@ -35,6 +35,7 @@ a.disabled-link:hover { background-color:#d9d9d9 !important; color:#aaa !importa
 
 .contactImg  { width: 20px !important; padding-bottom: 10px; }
 .contactImg img { float: right; }
+.contactText { width: 100px; }
 
 .tags { overflow: auto; }
 .tag { width: 50px; margin-bottom: 10px; float: left; display: inline-block; }

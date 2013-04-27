@@ -41,7 +41,7 @@ var TwitterFeed = (function () {
 			+ username + '.json?callback=?&count=' + feedItemCount;
         $.getJSON(url, function (data) {
             var output = "";
-            for (var i = 0; i < feedItemCount; i++) {
+            for (var i = 0; i < data.length; i++) {
                 output += formatTweet(data[i], username);
             }
 
