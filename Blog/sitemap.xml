@@ -19,19 +19,19 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/entry/8/windows-8-virtual-machine-with-visual-studio-express-2012</loc>
+  <loc>http://prompt.apphb.com/posts/9/introduction-to-signalr</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/entry/7/appharbor-mspec-integration</loc>
+  <loc>http://prompt.apphb.com/posts/8/windows-8-virtual-machine-with-visual-studio-express-2012</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/entry/6/appharbor-canoe-plus-yocto</loc>
+  <loc>http://prompt.apphb.com/posts/7/appharbor-mspec-integration</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/entry/5/using-windows-powershell-to-perform-startup-tasks</loc>
+  <loc>http://prompt.apphb.com/posts/6/appharbor-canoe-plus-yocto</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
@@ -75,6 +75,10 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
+  <loc>http://prompt.apphb.com/tags/signalr</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
   <loc>http://prompt.apphb.com/tags/visualstudio2012</loc>
   <changefreq>weekly</changefreq>
 </url>
@@ -87,15 +91,19 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/entry/3/wcf-callbacks--part-2-the-client</loc>
+  <loc>http://prompt.apphb.com/posts/5/using-windows-powershell-to-perform-startup-tasks</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/entry/2/wcf-callbacks--simple-clientserver</loc>
+  <loc>http://prompt.apphb.com/posts/2/wcf-callbacks--simple-clientserver</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://prompt.apphb.com/entry/1/syntactic-sugar-one-lump-or-two</loc>
+  <loc>http://prompt.apphb.com/posts/3/wcf-callbacks--part-2-the-client</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://prompt.apphb.com/posts/1/syntactic-sugar-one-lump-or-two</loc>
   <changefreq>weekly</changefreq>
 </url>
 </urlset>
