@@ -9,6 +9,8 @@ p { text-align: justify; }
 
 .navbar-inverse .navbar-inner { background-image: linear-gradient(to bottom, #333333, #111111); }
 
+.nav-list { padding-right: 10px; }
+
 #footer { background-color: #ddd; height: 60px; }
 .container .credit { margin: 20px 20px; }
 
