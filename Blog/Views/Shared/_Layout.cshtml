@@ -98,10 +98,10 @@
                         </div>
 						<div class="well sidebar-nav">
 							<ul class="nav nav-list">
-								<li class="nav-header">Posts by month</li>
-                                <li>@Html.ActionLink("May (2013)", "Archive", new { controller = "Home", Year = 2013, Month = 5 })</li>
-								<li>@Html.ActionLink("April (2013)", "Archive", new { controller = "Home", Year = 2013, Month = 4 })</li>
-								<li>@Html.ActionLink("March (2013)", "Archive", new { controller = "Home", Year = 2013, Month = 3 })</li>
+								<li class="nav-header">Posts by month - 2013</li>
+                                <li>@Html.ActionLink("May", "Archive", new { controller = "Home", Year = 2013, Month = 5 })</li>
+								<li>@Html.ActionLink("April", "Archive", new { controller = "Home", Year = 2013, Month = 4 })</li>
+								<li>@Html.ActionLink("March", "Archive", new { controller = "Home", Year = 2013, Month = 3 })</li>
 							</ul>
 						</div>
 						@{ Html.RenderAction("Tags", new { area = "", controller = "Home" }); }
