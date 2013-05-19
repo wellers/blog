@@ -1,10 +1,13 @@
 ﻿@model Blog.Models.SetThemeViewModel
+<style type="text/css">
+    .bootstrap-select.btn-group { width: 80px; }
+</style>           
 @using (Html.BeginForm("SetTheme", "Home", FormMethod.Post, new { @class = "navbar-form pull-right" }))
 {
 	<span class="span2" style="margin-top: 10px; width: auto;">
 		@Html.Label("ChangeTheme", "Change your theme?")
 	</span>
-	<span class="span2">
+	<span class="span">
 		@Html.DropDownListFor(x => x.SelectedTheme, new SelectList(Model.Themes, Model.SelectedTheme), new { @class = "selectpicker span2", onchange = "this.form.submit();" })
 	</span>
 }
