@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
 using Blog.Controllers;
 using Blog.Interfaces.Models;
 using Blog.Interfaces.Repositories;
@@ -8,6 +7,7 @@ using Blog.Models;
 using Machine.Specifications;
 using Moq;
 using Blog.Data.Dao.Mock;
+using System.Web.Mvc;
 
 namespace Blog.Specs.Controllers
 {
