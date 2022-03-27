@@ -25,7 +25,7 @@ public int ID
 	}
 }
 
-// this can be simple rewritten to
+// this can be simply rewritten to
 public int ID
 {
 	get;

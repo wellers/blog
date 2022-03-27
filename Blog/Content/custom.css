@@ -11,6 +11,10 @@ p { text-align: justify; }
 
 .nav-list { padding-right: 10px; }
 
+.sidebar-nav { background-color: white; }
+
+.title { background-color: white; }
+
 #footer { background-color: #ddd; height: 60px; }
 .container .credit { margin: 20px 20px; }
 
@@ -44,6 +48,9 @@ a.disabled-link:hover { background-color:#d9d9d9 !important; color:#aaa !importa
 
 .aboutMe { margin-left: 30px; }
 .contactMe { margin-left: 30px; }
+
+.about-me { background-color: white; }
+.contact-me { background-color: white; }
 
 .microsoftImg { display: inline; width: 95px; }
 

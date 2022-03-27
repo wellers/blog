@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Blog.Interfaces.Models
 {
-	public interface IBlogEntryModel : IBaseModel
+    public interface IBlogEntryModel : IBaseModel
 	{
 		string Title { get; set; }
 		string Entry { get; set; }

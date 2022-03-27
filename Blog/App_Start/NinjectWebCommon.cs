@@ -5,20 +5,17 @@ using Blog.Interfaces.Repositories;
 
 namespace Blog.App_Start
 {
-	using System;
-	using System.Web;
-
-	using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-	using Ninject;
-	using Ninject.Web.Common;
     using Blog.Data;
+    using Blog.Data.Dao.Mock;
     using Blog.Interfaces;
     using Blog.Interfaces.Models;
-    using Blog.Data.Dao;
-    using Blog.Data.Dao.Mock;
+    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+    using Ninject;
+    using Ninject.Web.Common;
+    using System;
+    using System.Web;
 
-	public static class NinjectWebCommon 
+    public static class NinjectWebCommon 
 	{
 		private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 

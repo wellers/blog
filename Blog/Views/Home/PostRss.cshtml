@@ -17,17 +17,17 @@
         <item>
         <title>@b.Title</title>
         <link>http://@(Request.Url.Host)@Url.Action("BlogEntry", new
-                                        {
-                                            controller = "Home",
-                                            id = b.Key,
-                                            title = b.Title.RemoveSpecialCharacters().ToLower().Replace(" ", "-")
-                                        })</link>
-        <guid>http://@(Request.Url.Host)@Url.Action("BlogEntry", new 
-                                        { 
-                                            controller = "Home", 
-                                            id = b.Key, 
-                                            title = b.Title.RemoveSpecialCharacters().ToLower().Replace(" ","-")
-                                        })</guid>
+								   {
+									   controller = "Home",
+									   id = b.Key,
+									   title = b.Title.ToRouteTitle()
+								   })</link>
+        <guid>http://@(Request.Url.Host)@Url.Action("BlogEntry", new
+								   {
+									   controller = "Home",
+									   id = b.Key,
+									   title = b.Title.ToRouteTitle()
+								   })</guid>
         <pubDate>@b.PostedDate.ToUniversalTime().ToString("r")</pubDate>
         <description>@b.Entry</description>
         </item>
