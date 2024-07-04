@@ -4,16 +4,16 @@
 	<span class="span6" style="margin-left: 0px;">
 		<small><strong>Tags:&nbsp;</strong></small>
 		@foreach (var x in Model.Tags)
-        {
+		{
 			<span class="badge badge-info">@(x.Name)</span><text>&nbsp;</text>
-        }
-	</span>			
-    <div class="span3 blogEntryFooterDate">
-        <span>
-	        <small><strong>Posted:&nbsp;</strong></small>
-        </span>
-        <span>
-            <small>@Model.PostedDate.ToString("dd MMMM yyyy @ H:mm", new System.Globalization.CultureInfo("en-GB"))</small>
-        </span>
-    </div>
+		}
+	</span>
+	<div class="span3 blogEntryFooterDate">
+		<span>
+			<small><strong>Posted:&nbsp;</strong></small>
+		</span>
+		<span>
+			<small>@Model.PostedDate.ToString("dd MMMM yyyy @ H:mm", new System.Globalization.CultureInfo("en-GB"))</small>
+		</span>
+	</div>
 </div>
