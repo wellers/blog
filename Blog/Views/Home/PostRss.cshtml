@@ -2,34 +2,36 @@
 @using Blog.Models;
 @model PostRssViewModel
 @{
-    Layout = "~/Views/Shared/_RssLayout.cshtml";
-    Response.ContentType = "application/rss+xml";    
+	Layout = "~/Views/Shared/_RssLayout.cshtml";
+	Response.ContentType = "application/rss+xml";
 }
 <channel>
-    <atom:link href="http://prompt.apphb.com/feed/rss" rel="self" type="application/rss+xml" />
-    <title>Prompt - Paul David Welbourne</title>
-    <link>http://@Request.Url.Host</link>
-    <description>Blog RSS feed for prompt.apphb.com</description>
-    <lastBuildDate>@Model.BlogEntries.First().PostedDate.ToUniversalTime().ToString("r")</lastBuildDate>
-    <language>en-us</language>
-    @foreach (var b in Model.BlogEntries) 
-    { 
-        <item>
-	        <title>@b.Title</title>
-	        <link>http://@(Request.Url.Host)@Url.Action("BlogEntry", new
-									   {
-										   controller = "Home",
-										   id = b.Key,
-										   title = b.Title.ToRouteTitle()
-									   })</link>
-	        <guid>http://@(Request.Url.Host)@Url.Action("BlogEntry", new
-									   {
-										   controller = "Home",
-										   id = b.Key,
-										   title = b.Title.ToRouteTitle()
-									   })</guid>
-	        <pubDate>@b.PostedDate.ToUniversalTime().ToString("r")</pubDate>
-	        <description>@b.Entry</description>
-        </item>
-    }
+	<atom:link href="http://prompt.apphb.com/feed/rss" rel="self" type="application/rss+xml" />
+	<title>Prompt - Paul David Welbourne</title>
+	<link>http://@Request.Url.Host</link>
+	<description>Blog RSS feed for prompt.apphb.com</description>
+	<lastBuildDate>@Model.BlogEntries.First().PostedDate.ToUniversalTime().ToString("r")</lastBuildDate>
+	<language>en-us</language>
+	@foreach (var b in Model.BlogEntries)
+	{
+		<item>
+			<title>@b.Title</title>
+			<link>http://@(Request.Url.Host)@Url.Action("BlogEntry", new
+			{
+				controller = "Home",
+				id = b.Key,
+				title = b.Title.ToRouteTitle()
+			})</link>
+			<guid>
+				http://@(Request.Url.Host)@Url.Action("BlogEntry", new
+				{
+					controller = "Home",
+					id = b.Key,
+					title = b.Title.ToRouteTitle()
+				})
+			</guid>
+			<pubDate>@b.PostedDate.ToUniversalTime().ToString("r")</pubDate>
+			<description>@b.Entry</description>
+		</item>
+	}
 </channel>
