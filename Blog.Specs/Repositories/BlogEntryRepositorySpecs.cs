@@ -75,20 +75,6 @@ namespace Blog.Specs.Repositories
 		};
 	}
 
-	#region All
-	public class when_calling_All : BlogEntryRepositorySpecs
-	{
-		private static IQueryable<IBlogEntryModel> _actual;
-
-		Because of = () =>
-		{
-			_actual = Repository.All();
-		};
-
-		It should_contain_all_blog_entries = () => _actual.ShouldEqual(AllEntries);
-	}
-	#endregion
-
 	#region Get
 	public class when_calling_Get_for_a_blog_entry_that_exists : BlogEntryRepositorySpecs
 	{
@@ -108,17 +94,17 @@ namespace Blog.Specs.Repositories
 	#region GetBlogEntriesByMonthAndYear
 	public class when_calling_GetBlogEntriesByMonthAndYear : BlogEntryRepositorySpecs
 	{
-		private static IQueryable<IBlogEntryModel> _actual;
-		private static IQueryable<IBlogEntryModel> _expected;
+		private static IList<IBlogEntryModel> _actual;
+		private static IList<IBlogEntryModel> _expected;
 
-		Because of = () =>
+		private Because of = () =>
 		{
-			_expected = (new List<IBlogEntryModel>
+			_expected = new List<IBlogEntryModel>
 			{
 				AllEntries.ToList()[0],
 				AllEntries.ToList()[1],
 				AllEntries.ToList()[2]
-			}).AsQueryable();
+			};
 			_actual = Repository.GetBlogEntriesByMonthAndYear(DateTime.Now.Month, DateTime.Now.Year);
 		};
 
@@ -129,16 +115,16 @@ namespace Blog.Specs.Repositories
 	#region GetBlogEntriesByTag
 	public class when_calling_GetBlogEntriesByTag : BlogEntryRepositorySpecs
 	{
-		private static IQueryable<IBlogEntryModel> _actual;
-		private static IQueryable<IBlogEntryModel> _expected;
+		private static IList<IBlogEntryModel> _actual;
+		private static IList<IBlogEntryModel> _expected;
 
 		Because of = () =>
 		{
-			_expected = (new List<IBlogEntryModel>
+			_expected = new List<IBlogEntryModel>
 			{
 				AllEntries.ToList()[0],
 				AllEntries.ToList()[1],
-			}).AsQueryable();
+			};
 			_actual = Repository.GetBlogEntriesByTag("DOTNET");
 		};
 
@@ -165,18 +151,18 @@ namespace Blog.Specs.Repositories
 	#region GetTopMostRecentBlogEntries
 	public class when_calling_GetTopMostRecentBlogEntries : BlogEntryRepositorySpecs
 	{
-		private static IQueryable<IBlogEntryModel> _actual;
-		private static IQueryable<IBlogEntryModel> _expected;
+		private static IList<IBlogEntryModel> _actual;
+		private static IList<IBlogEntryModel> _expected;
 		private static int _expectedCount = 3;
 
 		Because of = () =>
 		{
-			_expected = (new List<IBlogEntryModel>
+			_expected = new List<IBlogEntryModel>
 			{
 				AllEntries.ToList()[0],
 				AllEntries.ToList()[1],
 				AllEntries.ToList()[2]
-			}).AsQueryable();
+			};
 			_actual = Repository.GetTopMostRecentBlogEntries(_expectedCount);
 		};
 

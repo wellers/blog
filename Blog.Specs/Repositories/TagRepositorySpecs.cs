@@ -38,16 +38,16 @@ namespace Blog.Specs.Repositories
 
 	public class when_requesting_All_tags : TagRepositorySpecs
 	{
-		private static IQueryable<ITagModel> _actual;
+		private static IList<ITagModel> _actual;
 
 		Because of = () =>
 		{
-			_actual = Repository.All();
+			_actual = Repository.GetAll();
 		};
 
 		Machine.Specifications.It should_return_all_tags = () =>
 		{
-			_actual.ShouldEqual(AllTags);
+			_actual.ShouldEqual(AllTags.ToList());
 		};
 	}
 }

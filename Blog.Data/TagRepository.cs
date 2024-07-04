@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Blog.Interfaces;
 using Blog.Interfaces.Models;
@@ -20,7 +21,12 @@ namespace Blog.Data
 			throw new NotImplementedException();
 		}
 
-		public IQueryable<ITagModel> All()
+		public IList<ITagModel> GetAll()
+		{
+			return All().OrderBy(t => t.Name).ToList();
+		}
+
+		private IQueryable<ITagModel> All()
 		{
 			return _tagDao.Get();
 		}

@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Blog.Data.Dao;
 using Blog.Interfaces;
 using Blog.Interfaces.Models;
 using Blog.Interfaces.Repositories;
@@ -9,9 +9,9 @@ namespace Blog.Data
 {
 	public class BlogEntryRepository : IBlogEntryRepository
 	{
-		private IDao<IBlogEntryModel> _blogEntryDao;
-		private IDao<ITagModel> _tagDao;
-		private IDao<IBlogEntryTagModel> _blogEntryTagDao;
+		private readonly IDao<IBlogEntryModel> _blogEntryDao;
+		private readonly IDao<ITagModel> _tagDao;
+		private readonly IDao<IBlogEntryTagModel> _blogEntryTagDao;
 
 		public BlogEntryRepository(IDao<IBlogEntryModel> blogEntryDao, IDao<ITagModel> tagDao, IDao<IBlogEntryTagModel> blogEntryTagDao)
 		{
@@ -20,7 +20,7 @@ namespace Blog.Data
 			_blogEntryTagDao = blogEntryTagDao;
 		}
 
-		public IQueryable<IBlogEntryModel> All()
+		private IQueryable<IBlogEntryModel> All()
 		{
 			return _blogEntryDao.Get();
 		}
@@ -30,24 +30,33 @@ namespace Blog.Data
 			return All().SingleOrDefault(b => b.Key == id);
 		}
 
-		public IQueryable<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year)
+		public IList<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year)
 		{
-			return All().Where(b => b.PostedDate.Month == month && b.PostedDate.Year == year);
+			return All()
+				.Where(b => b.PostedDate.Month == month && b.PostedDate.Year == year)
+				.OrderByDescending(c => c.PostedDate)
+				.ToList();
 		}
 
-		public IQueryable<IBlogEntryModel> GetBlogEntriesByYear(int year)
+		public IList<IBlogEntryModel> GetBlogEntriesByYear(int year)
 		{
-			return All().Where(b => b.PostedDate.Year == year);
+			return All()
+				.Where(b => b.PostedDate.Year == year)
+				.OrderByDescending(c => c.PostedDate)
+				.ToList();
 		}
 
-		public IQueryable<IBlogEntryModel> GetBlogEntriesByTag(string tag)
+		public IList<IBlogEntryModel> GetBlogEntriesByTag(string tag)
 		{
 			if (string.IsNullOrEmpty(tag))
-				throw new ArgumentException("Cannot be null or empty", "tag");
+				throw new ArgumentException("Cannot be null or empty", nameof(tag));
 
-			var tagID = _tagDao.Get().Where(x => x.LookupID == tag).Select(y => y.Key).Single();
-			var blogEntryKeys = _blogEntryTagDao.Get().Where(b => b.TagKey == tagID).Select(c => c.BlogEntryKey).ToList();
-			return All().Where(x => blogEntryKeys.Contains(x.Key));
+			var tagId = _tagDao.Get().Where(x => x.LookupID == tag).Select(y => y.Key).Single();
+			var blogEntryKeys = _blogEntryTagDao.Get().Where(b => b.TagKey == tagId).Select(c => c.BlogEntryKey).ToList();
+			return All()
+				.Where(x => blogEntryKeys.Contains(x.Key))
+				.OrderByDescending(x => x.PostedDate)
+				.ToList();
 		}
 
 		public IBlogEntryModel GetMostRecentBlogEntry()
@@ -57,9 +66,9 @@ namespace Blog.Data
 		}
 
 
-		public IQueryable<IBlogEntryModel> GetTopMostRecentBlogEntries(int numberOfEntries)
+		public IList<IBlogEntryModel> GetTopMostRecentBlogEntries(int numberOfEntries)
 		{
-			return All().OrderByDescending(b => b.PostedDate).Take(numberOfEntries);
+			return All().OrderByDescending(b => b.PostedDate).Take(numberOfEntries).ToList();
 		}
 	}
 }

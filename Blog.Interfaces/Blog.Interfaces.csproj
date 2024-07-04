@@ -55,6 +55,12 @@
     <Compile Include="Repositories\IBlogEntryRepository.cs" />
     <Compile Include="Repositories\ITagRepository.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Blog.Data.CodeFirst\Blog.Data.CodeFirst.csproj">
+      <Project>{df32f651-4d79-47ca-bbf8-02d2e4507405}</Project>
+      <Name>Blog.Data.CodeFirst</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

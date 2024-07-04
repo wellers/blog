@@ -41,7 +41,7 @@ namespace Blog.Specs.Controllers
 							MockBlogEntryDao.Entry2,
 							MockBlogEntryDao.Entry3,
 							MockBlogEntryDao.Entry4
-						}.AsQueryable();
+						};
 			_expected = entries.ToList();
 
 			BlogEntryRepository.Setup(x => x.GetTopMostRecentBlogEntries(Moq.It.IsAny<int>())).Returns(entries);
@@ -80,7 +80,7 @@ namespace Blog.Specs.Controllers
 						{
 							MockBlogEntryDao.Entry1, //mocked entries that are always set to this year
 						    MockBlogEntryDao.Entry2
-						}.AsQueryable();
+						};
 			_expected = entries.ToList();
 
 			BlogEntryRepository.Setup(x => x.GetBlogEntriesByMonthAndYear(Moq.It.IsAny<int>(), Moq.It.IsAny<int>())).Returns(entries);
@@ -117,12 +117,12 @@ namespace Blog.Specs.Controllers
 						{
 							MockBlogEntryDao.Entry1, //mocked entries that are always set to this year
 						    MockBlogEntryDao.Entry2
-						}.AsQueryable();
+						};
 			_expected = entries.ToList();
 
 			BlogEntryRepository.Setup(x => x.GetMostRecentBlogEntry()).Returns(MockBlogEntryDao.Entry1);
 
-			IQueryable<IBlogEntryModel> response = new List<IBlogEntryModel>().AsQueryable();
+			var response = new List<IBlogEntryModel>();
 			BlogEntryRepository.Setup(x => x.GetBlogEntriesByMonthAndYear(Moq.It.IsAny<int>(), Moq.It.IsAny<int>()))
 				.Returns(() => response) // setup first call to respond with an empty collection and callback to set response for the second call
 				.Callback(() => response = entries);
@@ -221,7 +221,7 @@ namespace Blog.Specs.Controllers
 
 		Establish context = () =>
 		{
-			var entries = new List<IBlogEntryModel> { MockBlogEntryDao.Entry1 }.AsQueryable();
+			var entries = new List<IBlogEntryModel> { MockBlogEntryDao.Entry1 };
 			_expected = entries.ToList();
 			BlogEntryRepository.Setup(x => x.GetBlogEntriesByTag(Moq.It.IsAny<string>())).Returns(entries);
 		};
@@ -253,7 +253,7 @@ namespace Blog.Specs.Controllers
 
 		Establish context = () =>
 		{
-			var entries = new List<IBlogEntryModel>().AsQueryable();
+			var entries = new List<IBlogEntryModel>();
 			_expected = entries.ToList();
 			BlogEntryRepository.Setup(x => x.GetBlogEntriesByTag(Moq.It.IsAny<string>())).Returns(entries);
 		};
@@ -319,9 +319,9 @@ namespace Blog.Specs.Controllers
 							MockTagDao.Tag4,
 							MockTagDao.Tag5,
 							MockTagDao.Tag6
-						}.AsQueryable().OrderBy(x => x.Name);
+						};
 			_expected = tags.ToList();
-			TagRepository.Setup(x => x.All()).Returns(tags);
+			TagRepository.Setup(x => x.GetAll()).Returns(tags);
 		};
 
 		Because of = () =>

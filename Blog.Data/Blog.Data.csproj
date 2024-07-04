@@ -64,6 +64,10 @@
     <Compile Include="TagRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Blog.Data.CodeFirst\Blog.Data.CodeFirst.csproj">
+      <Project>{df32f651-4d79-47ca-bbf8-02d2e4507405}</Project>
+      <Name>Blog.Data.CodeFirst</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blog.Data.Dao\Blog.Data.Dao.csproj">
       <Project>{FC87CBA0-34BC-480D-925D-92B518CCA4DA}</Project>
       <Name>Blog.Data.Dao</Name>

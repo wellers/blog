@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Blog.Interfaces.Repositories;
 using Blog.Models;
-using Blog.Interfaces.Models;
-using System.Collections.Generic;
 
 namespace Blog.Controllers
 {
@@ -23,32 +20,24 @@ namespace Blog.Controllers
 		public ActionResult Index()
 		{
 			const int numberOfEntries = 4;
-			var entries = _blogEntryRepository.GetTopMostRecentBlogEntries(numberOfEntries).ToList();
+			var entries = _blogEntryRepository.GetTopMostRecentBlogEntries(numberOfEntries);
 
 			return View(new HomeViewModel { BlogEntries = entries });
 		}
 
 		public ActionResult Archive(int year, int? month)
 		{
-			List<IBlogEntryModel> entries;
-			if (month.HasValue)
-			{
-				entries = _blogEntryRepository.GetBlogEntriesByMonthAndYear((int)month, year)
-												.OrderByDescending(c => c.PostedDate).ToList();
-			}
-			else
-			{
-				entries = _blogEntryRepository.GetBlogEntriesByYear(year)
-												.OrderByDescending(c => c.PostedDate).ToList();
-			}
+			var entries = month.HasValue 
+				? _blogEntryRepository.GetBlogEntriesByMonthAndYear((int)month, year) 
+				: _blogEntryRepository.GetBlogEntriesByYear(year);
 
-			if (entries.Count == 0)
-			{
-				DateTime mostRecentPostDate = _blogEntryRepository.GetMostRecentBlogEntry().PostedDate;
+			if (entries.Count != 0) 
+				return View("Index", new HomeViewModel { BlogEntries = entries });
+			
+			var mostRecentPostDate = _blogEntryRepository.GetMostRecentBlogEntry().PostedDate;
 
-				entries = _blogEntryRepository.GetBlogEntriesByMonthAndYear(mostRecentPostDate.Month, mostRecentPostDate.Year)
-											.OrderByDescending(c => c.PostedDate).ToList();
-			}
+			entries = _blogEntryRepository.GetBlogEntriesByMonthAndYear(mostRecentPostDate.Month, mostRecentPostDate.Year);
+
 			return View("Index", new HomeViewModel { BlogEntries = entries });
 		}
 
@@ -60,8 +49,8 @@ namespace Blog.Controllers
 
 		public ActionResult Tag(string tag)
 		{
-			var entries = _blogEntryRepository.GetBlogEntriesByTag(tag)
-							.OrderByDescending(x => x.PostedDate).ToList();
+			var entries = _blogEntryRepository.GetBlogEntriesByTag(tag);
+			
 			return View("Index", new HomeViewModel { BlogEntries = entries });
 		}
 
@@ -78,39 +67,36 @@ namespace Blog.Controllers
 		public ActionResult RecentPosts()
 		{
 			const int numberOfEntries = 5;
-			var entries = _blogEntryRepository.GetTopMostRecentBlogEntries(numberOfEntries).ToList();
+			var entries = _blogEntryRepository.GetTopMostRecentBlogEntries(numberOfEntries);
 
 			return PartialView("RecentPosts", entries);
 		}
 
 		public ActionResult Tags()
 		{
-			var allTags = _tagRepository.All().OrderBy(t => t.Name).ToList();
+			var allTags = _tagRepository.GetAll();
+			
 			return PartialView("Tags", new TagsViewModel { Tags = allTags });
 		}
 
 		public ActionResult SetTheme(SetThemeViewModel model)
 		{
 			var cookie = new HttpCookie("PromptTheme", model.SelectedTheme) { Expires = DateTime.Now.AddYears(1) };
+			
 			Response.Cookies.Add(cookie);
-			if (Request.UrlReferrer != null)
-			{
-				return new RedirectResult(Request.UrlReferrer.ToString());
-			}
-			return new RedirectResult("Index");
+			
+			return Request.UrlReferrer != null 
+				? new RedirectResult(Request.UrlReferrer.ToString()) 
+				: new RedirectResult("Index");
 		}
 
 		public ActionResult PostFeed(string type)
 		{
-			if (type.ToLower().Equals("rss"))
-			{
-				const int numberOfEntries = 5;
-				return View("PostRss", new PostRssViewModel { BlogEntries = _blogEntryRepository.GetTopMostRecentBlogEntries(numberOfEntries) });
-			}
-			else
-			{
+			if (!type.ToLower().Equals("rss")) 
 				return RedirectToAction("Index");
-			}
+			
+			const int numberOfEntries = 5;
+			return View("PostRss", new PostRssViewModel { BlogEntries = _blogEntryRepository.GetTopMostRecentBlogEntries(numberOfEntries) });
 		}
 	}
 }

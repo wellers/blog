@@ -1,14 +1,14 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 using Blog.Interfaces.Models;
 
 namespace Blog.Interfaces.Repositories
 {
 	public interface IBlogEntryRepository : IBaseRepository<IBlogEntryModel>
 	{
-		IQueryable<IBlogEntryModel> GetBlogEntriesByYear(int year);
-		IQueryable<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year);
-		IQueryable<IBlogEntryModel> GetBlogEntriesByTag(string tag);
+		IList<IBlogEntryModel> GetBlogEntriesByYear(int year);
+		IList<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year);
+		IList<IBlogEntryModel> GetBlogEntriesByTag(string tag);
 		IBlogEntryModel GetMostRecentBlogEntry();
-		IQueryable<IBlogEntryModel> GetTopMostRecentBlogEntries(int numberOfEntries);
+		IList<IBlogEntryModel> GetTopMostRecentBlogEntries(int numberOfEntries);
 	}
 }
