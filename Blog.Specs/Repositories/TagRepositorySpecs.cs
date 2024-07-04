@@ -10,16 +10,16 @@ using Moq;
 
 namespace Blog.Specs.Repositories
 {
-    [Subject("TagRepository")]
-    public class TagRepositorySpecs
-    {
-        protected static ITagRepository Repository;
-        protected static Mock<IDao<ITagModel>> TagDao;
-        protected static IQueryable<ITagModel> AllTags;
+	[Subject("TagRepository")]
+	public class TagRepositorySpecs
+	{
+		protected static ITagRepository Repository;
+		protected static Mock<IDao<ITagModel>> TagDao;
+		protected static IQueryable<ITagModel> AllTags;
 
-        Establish context = () =>
-        {
-            AllTags = new List<ITagModel>
+		Establish context = () =>
+		{
+			AllTags = new List<ITagModel>
 						{
 							MockTagDao.Tag1,
 							MockTagDao.Tag2,
@@ -29,25 +29,25 @@ namespace Blog.Specs.Repositories
 							MockTagDao.Tag6
 						}.AsQueryable();
 
-            TagDao = new Mock<IDao<ITagModel>>();
-            TagDao.Setup(x => x.Get()).Returns(AllTags);
+			TagDao = new Mock<IDao<ITagModel>>();
+			TagDao.Setup(x => x.Get()).Returns(AllTags);
 
-            Repository = new TagRepository(TagDao.Object);
-        };
-    }
+			Repository = new TagRepository(TagDao.Object);
+		};
+	}
 
-    public class when_requesting_All_tags : TagRepositorySpecs
-    {
-        private static IQueryable<ITagModel> _actual;
+	public class when_requesting_All_tags : TagRepositorySpecs
+	{
+		private static IQueryable<ITagModel> _actual;
 
-        Because of = () =>
-        {
-            _actual = Repository.All();
-        };
+		Because of = () =>
+		{
+			_actual = Repository.All();
+		};
 
-        Machine.Specifications.It should_return_all_tags = () =>
-        {
-            _actual.ShouldEqual(AllTags);
-        };
-    }
+		Machine.Specifications.It should_return_all_tags = () =>
+		{
+			_actual.ShouldEqual(AllTags);
+		};
+	}
 }

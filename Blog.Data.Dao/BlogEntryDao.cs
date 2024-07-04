@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Blog.Data.CodeFirst.Persistence;
 using Blog.Interfaces;
 using Blog.Interfaces.Models;
@@ -19,7 +18,7 @@ namespace Blog.Data.Dao
 				Title = b.Title,
 				Entry = b.Entry,
 				PostedDate = b.PostedDate,
-				Tags  = b.BlogEntryTags.Where(x => x.BlogEntryId == b.Id)
+				Tags = b.BlogEntryTags.Where(x => x.BlogEntryId == b.Id)
 							.Select(y => y.Tag)
 							.Select(z => new TagModel
 							{

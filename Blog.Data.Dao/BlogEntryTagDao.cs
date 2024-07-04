@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Blog.Data.CodeFirst.Models;
+﻿using System.Linq;
 using Blog.Data.CodeFirst.Persistence;
 using Blog.Interfaces;
 using Blog.Interfaces.Models;
@@ -17,11 +13,11 @@ namespace Blog.Data.Dao
 		public IQueryable<IBlogEntryTagModel> Get()
 		{
 			return _context.BlogEntryTags.Select(x => new BlogEntryTagModel
-														{
-															Key = x.Id,
-															BlogEntryKey = x.BlogEntryId,
-															TagKey = x.TagId
-														});
+			{
+				Key = x.Id,
+				BlogEntryKey = x.BlogEntryId,
+				TagKey = x.TagId
+			});
 		}
 	}
 }

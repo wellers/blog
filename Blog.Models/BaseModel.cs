@@ -14,7 +14,7 @@ namespace Blog.Models
 		{
 			get { throw new NotImplementedException(); }
 		}
-		
+
 		#endregion
 
 		#region IHaveTableName Members

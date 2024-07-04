@@ -13,9 +13,9 @@ using Blog.Data.Dao.Mock;
 
 namespace Blog.Specs.Repositories
 {
-    [Subject("BlogEntryRepository")]
+	[Subject("BlogEntryRepository")]
 	public class BlogEntryRepositorySpecs
-	{        
+	{
 		protected static IBlogEntryRepository Repository;
 		protected static Mock<IDao<IBlogEntryModel>> BlogEntryDao;
 		protected static Mock<IDao<ITagModel>> TagDao;
@@ -113,11 +113,11 @@ namespace Blog.Specs.Repositories
 
 		Because of = () =>
 		{
-			_expected = (new List<IBlogEntryModel> 
-			{ 
-				AllEntries.ToList()[0], 
-				AllEntries.ToList()[1], 
-				AllEntries.ToList()[2] 
+			_expected = (new List<IBlogEntryModel>
+			{
+				AllEntries.ToList()[0],
+				AllEntries.ToList()[1],
+				AllEntries.ToList()[2]
 			}).AsQueryable();
 			_actual = Repository.GetBlogEntriesByMonthAndYear(DateTime.Now.Month, DateTime.Now.Year);
 		};
@@ -134,10 +134,10 @@ namespace Blog.Specs.Repositories
 
 		Because of = () =>
 		{
-			_expected = (new List<IBlogEntryModel> 
-			{ 
-				AllEntries.ToList()[0], 
-				AllEntries.ToList()[1], 
+			_expected = (new List<IBlogEntryModel>
+			{
+				AllEntries.ToList()[0],
+				AllEntries.ToList()[1],
 			}).AsQueryable();
 			_actual = Repository.GetBlogEntriesByTag("DOTNET");
 		};
@@ -171,11 +171,11 @@ namespace Blog.Specs.Repositories
 
 		Because of = () =>
 		{
-			_expected = (new List<IBlogEntryModel> 
-			{ 
-				AllEntries.ToList()[0], 
-				AllEntries.ToList()[1], 
-				AllEntries.ToList()[2] 
+			_expected = (new List<IBlogEntryModel>
+			{
+				AllEntries.ToList()[0],
+				AllEntries.ToList()[1],
+				AllEntries.ToList()[2]
 			}).AsQueryable();
 			_actual = Repository.GetTopMostRecentBlogEntries(_expectedCount);
 		};

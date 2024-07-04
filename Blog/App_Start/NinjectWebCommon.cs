@@ -5,30 +5,30 @@ using Blog.Interfaces.Repositories;
 
 namespace Blog.App_Start
 {
-    using Blog.Data;
-    using Blog.Data.Dao.Mock;
-    using Blog.Interfaces;
-    using Blog.Interfaces.Models;
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-    using Ninject;
-    using Ninject.Web.Common;
-    using System;
-    using System.Web;
+	using Blog.Data;
+	using Blog.Data.Dao.Mock;
+	using Blog.Interfaces;
+	using Blog.Interfaces.Models;
+	using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+	using Ninject;
+	using Ninject.Web.Common;
+	using System;
+	using System.Web;
 
-    public static class NinjectWebCommon 
+	public static class NinjectWebCommon
 	{
 		private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
 		/// <summary>
 		/// Starts the application
 		/// </summary>
-		public static void Start() 
+		public static void Start()
 		{
 			DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
 			DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
 			bootstrapper.Initialize(CreateKernel);
 		}
-		
+
 		/// <summary>
 		/// Stops the application.
 		/// </summary>
@@ -36,7 +36,7 @@ namespace Blog.App_Start
 		{
 			bootstrapper.ShutDown();
 		}
-		
+
 		/// <summary>
 		/// Creates the kernel that will manage your application.
 		/// </summary>
@@ -46,7 +46,7 @@ namespace Blog.App_Start
 			var kernel = new StandardKernel();
 			kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
 			kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-			
+
 			RegisterServices(kernel);
 			return kernel;
 		}
@@ -58,16 +58,16 @@ namespace Blog.App_Start
 		private static void RegisterServices(IKernel kernel)
 		{
 #if DEBUG
-            kernel.Bind<IDao<IBlogEntryModel>>().To<MockBlogEntryDao>();
-            kernel.Bind<IDao<ITagModel>>().To<MockTagDao>();
-            kernel.Bind<IDao<IBlogEntryTagModel>>().To<MockBlogEntryTagDao>();
+			kernel.Bind<IDao<IBlogEntryModel>>().To<MockBlogEntryDao>();
+			kernel.Bind<IDao<ITagModel>>().To<MockTagDao>();
+			kernel.Bind<IDao<IBlogEntryTagModel>>().To<MockBlogEntryTagDao>();
 #else
             kernel.Bind<IDao<IBlogEntryModel>>().To<BlogEntryDao>();
             kernel.Bind<IDao<ITagModel>>().To<TagDao>();
             kernel.Bind<IDao<IBlogEntryTagModel>>().To<BlogEntryTagDao>();
 #endif
-            kernel.Bind<IBlogEntryRepository>().To<BlogEntryRepository>();
-            kernel.Bind<ITagRepository>().To<TagRepository>();
-        }        
+			kernel.Bind<IBlogEntryRepository>().To<BlogEntryRepository>();
+			kernel.Bind<ITagRepository>().To<TagRepository>();
+		}
 	}
 }

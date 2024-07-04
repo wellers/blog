@@ -9,16 +9,16 @@ namespace Blog.Data
 {
 	public class BlogEntryRepository : IBlogEntryRepository
 	{
-        private IDao<IBlogEntryModel> _blogEntryDao;
+		private IDao<IBlogEntryModel> _blogEntryDao;
 		private IDao<ITagModel> _tagDao;
 		private IDao<IBlogEntryTagModel> _blogEntryTagDao;
-        
-        public BlogEntryRepository(IDao<IBlogEntryModel> blogEntryDao, IDao<ITagModel> tagDao, IDao<IBlogEntryTagModel> blogEntryTagDao)
-        {
-            _blogEntryDao = blogEntryDao;
-            _tagDao = tagDao;
-            _blogEntryTagDao = blogEntryTagDao;
-        }
+
+		public BlogEntryRepository(IDao<IBlogEntryModel> blogEntryDao, IDao<ITagModel> tagDao, IDao<IBlogEntryTagModel> blogEntryTagDao)
+		{
+			_blogEntryDao = blogEntryDao;
+			_tagDao = tagDao;
+			_blogEntryTagDao = blogEntryTagDao;
+		}
 
 		public IQueryable<IBlogEntryModel> All()
 		{
@@ -35,10 +35,10 @@ namespace Blog.Data
 			return All().Where(b => b.PostedDate.Month == month && b.PostedDate.Year == year);
 		}
 
-        public IQueryable<IBlogEntryModel> GetBlogEntriesByYear(int year)
-        {
-            return All().Where(b => b.PostedDate.Year == year);
-        }
+		public IQueryable<IBlogEntryModel> GetBlogEntriesByYear(int year)
+		{
+			return All().Where(b => b.PostedDate.Year == year);
+		}
 
 		public IQueryable<IBlogEntryModel> GetBlogEntriesByTag(string tag)
 		{
@@ -60,6 +60,6 @@ namespace Blog.Data
 		public IQueryable<IBlogEntryModel> GetTopMostRecentBlogEntries(int numberOfEntries)
 		{
 			return All().OrderByDescending(b => b.PostedDate).Take(numberOfEntries);
-		}	
+		}
 	}
 }

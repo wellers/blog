@@ -8,8 +8,8 @@ using It = Machine.Specifications.It;
 
 namespace Blog.Specs.Controllers
 {
-    [Subject("ErrorController")]
-	public class ErrorControllerSpecs 
+	[Subject("ErrorController")]
+	public class ErrorControllerSpecs
 	{
 		protected static ActionResult Result;
 		protected static Mock<ControllerContext> ControllerContext;
@@ -22,9 +22,9 @@ namespace Blog.Specs.Controllers
 			HttpResponse = new Mock<HttpResponseBase>();
 			ControllerContext.SetupGet(cc => cc.HttpContext.Response).Returns(HttpResponse.Object);
 			Controller = new ErrorController
-							 {
-								 ControllerContext = ControllerContext.Object
-							 };
+			{
+				ControllerContext = ControllerContext.Object
+			};
 		};
 	}
 

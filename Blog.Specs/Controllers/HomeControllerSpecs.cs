@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace Blog.Specs.Controllers
 {
-    [Subject("HomeController")]
+	[Subject("HomeController")]
 	public class HomeControllerSpecs
 	{
 		protected static ActionResult Result;
@@ -36,18 +36,18 @@ namespace Blog.Specs.Controllers
 		Establish context = () =>
 		{
 			var entries = new List<IBlogEntryModel>
-					    {
-						    MockBlogEntryDao.Entry1,
-						    MockBlogEntryDao.Entry2,
-						    MockBlogEntryDao.Entry3,
-						    MockBlogEntryDao.Entry4
-					    }.AsQueryable();
+						{
+							MockBlogEntryDao.Entry1,
+							MockBlogEntryDao.Entry2,
+							MockBlogEntryDao.Entry3,
+							MockBlogEntryDao.Entry4
+						}.AsQueryable();
 			_expected = entries.ToList();
 
 			BlogEntryRepository.Setup(x => x.GetTopMostRecentBlogEntries(Moq.It.IsAny<int>())).Returns(entries);
 		};
 
-		Because of = () => 
+		Because of = () =>
 		{
 			Result = Controller.Index();
 		};
@@ -57,13 +57,13 @@ namespace Blog.Specs.Controllers
 		Machine.Specifications.It should_return_home_view_model = () =>
 		{
 			var actual = (ViewResult)Result;
-			actual.Model.ShouldBeOfType(typeof (HomeViewModel));
+			actual.Model.ShouldBeOfType(typeof(HomeViewModel));
 		};
 
 		Machine.Specifications.It should_return_expected_entries = () =>
 		{
 			var actual = (ViewResult)Result;
-			var model = (HomeViewModel) actual.Model;
+			var model = (HomeViewModel)actual.Model;
 			model.BlogEntries.ShouldEqual(_expected);
 		};
 	}
@@ -77,10 +77,10 @@ namespace Blog.Specs.Controllers
 		Establish context = () =>
 		{
 			var entries = new List<IBlogEntryModel>
-					    {
-						    MockBlogEntryDao.Entry1, //mocked entries that are always set to this year
+						{
+							MockBlogEntryDao.Entry1, //mocked entries that are always set to this year
 						    MockBlogEntryDao.Entry2
-					    }.AsQueryable();
+						}.AsQueryable();
 			_expected = entries.ToList();
 
 			BlogEntryRepository.Setup(x => x.GetBlogEntriesByMonthAndYear(Moq.It.IsAny<int>(), Moq.It.IsAny<int>())).Returns(entries);
@@ -114,10 +114,10 @@ namespace Blog.Specs.Controllers
 		Establish context = () =>
 		{
 			var entries = new List<IBlogEntryModel>
-					    {
-						    MockBlogEntryDao.Entry1, //mocked entries that are always set to this year
+						{
+							MockBlogEntryDao.Entry1, //mocked entries that are always set to this year
 						    MockBlogEntryDao.Entry2
-					    }.AsQueryable();
+						}.AsQueryable();
 			_expected = entries.ToList();
 
 			BlogEntryRepository.Setup(x => x.GetMostRecentBlogEntry()).Returns(MockBlogEntryDao.Entry1);
@@ -157,7 +157,7 @@ namespace Blog.Specs.Controllers
 
 		Establish context = () =>
 		{
-            _expected = MockBlogEntryDao.Entry1;
+			_expected = MockBlogEntryDao.Entry1;
 			BlogEntryRepository.Setup(x => x.Get(Moq.It.IsAny<int>())).Returns(_expected);
 		};
 
@@ -221,7 +221,7 @@ namespace Blog.Specs.Controllers
 
 		Establish context = () =>
 		{
-            var entries = new List<IBlogEntryModel> { MockBlogEntryDao.Entry1 }.AsQueryable();
+			var entries = new List<IBlogEntryModel> { MockBlogEntryDao.Entry1 }.AsQueryable();
 			_expected = entries.ToList();
 			BlogEntryRepository.Setup(x => x.GetBlogEntriesByTag(Moq.It.IsAny<string>())).Returns(entries);
 		};
@@ -311,14 +311,14 @@ namespace Blog.Specs.Controllers
 
 		Establish context = () =>
 		{
-			var tags = new List<ITagModel> 
+			var tags = new List<ITagModel>
 						{
 							MockTagDao.Tag1,
 							MockTagDao.Tag2,
 							MockTagDao.Tag3,
 							MockTagDao.Tag4,
 							MockTagDao.Tag5,
-							MockTagDao.Tag6 
+							MockTagDao.Tag6
 						}.AsQueryable().OrderBy(x => x.Name);
 			_expected = tags.ToList();
 			TagRepository.Setup(x => x.All()).Returns(tags);

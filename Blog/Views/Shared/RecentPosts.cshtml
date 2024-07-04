@@ -3,15 +3,16 @@
 @model List<IBlogEntryModel>
 <div class="well sidebar-nav">
 	<div class="nav-header">Recent posts</div>
-    <ul class="nav nav-pills nav-stacked">
+	<ul class="nav nav-pills nav-stacked">
 		@foreach (var b in Model)
-		{ 
+		{
 			<li>
-				@Html.ActionLink(b.Title, "BlogEntry", new { 
-                    controller = "Home", 
-                    id = b.Key, 
-                    title = b.Title.RemoveSpecialCharacters().ToLower().Replace(" ","-") 
-                })
+				@Html.ActionLink(b.Title, "BlogEntry", new
+				{
+					controller = "Home",
+					id = b.Key,
+					title = b.Title.RemoveSpecialCharacters().ToLower().Replace(" ", "-")
+				})
 			</li>
 		}
 	</ul>

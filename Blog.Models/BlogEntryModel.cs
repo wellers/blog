@@ -9,6 +9,6 @@ namespace Blog.Models
 		public string Title { get; set; }
 		public string Entry { get; set; }
 		public DateTime PostedDate { get; set; }
-        public IQueryable<ITagModel> Tags { get; set; }
-    }
+		public IQueryable<ITagModel> Tags { get; set; }
+	}
 }

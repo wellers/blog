@@ -1,145 +1,147 @@
 ﻿<!DOCTYPE html>
 <html>
-	<head>
-		<title>@(ViewBag.Title) - Paul David Welbourne</title>
-		<meta charset="utf-8" />
-		<meta name="google-site-verification" content="-t3MR8WrwLcdCOcsoFpscJwugK2WHCRfreO7BubgrdM" />
+<head>
+	<title>@(ViewBag.Title) - Paul David Welbourne</title>
+	<meta charset="utf-8" />
+	<meta name="google-site-verification" content="-t3MR8WrwLcdCOcsoFpscJwugK2WHCRfreO7BubgrdM" />
 
-		<meta name="title" content="Prompt" />
-		<meta name="description" 
-			  content="Welcome to the whimsical meanderings of a North-West UK based Dot Net developer. 
+	<meta name="title" content="Prompt" />
+	<meta name="description"
+		  content="Welcome to the whimsical meanderings of a North-West UK based Dot Net developer.
 			  Major areas of focus include: C#, ASP.NET MVC, Razor, JavaScript, JQuery, and many more..." />
-		<meta name="keywords" content="C#, ASP.NET MVC, Razor, JavaScript, JQuery" />
-		<meta name="author" content="Paul David Welbourne" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="shortcut icon" href="@Url.Content("~/Content/Images/favicon.ico")" type="image/ico" />
+	<meta name="keywords" content="C#, ASP.NET MVC, Razor, JavaScript, JQuery" />
+	<meta name="author" content="Paul David Welbourne" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="shortcut icon" href="@Url.Content("~/Content/Images/favicon.ico")" type="image/ico" />
 
-		<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
-		<style type="text/css">
-			body { padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */ }
-		</style>
-
-		<link href="@Url.Content("~/Content/google-code-prettify/prettify.css")" rel="stylesheet" type="text/css" />
-		<link href="@Url.Content("~/Content/Bootstrap-Select/bootstrap-select.min.css")" rel="stylesheet" type="text/css" />
-
-		<link href="@Url.Content("~/Content/custom.css")" rel="stylesheet" type="text/css" />        
-		<link href="@Url.Content("~/Content/bootstrap-responsive-mod.min.css")" rel="stylesheet" type="text/css" />
-        <link href="@Url.Content("~/Content/custom-responsive.css")" rel="stylesheet" type="text/css" />
-        
-        @{
-			// TODO : Shift this logic to a HtmlHelper
-			var cookie = Request.Cookies["PromptTheme"];
-			var theme = cookie == null ? "Light" : cookie.Value;
-			if (theme == "Dark")
-			{
-				<link href="@Url.Content("~/Content/Themes/Dark/dark.css")" rel="stylesheet" type="text/css" />
-			}
-            ViewBag.Theme = theme;
+	<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+	<style type="text/css">
+		body {
+			padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
 		}
+	</style>
 
-		<script src="@Url.Content("~/Scripts/jquery-1.8.3.min.js")" type="text/javascript"></script>
-		<script src="@Url.Content("~/Scripts/modernizr-1.7.min.js")" type="text/javascript"></script>
-		<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
-		<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-		<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-		<script src="@Url.Content("~/Scripts/bootstrap.min.js")" type="text/javascript"></script>
+	<link href="@Url.Content("~/Content/google-code-prettify/prettify.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/Bootstrap-Select/bootstrap-select.min.css")" rel="stylesheet" type="text/css" />
 
-		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-		<!--[if lt IE 9]>
-			<script src="@Url.Content("~/Scripts/html5shiv.min.js")"></script>
-		<![endif]-->
-        
-        <script src="@Url.Content("~/Scripts/google-code-prettify/prettify.js")" type="text/javascript"></script>
-		<script src="@Url.Content("~/Scripts/Bootstrap-Select/bootstrap-select.min.js")" type="text/javascript"></script>
+	<link href="@Url.Content("~/Content/custom.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/bootstrap-responsive-mod.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/custom-responsive.css")" rel="stylesheet" type="text/css" />
 
-		<script src="@Url.Content("~/Scripts/custom.js")" type="text/javascript"></script>
-	</head>
+	@{
+		// TODO : Shift this logic to a HtmlHelper
+		var cookie = Request.Cookies["PromptTheme"];
+		var theme = cookie == null ? "Light" : cookie.Value;
+		if (theme == "Dark")
+		{
+			<link href="@Url.Content("~/Content/Themes/Dark/dark.css")" rel="stylesheet" type="text/css" />
+		}
+		ViewBag.Theme = theme;
+	}
 
-	<body>
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<span class="brand">
-						<a href="/"><img src="@Url.Content("~/Content/images/Command-Prompt-icon.png")" alt="prompt." /></a>
-					</span>
-					<div class="nav-collapse collapse">
-						<ul id="navMenu" class="nav">
-							<li>@Html.ActionLink("Home", "Index", new { area = "", controller = "Home" }, new { })</li>
-							<li>@Html.ActionLink("About me", "About", new { area = "", controller = "Home" }, new { })</li>
-							<li>@Html.ActionLink("Contact me", "Contact", new { area = "", controller = "Home" }, new { })</li>							
-						</ul>
-						@{ Html.RenderPartial("SetTheme", new Blog.Models.SetThemeViewModel { Themes = new List<string> { "Dark", "Light" } }); }
-					</div>
-				</div>
-			</div>
-		</div>
+	<script src="@Url.Content("~/Scripts/jquery-1.8.3.min.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Scripts/modernizr-1.7.min.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Scripts/bootstrap.min.js")" type="text/javascript"></script>
 
-		<div class="wrap container">
-			<div class="wrapper container">
-				<div class="row">
-					<div class="span9">
-						@RenderBody()
-					</div>
-					<div class="span3">
-                        <div class="well sidebar-nav">
-                            <ul class="nav nav-list">
-                                <li>
-                                    <a href="http://feeds.feedburner.com/prompt-feed" target="_blank">
-                                        <img style="margin-right: 10px;" src="@Url.Content("~/Content/images/feed-icon-28x28.png")" alt="rss" />
-                                        Subscribe
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-						<div class="well sidebar-nav">
-							<ul class="nav nav-list">
-								<li class="nav-header">Posts by month - 2022</li>
-                                <li>@Html.ActionLink("July", "Archive", new { controller = "Home", Year = 2022, Month = 7 })</li>
-                                <li>@Html.ActionLink("June", "Archive", new { controller = "Home", Year = 2022, Month = 6 })</li>
-                                <li>@Html.ActionLink("May", "Archive", new { controller = "Home", Year = 2022, Month = 5 })</li>
-								<li>@Html.ActionLink("April", "Archive", new { controller = "Home", Year = 2022, Month = 4 })</li>
-								<li>@Html.ActionLink("March", "Archive", new { controller = "Home", Year = 2022, Month = 3 })</li>
-							</ul>
-						</div>
-						@{ Html.RenderAction("Tags", new { area = "", controller = "Home" }); }
-						@{ Html.RenderAction("RecentPosts", new { area = "", controller = "Home" }); }
-                        <div id="StackOverflowProfile" class="well sidebar-nav">
-                            <p class="nav-header">Stack Overflow profile</p>
-                            <a href="http://stackoverflow.com/users/2099977/wellers">
-                                <img src="http://stackoverflow.com/users/flair/2099977.png" 
-                                    style="width: 200px;"
-                                    alt="no pic!" 
-                                    title="Profile for wellers at Stack Overflow, Q&amp;A for professional and enthusiast programmers" />
-                            </a>
-                        </div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="footer">
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+		<script src="@Url.Content("~/Scripts/html5shiv.min.js")"></script>
+	<![endif]-->
+
+	<script src="@Url.Content("~/Scripts/google-code-prettify/prettify.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Scripts/Bootstrap-Select/bootstrap-select.min.js")" type="text/javascript"></script>
+
+	<script src="@Url.Content("~/Scripts/custom.js")" type="text/javascript"></script>
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
 			<div class="container">
-				<p class="muted credit">Developed by Paul David Welbourne. Powered by <a href="http://twitter.github.com/bootstrap/" target="_blank">Bootstrap</a>.</p>
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<span class="brand">
+					<a href="/"><img src="@Url.Content("~/Content/images/Command-Prompt-icon.png")" alt="prompt." /></a>
+				</span>
+				<div class="nav-collapse collapse">
+					<ul id="navMenu" class="nav">
+						<li>@Html.ActionLink("Home", "Index", new { area = "", controller = "Home" }, new { })</li>
+						<li>@Html.ActionLink("About me", "About", new { area = "", controller = "Home" }, new { })</li>
+						<li>@Html.ActionLink("Contact me", "Contact", new { area = "", controller = "Home" }, new { })</li>
+					</ul>
+					@{ Html.RenderPartial("SetTheme", new Blog.Models.SetThemeViewModel { Themes = new List<string> { "Dark", "Light" } }); }
+				</div>
 			</div>
 		</div>
-		<script type="text/javascript">
-			Home.setActiveNav();
+	</div>
 
-			prettyPrint();
+	<div class="wrap container">
+		<div class="wrapper container">
+			<div class="row">
+				<div class="span9">
+					@RenderBody()
+				</div>
+				<div class="span3">
+					<div class="well sidebar-nav">
+						<ul class="nav nav-list">
+							<li>
+								<a href="http://feeds.feedburner.com/prompt-feed" target="_blank">
+									<img style="margin-right: 10px;" src="@Url.Content("~/Content/images/feed-icon-28x28.png")" alt="rss" />
+									Subscribe
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="well sidebar-nav">
+						<ul class="nav nav-list">
+							<li class="nav-header">Posts by month - 2022</li>
+							<li>@Html.ActionLink("July", "Archive", new { controller = "Home", Year = 2022, Month = 7 })</li>
+							<li>@Html.ActionLink("June", "Archive", new { controller = "Home", Year = 2022, Month = 6 })</li>
+							<li>@Html.ActionLink("May", "Archive", new { controller = "Home", Year = 2022, Month = 5 })</li>
+							<li>@Html.ActionLink("April", "Archive", new { controller = "Home", Year = 2022, Month = 4 })</li>
+							<li>@Html.ActionLink("March", "Archive", new { controller = "Home", Year = 2022, Month = 3 })</li>
+						</ul>
+					</div>
+					@{ Html.RenderAction("Tags", new { area = "", controller = "Home" }); }
+					@{ Html.RenderAction("RecentPosts", new { area = "", controller = "Home" }); }
+					<div id="StackOverflowProfile" class="well sidebar-nav">
+						<p class="nav-header">Stack Overflow profile</p>
+						<a href="http://stackoverflow.com/users/2099977/wellers">
+							<img src="http://stackoverflow.com/users/flair/2099977.png"
+								 style="width: 200px;"
+								 alt="no pic!"
+								 title="Profile for wellers at Stack Overflow, Q&amp;A for professional and enthusiast programmers" />
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="container">
+			<p class="muted credit">Developed by Paul David Welbourne. Powered by <a href="http://twitter.github.com/bootstrap/" target="_blank">Bootstrap</a>.</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Home.setActiveNav();
 
-			var disqus_shortname = 'promptwellers';
+		prettyPrint();
 
-			/* * * DON'T EDIT BELOW THIS LINE * * */
-			(function () {
-				var s = document.createElement('script'); s.async = true;
-				s.type = 'text/javascript';
-				s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-				(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-			} ());
-		</script>
-	</body>
+		var disqus_shortname = 'promptwellers';
+
+		/* * * DON'T EDIT BELOW THIS LINE * * */
+		(function () {
+			var s = document.createElement('script'); s.async = true;
+			s.type = 'text/javascript';
+			s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+			(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+		}());
+	</script>
+</body>
 </html>

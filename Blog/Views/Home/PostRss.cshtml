@@ -15,21 +15,21 @@
     @foreach (var b in Model.BlogEntries) 
     { 
         <item>
-        <title>@b.Title</title>
-        <link>http://@(Request.Url.Host)@Url.Action("BlogEntry", new
-								   {
-									   controller = "Home",
-									   id = b.Key,
-									   title = b.Title.ToRouteTitle()
-								   })</link>
-        <guid>http://@(Request.Url.Host)@Url.Action("BlogEntry", new
-								   {
-									   controller = "Home",
-									   id = b.Key,
-									   title = b.Title.ToRouteTitle()
-								   })</guid>
-        <pubDate>@b.PostedDate.ToUniversalTime().ToString("r")</pubDate>
-        <description>@b.Entry</description>
+	        <title>@b.Title</title>
+	        <link>http://@(Request.Url.Host)@Url.Action("BlogEntry", new
+									   {
+										   controller = "Home",
+										   id = b.Key,
+										   title = b.Title.ToRouteTitle()
+									   })</link>
+	        <guid>http://@(Request.Url.Host)@Url.Action("BlogEntry", new
+									   {
+										   controller = "Home",
+										   id = b.Key,
+										   title = b.Title.ToRouteTitle()
+									   })</guid>
+	        <pubDate>@b.PostedDate.ToUniversalTime().ToString("r")</pubDate>
+	        <description>@b.Entry</description>
         </item>
     }
 </channel>

@@ -1,13 +1,12 @@
 namespace Blog.Data.CodeFirst.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
-    public partial class FirstBlogEntry : DbMigration
-    {
-        public override void Up()
-        {
-            Sql(@"
+	using System.Data.Entity.Migrations;
+
+	public partial class FirstBlogEntry : DbMigration
+	{
+		public override void Up()
+		{
+			Sql(@"
                 INSERT INTO BlogEntries (Title, Entry, PostedDate)
                 SELECT 'Syntactic sugar: ""one lump or two?""',
                 '<div><p>This is my first blog post. Hooray! So I thought, for the contents of my first post, I would write about some of the features I like about the Dot Net framework, in particular C# syntactic sugar.</p><p>Quite simply, syntactic sugar is syntax within a programming language that is designed to make things easier to read or to express.</p><p>Some examples of syntactic sugar are detailed below.</p></div><div><br /><p><strong>Auto-properties</strong></p><p>Automatic properties are great. Removing the need to add a backing field to hold data.</p><pre class=''brush: csharp''>
@@ -76,11 +75,11 @@ public int ID
     };</pre></div><div><p>I may continue to expand on this post, for my next post, and go into other syntactic sugar features of Dot Net.</p></div>',
                 GETDATE()
             ");
-        }
-        
-        public override void Down()
-        {
-            Sql(@"DELETE FROM BlogEntries WHERE Title = 'Syntactic sugar: ''one lump or two?'''");
-        }
-    }
+		}
+
+		public override void Down()
+		{
+			Sql(@"DELETE FROM BlogEntries WHERE Title = 'Syntactic sugar: ''one lump or two?'''");
+		}
+	}
 }
