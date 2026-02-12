@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using Blog.Interfaces.Models;
+﻿using Blog.Interfaces.Models;
 
-namespace Blog.Interfaces.Repositories
+namespace Blog.Interfaces.Repositories;
+
+public interface ITagRepository : IBaseRepository<ITagModel>
 {
-	public interface ITagRepository : IBaseRepository<ITagModel>
-	{
-		IList<ITagModel> GetAll();
-	}
+	IList<ITagModel> GetAll();
 }

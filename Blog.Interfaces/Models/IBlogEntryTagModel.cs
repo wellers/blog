@@ -1,9 +1,7 @@
-﻿
-namespace Blog.Interfaces.Models
+﻿namespace Blog.Interfaces.Models;
+
+public interface IBlogEntryTagModel : IBaseModel
 {
-	public interface IBlogEntryTagModel : IBaseModel
-	{
-		int BlogEntryKey { get; set; }
-		int TagKey { get; set; }
-	}
+	int BlogEntryKey { get; set; }
+	int TagKey { get; set; }
 }

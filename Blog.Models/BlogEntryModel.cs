@@ -1,14 +1,11 @@
-﻿using System;
-using System.Linq;
-using Blog.Interfaces.Models;
+﻿using Blog.Interfaces.Models;
 
-namespace Blog.Models
+namespace Blog.Models;
+
+public class BlogEntryModel : BaseModel, IBlogEntryModel
 {
-	public class BlogEntryModel : BaseModel, IBlogEntryModel
-	{
-		public string Title { get; set; }
-		public string Entry { get; set; }
-		public DateTime PostedDate { get; set; }
-		public IQueryable<ITagModel> Tags { get; set; }
-	}
+	public string Title { get; set; }
+	public string Entry { get; set; }
+	public DateTime PostedDate { get; set; }
+	public IEnumerable<ITagModel> Tags { get; set; }
 }

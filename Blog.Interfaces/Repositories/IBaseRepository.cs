@@ -1,9 +1,8 @@
 ﻿using Blog.Interfaces.Models;
 
-namespace Blog.Interfaces.Repositories
+namespace Blog.Interfaces.Repositories;
+
+public interface IBaseRepository<out T> where T : IBaseModel
 {
-	public interface IBaseRepository<out T> where T : IBaseModel
-	{
-		T Get(int id);
-	}
+	T Get(int id);
 }

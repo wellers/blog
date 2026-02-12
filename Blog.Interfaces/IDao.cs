@@ -1,9 +1,6 @@
-﻿using System.Linq;
+﻿namespace Blog.Interfaces;
 
-namespace Blog.Interfaces
+public interface IDao<out T>
 {
-	public interface IDao<out T>
-	{
-		IQueryable<T> Get();
-	}
+	IQueryable<T> Get();
 }

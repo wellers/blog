@@ -1,9 +1,7 @@
-﻿
-namespace Blog.Interfaces
+﻿namespace Blog.Interfaces;
+
+public interface IHaveKey
 {
-	public interface IHaveKey
-	{
-		int Key { get; set; }
-		string KeyName { get; }
-	}
+	int Key { get; set; }
+	string KeyName { get; }
 }

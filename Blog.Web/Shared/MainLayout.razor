@@ -1,0 +1,42 @@
+@inherits LayoutComponentBase
+@inject Blog.Interfaces.Repositories.IBlogEntryRepository BlogEntryRepository
+
+@code {
+        private int entryCount;
+
+        protected override void OnInitialized()
+        {
+                var list = BlogEntryRepository.GetTopMostRecentBlogEntries(1000);
+                entryCount = list?.Count ?? 0;
+        }
+}
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand" href="/">Home</a>
+
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blogentries">Blog <span class="badge bg-secondary">(@entryCount)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="main-container">
+    <div class="container">
+        <div class="content-center">
+            @Body
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <small>&copy; @DateTime.Now.Year — My Blog</small>
+    </div>
+</footer>

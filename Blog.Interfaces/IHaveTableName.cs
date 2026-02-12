@@ -1,8 +1,6 @@
-﻿
-namespace Blog.Interfaces
+﻿namespace Blog.Interfaces;
+
+public interface IHaveTableName
 {
-	public interface IHaveTableName
-	{
-		string TableName { get; }
-	}
+	string TableName { get; }
 }

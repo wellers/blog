@@ -1,8 +1,6 @@
-﻿
-namespace Blog.Interfaces.Models
+﻿namespace Blog.Interfaces.Models;
+
+public interface IBaseModel
 {
-	public interface IBaseModel
-	{
-		int Key { get; set; }
-	}
+	int Key { get; set; }
 }
