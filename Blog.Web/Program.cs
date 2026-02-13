@@ -10,8 +10,7 @@ builder.Services.AddServerSideBlazor();
 
 // Configure EF Core DbContext and repositories for the blog data layer.
 var connectionString = builder.Configuration.GetConnectionString("BlogDatabase");
-builder.Services.AddDbContext<BlogDbContext>(options =>
-    options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IBlogEntryRepository, BlogEntryRepository>();
 builder.Services.AddScoped<ITagRepository, TagRepository>();

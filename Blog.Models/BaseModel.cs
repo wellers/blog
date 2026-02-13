@@ -9,19 +9,13 @@ public abstract class BaseModel : IHaveKey, IHaveTableName, IBaseModel
 
 	public int Key { get; set; }
 
-	public string KeyName
-	{
-		get { throw new NotImplementedException(); }
-	}
+	public string KeyName => throw new NotImplementedException();	
 
 	#endregion
 
 	#region IHaveTableName Members
 
-	public string TableName
-	{
-		get { throw new NotImplementedException(); }
-	}
+	public string TableName => throw new NotImplementedException();
 
 	#endregion
 }
