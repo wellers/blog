@@ -10,7 +10,7 @@
     <ProjectReference Include="..\Blog.Data.EFCore\Blog.Data.EFCore.csproj" />
     <ProjectReference Include="..\Blog.Interfaces\Blog.Interfaces.csproj" />
     <ProjectReference Include="..\Blog.Models\Blog.Models.csproj" />
-    <ProjectReference Include="..\Blog.Core\Blog.Shared.csproj" />
+    <ProjectReference Include="..\Blog.Shared\Blog.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
