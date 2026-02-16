@@ -4,8 +4,8 @@ namespace Blog.Models;
 
 public class BlogEntryModel : BaseModel, IBlogEntryModel
 {
-	public string Title { get; set; }
-	public string Entry { get; set; }
+	public string Title { get; set; } = string.Empty;
+	public string Entry { get; set; } = string.Empty;
 	public DateTime PostedDate { get; set; }
-	public IEnumerable<ITagModel> Tags { get; set; }
+	public IEnumerable<ITagModel> Tags { get; set; } = [];
 }

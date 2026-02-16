@@ -1,7 +1,6 @@
 using Blog.Data.EFCore;
 using Blog.Data.EFCore.Repositories;
 using Blog.Interfaces.Repositories;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,11 +8,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
 // Configure EF Core DbContext and repositories for the blog data layer.
-var connectionString = builder.Configuration.GetConnectionString("BlogDatabase");
-builder.Services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(connectionString));
-
+builder.Services.AddDbContext<MongoDbContext>();
 builder.Services.AddScoped<IBlogEntryRepository, BlogEntryRepository>();
-builder.Services.AddScoped<ITagRepository, TagRepository>();
 
 var app = builder.Build();
 
@@ -30,5 +26,14 @@ app.UseRouting();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
+
+#if DEBUG
+// Set-up test data
+using (var scope = app.Services.CreateScope())
+{
+	var context = scope.ServiceProvider.GetRequiredService<MongoDbContext>();
+	await DataGenerator.InitialiseAsync(context);
+}
+#endif
 
 app.Run();

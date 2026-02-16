@@ -4,6 +4,6 @@ namespace Blog.Models;
 
 public class TagModel : BaseModel, ITagModel
 {
-	public string LookupID { get; set; }
-	public string Name { get; set; }
+	public string LookupID { get; set; } = string.Empty;
+	public string Name { get; set; } = string.Empty;
 }

@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Web", "Blog.Web\Blog.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Data.EFCore", "Blog.Data.EFCore\Blog.Data.EFCore.csproj", "{C1A84F59-B404-4A8A-BD80-82AFC64BF624}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Data.Migrations", "Blog.Data.Migrations\Blog.Data.Migrations.csproj", "{E848FF74-0B06-43D6-BA20-2140876CA243}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Shared", "Blog.Shared\Blog.Shared.csproj", "{D7D5C607-38A5-9EE7-D44C-A4BE3458BAB9}"
 EndProject
 Global
@@ -87,22 +85,6 @@ Global
 		{C1A84F59-B404-4A8A-BD80-82AFC64BF624}.Release|x64.Build.0 = Release|Any CPU
 		{C1A84F59-B404-4A8A-BD80-82AFC64BF624}.Release|x86.ActiveCfg = Release|Any CPU
 		{C1A84F59-B404-4A8A-BD80-82AFC64BF624}.Release|x86.Build.0 = Release|Any CPU
-		{E848FF74-0B06-43D6-BA20-2140876CA243}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E848FF74-0B06-43D6-BA20-2140876CA243}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E848FF74-0B06-43D6-BA20-2140876CA243}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{E848FF74-0B06-43D6-BA20-2140876CA243}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{E848FF74-0B06-43D6-BA20-2140876CA243}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E848FF74-0B06-43D6-BA20-2140876CA243}.Debug|x64.Build.0 = Debug|Any CPU
-		{E848FF74-0B06-43D6-BA20-2140876CA243}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E848FF74-0B06-43D6-BA20-2140876CA243}.Debug|x86.Build.0 = Debug|Any CPU
-		{E848FF74-0B06-43D6-BA20-2140876CA243}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E848FF74-0B06-43D6-BA20-2140876CA243}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E848FF74-0B06-43D6-BA20-2140876CA243}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{E848FF74-0B06-43D6-BA20-2140876CA243}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{E848FF74-0B06-43D6-BA20-2140876CA243}.Release|x64.ActiveCfg = Release|Any CPU
-		{E848FF74-0B06-43D6-BA20-2140876CA243}.Release|x64.Build.0 = Release|Any CPU
-		{E848FF74-0B06-43D6-BA20-2140876CA243}.Release|x86.ActiveCfg = Release|Any CPU
-		{E848FF74-0B06-43D6-BA20-2140876CA243}.Release|x86.Build.0 = Release|Any CPU
 		{D7D5C607-38A5-9EE7-D44C-A4BE3458BAB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D7D5C607-38A5-9EE7-D44C-A4BE3458BAB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7D5C607-38A5-9EE7-D44C-A4BE3458BAB9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

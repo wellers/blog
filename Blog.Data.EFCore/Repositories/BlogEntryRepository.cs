@@ -5,32 +5,29 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Data.EFCore.Repositories;
 
-public class BlogEntryRepository(BlogDbContext context) : IBlogEntryRepository
+public class BlogEntryRepository(MongoDbContext context) : IBlogEntryRepository
 {
 	private IQueryable<IBlogEntryModel> All()
     {
         return context.BlogEntries
-            .Include(b => b.BlogEntryTags)
-            .ThenInclude(bt => bt.Tag)
+            .AsEnumerable()
             .Select(b => new BlogEntryModel
             {
                 Key = b.Id,
                 Title = b.Title,
                 Entry = b.Entry,
                 PostedDate = b.PostedDate,
-                Tags = b.BlogEntryTags
-                    .Select(bt => bt.Tag)
-                    .Select(t => new TagModel
+                Tags = b.Tags.Select(t => new TagModel
                     {
-                        Key = t.Id,
-                        LookupID = t.LookupID,
-                        Name = t.Name
+                        LookupID = t,
+                        Name = t
                     })
                     .ToList()
-            });
+			})
+            .AsQueryable();
     }
 
-	public IBlogEntryModel Get(int id) => All().SingleOrDefault(b => b.Key == id);
+	public IBlogEntryModel Get(object id) => All().SingleOrDefault(b => b.Key.Equals(id));
 
 	public IList<IBlogEntryModel> GetBlogEntriesByYear(int year)
     {
@@ -53,20 +50,8 @@ public class BlogEntryRepository(BlogDbContext context) : IBlogEntryRepository
         if (string.IsNullOrEmpty(tag))
             throw new ArgumentException("Cannot be null or empty", nameof(tag));
 
-        var normalized = tag;
-
-        var tagId = context.Tags
-            .Where(t => t.LookupID == normalized)
-            .Select(t => t.Id)
-            .Single();
-
-        var blogEntryIds = context.BlogEntryTags
-            .Where(bt => bt.TagId == tagId)
-            .Select(bt => bt.BlogEntryId)
-            .ToList();
-
         return All()
-            .Where(b => blogEntryIds.Contains(b.Key))
+            .Where(b => b.Tags.Select(t => t.LookupID).Contains(tag))
             .OrderByDescending(b => b.PostedDate)
             .ToList();
     }

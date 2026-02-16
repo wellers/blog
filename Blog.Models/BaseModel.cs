@@ -7,7 +7,7 @@ public abstract class BaseModel : IHaveKey, IHaveTableName, IBaseModel
 {
 	#region IHaveKey Members
 
-	public int Key { get; set; }
+	public object Key { get; set; } = null!;
 
 	public string KeyName => throw new NotImplementedException();	
 

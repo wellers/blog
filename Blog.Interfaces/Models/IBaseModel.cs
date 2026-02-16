@@ -2,5 +2,5 @@
 
 public interface IBaseModel
 {
-	int Key { get; set; }
+	object Key { get; set; }
 }
