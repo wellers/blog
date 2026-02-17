@@ -1,4 +1,4 @@
-using Blog.Interfaces.Models;
+﻿using Blog.Interfaces.Models;
 using Blog.Interfaces.Repositories;
 using Blog.Models;
 using Microsoft.EntityFrameworkCore;
@@ -7,62 +7,89 @@ namespace Blog.Data.EFCore.Repositories;
 
 public class BlogEntryRepository(MongoDbContext context) : IBlogEntryRepository
 {
-	private IQueryable<IBlogEntryModel> All()
-    {
-        return context.BlogEntries
-            .AsEnumerable()
-            .Select(b => new BlogEntryModel
-            {
-                Key = b.Id,
-                Title = b.Title,
-                Entry = b.Entry,
-                PostedDate = b.PostedDate,
-                Tags = b.Tags.Select(t => new TagModel
-                    {
-                        LookupID = t,
-                        Name = t
-                    })
-                    .ToList()
-			})
-            .AsQueryable();
-    }
+	private IQueryable<Entities.BlogEntryEntity> Query() => context.BlogEntries.AsNoTracking();
 
-	public IBlogEntryModel Get(object id) => All().SingleOrDefault(b => b.Key.Equals(id));
+	public IBlogEntryModel? Get(object id)
+	{
+		return Query()
+			.Where(b => b.Id.Equals(id))
+			.AsEnumerable()
+			.Select(Map)
+			.SingleOrDefault();
+	}
+
+	public IEnumerable<IBlogEntryModel> GetTopMostRecentBlogEntries(int numberOfEntries)
+	{
+		return Query()
+			.OrderByDescending(b => b.PostedDate)
+			.Take(numberOfEntries)
+			.AsEnumerable()
+			.Select(Map)
+			.ToList();
+	}
+
+	public IBlogEntryModel? GetMostRecentBlogEntry()
+	{
+		return Query()
+			.OrderByDescending(b => b.PostedDate)
+			.Take(1)
+			.AsEnumerable()
+			.Select(Map)
+			.FirstOrDefault();
+	}
 
 	public IEnumerable<IBlogEntryModel> GetBlogEntriesByYear(int year)
-    {
-        return All()
-            .Where(b => b.PostedDate.Year == year)
-            .OrderByDescending(b => b.PostedDate)
-            .ToList();
-    }
+	{
+		var start = new DateTime(year, 1, 1);
+		var end = start.AddYears(1);
 
-    public IEnumerable<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year)
-    {
-        return All()
-            .Where(b => b.PostedDate.Month == month && b.PostedDate.Year == year)
-            .OrderByDescending(b => b.PostedDate)
-            .ToList();
-    }
+		return Query()
+			.Where(b => b.PostedDate >= start && b.PostedDate < end)
+			.OrderByDescending(b => b.PostedDate)
+			.AsEnumerable()
+			.Select(Map)
+			.ToList();
+	}
 
-    public IEnumerable<IBlogEntryModel> GetBlogEntriesByTag(string tag)
-    {
-        if (string.IsNullOrEmpty(tag))
-            throw new ArgumentException("Cannot be null or empty", nameof(tag));
+	public IEnumerable<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year)
+	{
+		var start = new DateTime(year, month, 1);
+		var end = start.AddMonths(1);
 
-        return All()
-            .Where(b => b.Tags.Select(t => t.LookupID).Contains(tag))
-            .OrderByDescending(b => b.PostedDate)
-            .ToList();
-    }
+		return Query()
+			.Where(b => b.PostedDate >= start && b.PostedDate < end)
+			.OrderByDescending(b => b.PostedDate)
+			.AsEnumerable()
+			.Select(Map)
+			.ToList();
+	}
 
-    public IBlogEntryModel GetMostRecentBlogEntry() => GetTopMostRecentBlogEntries(1).Single();
+	public IEnumerable<IBlogEntryModel> GetBlogEntriesByTag(string tag)
+	{
+		if (string.IsNullOrWhiteSpace(tag))
+			throw new ArgumentException("Cannot be null or empty", nameof(tag));
 
-    public IEnumerable<IBlogEntryModel> GetTopMostRecentBlogEntries(int numberOfEntries)
-    {
-        return All()
-            .OrderByDescending(b => b.PostedDate)
-            .Take(numberOfEntries)
-            .ToList();
-    }
+		return Query()
+			.Where(b => b.Tags.Contains(tag))
+			.OrderByDescending(b => b.PostedDate)
+			.AsEnumerable()
+			.Select(Map)
+			.ToList();
+	}
+
+	private static BlogEntryModel Map(Entities.BlogEntryEntity b)
+	{
+		return new BlogEntryModel
+		{
+			Key = b.Id,
+			Title = b.Title,
+			Entry = b.Entry,
+			PostedDate = b.PostedDate,
+			Tags = b.Tags.Select(t => new TagModel
+			{
+				LookupID = t,
+				Name = t
+			}).ToList()
+		};
+	}
 }
