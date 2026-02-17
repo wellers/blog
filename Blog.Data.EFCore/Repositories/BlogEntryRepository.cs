@@ -29,7 +29,7 @@ public class BlogEntryRepository(MongoDbContext context) : IBlogEntryRepository
 
 	public IBlogEntryModel Get(object id) => All().SingleOrDefault(b => b.Key.Equals(id));
 
-	public IList<IBlogEntryModel> GetBlogEntriesByYear(int year)
+	public IEnumerable<IBlogEntryModel> GetBlogEntriesByYear(int year)
     {
         return All()
             .Where(b => b.PostedDate.Year == year)
@@ -37,7 +37,7 @@ public class BlogEntryRepository(MongoDbContext context) : IBlogEntryRepository
             .ToList();
     }
 
-    public IList<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year)
+    public IEnumerable<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year)
     {
         return All()
             .Where(b => b.PostedDate.Month == month && b.PostedDate.Year == year)
@@ -45,7 +45,7 @@ public class BlogEntryRepository(MongoDbContext context) : IBlogEntryRepository
             .ToList();
     }
 
-    public IList<IBlogEntryModel> GetBlogEntriesByTag(string tag)
+    public IEnumerable<IBlogEntryModel> GetBlogEntriesByTag(string tag)
     {
         if (string.IsNullOrEmpty(tag))
             throw new ArgumentException("Cannot be null or empty", nameof(tag));
@@ -58,7 +58,7 @@ public class BlogEntryRepository(MongoDbContext context) : IBlogEntryRepository
 
     public IBlogEntryModel GetMostRecentBlogEntry() => GetTopMostRecentBlogEntries(1).Single();
 
-    public IList<IBlogEntryModel> GetTopMostRecentBlogEntries(int numberOfEntries)
+    public IEnumerable<IBlogEntryModel> GetTopMostRecentBlogEntries(int numberOfEntries)
     {
         return All()
             .OrderByDescending(b => b.PostedDate)

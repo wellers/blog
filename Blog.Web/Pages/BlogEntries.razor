@@ -53,8 +53,8 @@ else
 }
 
 @code {
-    private IList<IBlogEntryModel>? allEntries;
-    private IList<IBlogEntryModel>? pagedEntries;
+    private IEnumerable<IBlogEntryModel>? allEntries;
+    private IEnumerable<IBlogEntryModel>? pagedEntries;
     private string? searchTerm;
     private int pageSize = 5;
     private int currentPage = 1;

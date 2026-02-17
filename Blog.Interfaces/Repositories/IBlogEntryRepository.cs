@@ -4,9 +4,9 @@ namespace Blog.Interfaces.Repositories;
 
 public interface IBlogEntryRepository : IBaseRepository<IBlogEntryModel>
 {
-	IList<IBlogEntryModel> GetBlogEntriesByYear(int year);
-	IList<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year);
-	IList<IBlogEntryModel> GetBlogEntriesByTag(string tag);
+	IEnumerable<IBlogEntryModel> GetBlogEntriesByYear(int year);
+	IEnumerable<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year);
+	IEnumerable<IBlogEntryModel> GetBlogEntriesByTag(string tag);
 	IBlogEntryModel GetMostRecentBlogEntry();
-	IList<IBlogEntryModel> GetTopMostRecentBlogEntries(int numberOfEntries);
+	IEnumerable<IBlogEntryModel> GetTopMostRecentBlogEntries(int numberOfEntries);
 }
