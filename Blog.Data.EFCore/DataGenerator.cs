@@ -10,6 +10,9 @@ public static class DataGenerator
 		await context.Database.EnsureCreatedAsync();
 		context.Database.AutoTransactionBehavior = AutoTransactionBehavior.Never;
 
+		if (context.BlogEntries.Any())
+			return;
+
 		var blogs = new[]
 		{
 			new BlogEntryEntity

@@ -18,7 +18,7 @@ public class BlogEntryRepository(MongoDbContext context) : IBlogEntryRepository
 			.SingleOrDefault();
 	}
 
-	public IEnumerable<IBlogEntryModel> GetTopMostRecentBlogEntries(int numberOfEntries)
+	public IReadOnlyList<IBlogEntryModel> GetTopMostRecentBlogEntries(int numberOfEntries)
 	{
 		return Query()
 			.OrderByDescending(b => b.PostedDate)
@@ -38,7 +38,7 @@ public class BlogEntryRepository(MongoDbContext context) : IBlogEntryRepository
 			.FirstOrDefault();
 	}
 
-	public IEnumerable<IBlogEntryModel> GetBlogEntriesByYear(int year)
+	public IReadOnlyList<IBlogEntryModel> GetBlogEntriesByYear(int year)
 	{
 		var start = new DateTime(year, 1, 1);
 		var end = start.AddYears(1);
@@ -51,7 +51,7 @@ public class BlogEntryRepository(MongoDbContext context) : IBlogEntryRepository
 			.ToList();
 	}
 
-	public IEnumerable<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year)
+	public IReadOnlyList<IBlogEntryModel> GetBlogEntriesByMonthAndYear(int month, int year)
 	{
 		var start = new DateTime(year, month, 1);
 		var end = start.AddMonths(1);
@@ -64,7 +64,7 @@ public class BlogEntryRepository(MongoDbContext context) : IBlogEntryRepository
 			.ToList();
 	}
 
-	public IEnumerable<IBlogEntryModel> GetBlogEntriesByTag(string tag)
+	public IReadOnlyList<IBlogEntryModel> GetBlogEntriesByTag(string tag)
 	{
 		if (string.IsNullOrWhiteSpace(tag))
 			throw new ArgumentException("Cannot be null or empty", nameof(tag));
